@@ -4,6 +4,547 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activity.main.MainActivity">
+    android:background="@color/agronify_main"
+    tools:context=".view.activity.main.MainActivity"
+    tools:ignore="ContentDescription">
+
+    <TextView
+        android:id="@+id/tv_greeting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/nunito_sans_bold"
+        android:text="@string/greeting"
+        android:textColor="@color/agronify_white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_greeting_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/nunito_sans_semi_bold"
+        android:text="@string/greeting_desc"
+        android:textColor="@color/agronify_white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_greeting" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_weather"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/shape_rounded"
+        android:backgroundTint="@color/agronify_secondary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_greeting_desc">
+
+        <TextView
+            android:id="@+id/tv_weather_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/nunito_sans_semi_bold"
+            android:textColor="@color/agronify_white"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Surabaya" />
+
+        <TextView
+            android:id="@+id/tv_weather_temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/nunito_sans_bold"
+            android:textColor="@color/agronify_white"
+            android:textSize="36sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="27°" />
+
+        <TextView
+            android:id="@+id/tv_weather_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/nunito_sans_semi_bold"
+            android:textColor="@color/agronify_white"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="Cerah Berawan" />
+
+        <TextView
+            android:id="@+id/tv_weather_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/nunito_sans_bold"
+            android:textColor="@color/agronify_white"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="Ketuk untuk detail" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="@id/cl_weather"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:src="@drawable/ic_weather_partly_cloudy" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_main"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/shape_rounded_top"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_weather">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btn_agro_edu"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:cardElevation="3dp"
+            app:cardBackgroundColor="@color/agronify_main"
+            app:cardCornerRadius="10dp"
+            app:strokeWidth="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/guideline_vertical_first"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_edu" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/tv_agro_edu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/nunito_sans_semi_bold"
+            android:text="@string/title_agro_edu"
+            android:textColor="@color/agronify_black"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/btn_agro_edu"
+            app:layout_constraintStart_toStartOf="@id/btn_agro_edu"
+            app:layout_constraintTop_toBottomOf="@id/btn_agro_edu" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btn_agro_scan"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:cardElevation="3dp"
+            app:cardBackgroundColor="@color/agronify_main"
+            app:cardCornerRadius="10dp"
+            app:strokeWidth="0dp"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@id/guideline_vertical_first"
+            app:layout_constraintEnd_toStartOf="@id/guideline_vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_agro_edu"
+            app:layout_constraintTop_toTopOf="@id/btn_agro_edu">
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_scan" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/tv_agro_scan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/nunito_sans_semi_bold"
+            android:text="@string/title_agro_scan"
+            android:textColor="@color/agronify_black"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/btn_agro_scan"
+            app:layout_constraintStart_toStartOf="@id/btn_agro_scan"
+            app:layout_constraintTop_toBottomOf="@id/btn_agro_scan" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btn_agro_hub"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:cardElevation="3dp"
+            app:cardBackgroundColor="@color/agronify_gray"
+            app:cardCornerRadius="10dp"
+            app:strokeWidth="0dp"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@id/guideline_vertical"
+            app:layout_constraintEnd_toStartOf="@id/guideline_vertical_last"
+            app:layout_constraintBottom_toBottomOf="@id/btn_agro_mart"
+            app:layout_constraintTop_toTopOf="@id/btn_agro_mart">
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_hub" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/tv_agro_hub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/nunito_sans_semi_bold"
+            android:text="@string/title_agro_hub"
+            android:textColor="@color/agronify_black"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/btn_agro_hub"
+            app:layout_constraintStart_toStartOf="@id/btn_agro_hub"
+            app:layout_constraintTop_toBottomOf="@id/btn_agro_hub" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btn_agro_mart"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:cardElevation="3dp"
+            app:cardBackgroundColor="@color/agronify_gray"
+            app:cardCornerRadius="10dp"
+            app:strokeWidth="0dp"
+            app:layout_constraintStart_toEndOf="@id/guideline_vertical_last"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_test" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/tv_agro_mart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/nunito_sans_semi_bold"
+            android:text="@string/title_agro_mart"
+            android:textColor="@color/agronify_black"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/btn_agro_mart"
+            app:layout_constraintEnd_toEndOf="@id/btn_agro_mart"
+            app:layout_constraintTop_toBottomOf="@id/btn_agro_mart" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btn_agro_work"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            app:cardElevation="3dp"
+            app:cardBackgroundColor="@color/agronify_gray"
+            app:cardCornerRadius="10dp"
+            app:strokeWidth="0dp"
+            app:layout_constraintStart_toStartOf="@id/btn_agro_edu"
+            app:layout_constraintEnd_toEndOf="@id/btn_agro_edu"
+            app:layout_constraintTop_toBottomOf="@id/tv_agro_edu">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_test" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/tv_agro_work"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/nunito_sans_semi_bold"
+            android:text="@string/title_agro_work"
+            android:textColor="@color/agronify_black"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/btn_agro_work"
+            app:layout_constraintEnd_toEndOf="@id/btn_agro_work"
+            app:layout_constraintTop_toBottomOf="@id/btn_agro_work" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btn_agro_plan"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            app:cardElevation="3dp"
+            app:cardBackgroundColor="@color/agronify_gray"
+            app:cardCornerRadius="10dp"
+            app:strokeWidth="0dp"
+            app:layout_constraintStart_toStartOf="@id/btn_agro_scan"
+            app:layout_constraintEnd_toEndOf="@id/btn_agro_scan"
+            app:layout_constraintTop_toBottomOf="@id/tv_agro_scan">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_test" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/tv_agro_plan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/nunito_sans_semi_bold"
+            android:text="@string/title_agro_plan"
+            android:textColor="@color/agronify_black"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toLeftOf="@id/btn_agro_plan"
+            app:layout_constraintRight_toRightOf="@id/btn_agro_plan"
+            app:layout_constraintTop_toBottomOf="@id/btn_agro_plan" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btn_agro_fin"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            app:cardElevation="3dp"
+            app:cardBackgroundColor="@color/agronify_gray"
+            app:cardCornerRadius="10dp"
+            app:strokeWidth="0dp"
+            app:layout_constraintStart_toStartOf="@id/btn_agro_hub"
+            app:layout_constraintEnd_toEndOf="@id/btn_agro_hub"
+            app:layout_constraintTop_toBottomOf="@id/tv_agro_hub">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_test" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/tv_agro_fin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/nunito_sans_semi_bold"
+            android:text="@string/title_agro_fin"
+            android:textColor="@color/agronify_black"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/btn_agro_fin"
+            app:layout_constraintEnd_toEndOf="@id/btn_agro_fin"
+            app:layout_constraintTop_toBottomOf="@id/btn_agro_fin" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btn_agro_more"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            app:cardElevation="3dp"
+            app:cardBackgroundColor="@color/agronify_gray"
+            app:cardCornerRadius="10dp"
+            app:strokeWidth="0dp"
+            app:layout_constraintStart_toStartOf="@id/btn_agro_mart"
+            app:layout_constraintEnd_toEndOf="@id/btn_agro_mart"
+            app:layout_constraintTop_toBottomOf="@id/tv_agro_mart">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_test" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/tv_agro_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/nunito_sans_semi_bold"
+            android:text="@string/title_more"
+            android:textColor="@color/agronify_black"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/btn_agro_more"
+            app:layout_constraintEnd_toEndOf="@id/btn_agro_more"
+            app:layout_constraintTop_toBottomOf="@id/btn_agro_more" />
+
+        <TextView
+            android:id="@+id/tv_agro_spotlight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:layout_marginHorizontal="20dp"
+            android:fontFamily="@font/nunito_sans_bold"
+            android:text="@string/title_agro_spotlight"
+            android:textColor="@color/agronify_black"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_agro_work"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+            
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btn_agro_spotlight"
+            android:layout_width="match_parent"
+            android:layout_height="144dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="20dp"
+            app:cardElevation="3dp"
+            app:cardBackgroundColor="@color/agronify_gray"
+            app:cardCornerRadius="10dp"
+            app:strokeWidth="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_agro_spotlight">
+
+            <ImageView
+                android:id="@+id/iv_agro_spotlight"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_spotlight" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:id="@+id/tv_agro_spotlight_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_sans_semi_bold"
+                    android:textColor="@color/agronify_white"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toTopOf="@id/tv_agro_spotlight_desc"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="Lorem ipsum dolor sit amet" />
+
+                <TextView
+                    android:id="@+id/tv_agro_spotlight_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_sans"
+                    android:textColor="@color/agronify_white"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="Lorem ipsum dolor sit amet consectetur." />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical_first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.25" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical_last"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.75" />
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.google.android.material.bottomappbar.BottomAppBar
+                android:id="@+id/bottom_app_bar"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_gravity="bottom"
+                app:backgroundTint="@color/agronify_white"
+                app:addElevationShadow="true"
+                app:elevation="3dp"
+                app:contentInsetStart="0dp"
+                app:contentInsetEnd="0dp"
+                app:fabAlignmentMode="center"
+                app:fabAnchorMode="cradle"
+                app:fabCradleRoundedCornerRadius="30dp"
+                app:fabCradleMargin="8dp"
+                app:fabCradleVerticalOffset="4dp">
+
+                <com.google.android.material.bottomnavigation.BottomNavigationView
+                    android:id="@+id/bottom_navigation_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_transparent"
+                    app:menu="@menu/bottom_navigation_menu" />
+
+            </com.google.android.material.bottomappbar.BottomAppBar>
+
+            <ImageView
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:background="@drawable/shape_scan"
+                app:layout_anchor="@id/fab_agro_scan"
+                app:layout_anchorGravity="center" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_agro_scan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:backgroundTint="@android:color/transparent"
+                app:fabCustomSize="68dp"
+                app:maxImageSize="40dp"
+                app:srcCompat="@drawable/ic_scan"
+                app:elevation="0dp"
+                app:layout_anchor="@id/bottom_app_bar" />
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

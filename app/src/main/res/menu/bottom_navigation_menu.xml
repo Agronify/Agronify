@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_home"
+        android:title="@string/title_home" />
+    <item
+        android:id="@+id/agro_edu"
+        android:icon="@drawable/ic_edu"
+        android:title="@string/title_agro_edu" />
+    <item
+        android:id="@+id/agro_scan"
+        android:enabled="false"
+        android:title="@string/title_agro_scan" />
+    <item
+        android:id="@+id/agro_hub"
+        android:icon="@drawable/ic_hub"
+        android:title="@string/title_agro_hub" />
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/ic_profile"
+        android:title="@string/title_profile" />
+</menu>
