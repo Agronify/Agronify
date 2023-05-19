@@ -1,2 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <style name="Base.Theme.Agronify" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/agronify_main</item>
+        <item name="colorSurface">@color/agronify_main</item>
+
+        <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
+        <item name="floatingActionButtonStyle">@style/Widget.App.FloatingActionButton</item>
+    </style>
+
+    <style name="Widget.App.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <item name="itemRippleColor">@color/agronify_white</item>
+        <item name="labelVisibilityMode">labeled</item>
+        <item name="itemTextAppearanceActive">@style/TextAppearance.App.TitleSmall</item>
+        <item name="itemTextAppearanceInactive">@style/TextAppearance.App.TitleSmall</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>
+    </style>
+
+    <style name="TextAppearance.App.TitleSmall" parent="TextAppearance.Material3.TitleSmall">
+        <item name="fontFamily">@font/nunito_sans_bold</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="ThemeOverlay.App.BottomNavigationView" parent="">
+        <item name="colorSecondaryContainer">@color/agronify_white</item>
+        <item name="colorOnSecondaryContainer">@color/agronify_main</item>
+        <item name="colorOnSurface">@color/agronify_main</item>
+        <item name="colorOnSurfaceVariant">@color/agronify_gray</item>
+    </style>
+
+    <style name="Widget.App.FloatingActionButton" parent="Widget.Material3.FloatingActionButton.Primary">
+        <item name="shapeAppearanceOverlay">@style/ThemeOverlay.App.ShapeAppearanceOverlay</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.FloatingActionButton</item>
+    </style>
+
+    <style name="ThemeOverlay.App.ShapeAppearanceOverlay" parent="ShapeAppearanceOverlay.Material3.FloatingActionButton">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="ThemeOverlay.App.FloatingActionButton" parent="">
+        <item name="colorContainer">@color/agronify_main</item>
+        <item name="colorOnContainer">@color/agronify_white</item>
+    </style>
+</resources>

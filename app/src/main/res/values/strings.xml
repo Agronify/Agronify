@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Agronify</string>
+
+    <string name="greeting">Halo, Agromates!</string>
+    <string name="greeting_desc">Mau melakukan apa hari ini?</string>
+
+    <string name="title_home">Home</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_agro_edu">AgroEdu</string>
+    <string name="title_agro_scan">AgroScan</string>
+    <string name="title_agro_hub">AgroHub</string>
+    <string name="title_agro_mart">AgroMart</string>
+    <string name="title_agro_work">AgroWork</string>
+    <string name="title_agro_plan">AgroPlan</string>
+    <string name="title_agro_fin">AgroFin</string>
+    <string name="title_more">Lainnya</string>
+    <string name="title_agro_spotlight">AgroSpotlight</string>
 </resources>
