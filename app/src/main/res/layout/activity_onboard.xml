@@ -1,9 +1,274 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:layoutDescription="@xml/activity_onboard_scene"
     tools:context=".view.activity.main.OnboardActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/btn_skip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/nunito_sans_bold"
+        android:text="@string/onboard_skip"
+        android:textColor="@color/agronify_black"
+        android:textSize="16sp"
+        style="?attr/borderlessButtonStyle"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/iv_onboard_first"
+        android:layout_width="0dp"
+        android:layout_height="240dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2"
+        app:srcCompat="@drawable/onboard_first" />
+
+    <TextView
+        android:id="@+id/tv_onboard_first_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:fontFamily="@font/nunito_sans_bold"
+        android:gravity="center_horizontal"
+        android:text="@string/onboard_first_title"
+        android:textColor="@color/agronify_black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@id/iv_onboard_first"
+        app:layout_constraintStart_toStartOf="@id/iv_onboard_first"
+        app:layout_constraintTop_toBottomOf="@id/iv_onboard_first" />
+
+    <TextView
+        android:id="@+id/tv_onboard_first_desc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/nunito_sans"
+        android:gravity="center_horizontal"
+        android:text="@string/onboard_first_desc"
+        android:textColor="@color/agronify_black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@id/iv_onboard_first"
+        app:layout_constraintStart_toStartOf="@id/iv_onboard_first"
+        app:layout_constraintTop_toBottomOf="@id/tv_onboard_first_title" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/iv_onboard_second"
+        android:layout_width="0dp"
+        android:layout_height="240dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.15"
+        app:srcCompat="@drawable/onboard_second" />
+
+    <TextView
+        android:id="@+id/tv_onboard_second_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:fontFamily="@font/nunito_sans_bold"
+        android:gravity="center_horizontal"
+        android:text="@string/onboard_second_title"
+        android:textColor="@color/agronify_black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@id/iv_onboard_second"
+        app:layout_constraintStart_toStartOf="@id/iv_onboard_second"
+        app:layout_constraintTop_toBottomOf="@id/iv_onboard_second" />
+
+    <TextView
+        android:id="@+id/tv_onboard_second_desc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/nunito_sans"
+        android:gravity="center_horizontal"
+        android:text="@string/onboard_second_desc"
+        android:textColor="@color/agronify_black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@id/iv_onboard_second"
+        app:layout_constraintStart_toStartOf="@id/iv_onboard_second"
+        app:layout_constraintTop_toBottomOf="@id/tv_onboard_second_title" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/iv_onboard_third"
+        android:layout_width="0dp"
+        android:layout_height="240dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.15"
+        app:srcCompat="@drawable/onboard_third" />
+
+    <TextView
+        android:id="@+id/tv_onboard_third_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:fontFamily="@font/nunito_sans_bold"
+        android:gravity="center_horizontal"
+        android:text="@string/onboard_third_title"
+        android:textColor="@color/agronify_black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@id/iv_onboard_third"
+        app:layout_constraintStart_toStartOf="@id/iv_onboard_third"
+        app:layout_constraintTop_toBottomOf="@id/iv_onboard_third" />
+
+    <TextView
+        android:id="@+id/tv_onboard_third_desc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/nunito_sans"
+        android:gravity="center_horizontal"
+        android:text="@string/onboard_third_desc"
+        android:textColor="@color/agronify_black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@id/iv_onboard_third"
+        app:layout_constraintStart_toStartOf="@id/iv_onboard_third"
+        app:layout_constraintTop_toBottomOf="@id/tv_onboard_third_title" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/onboard_first"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="20dp"
+        app:altSrc="@drawable/ic_circle_filled"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/onboard_second"
+        app:layout_constraintBottom_toBottomOf="@id/onboard_second"
+        app:layout_constraintTop_toTopOf="@id/onboard_second"
+        app:srcCompat="@drawable/ic_circle" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/onboard_second"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginBottom="40dp"
+        app:altSrc="@drawable/ic_circle_filled"
+        app:layout_constraintBottom_toTopOf="@id/btn_next"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_circle" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/onboard_third"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginEnd="20dp"
+        app:altSrc="@drawable/ic_circle_filled"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/onboard_second"
+        app:layout_constraintBottom_toBottomOf="@id/onboard_second"
+        app:layout_constraintTop_toTopOf="@id/onboard_second"
+        app:srcCompat="@drawable/ic_circle" />
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="40dp"
+        android:fontFamily="@font/nunito_sans_bold"
+        android:text="@string/onboard_next_button"
+        android:textColor="@color/agronify_white"
+        android:textSize="16sp"
+        style="?attr/materialButtonStyle"
+        app:layout_constraintVertical_bias="1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/iv_onboard_welcome"
+        android:layout_width="0dp"
+        android:layout_height="240dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.15"
+        app:srcCompat="@drawable/dummy_logo" />
+
+    <TextView
+        android:id="@+id/tv_onboard_welcome_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:fontFamily="@font/nunito_sans_bold"
+        android:gravity="center_horizontal"
+        android:text="@string/onboard_welcome_title"
+        android:textColor="@color/agronify_black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@id/iv_onboard_welcome"
+        app:layout_constraintStart_toStartOf="@id/iv_onboard_welcome"
+        app:layout_constraintTop_toBottomOf="@id/iv_onboard_welcome" />
+
+    <TextView
+        android:id="@+id/tv_onboard_welcome_desc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/nunito_sans"
+        android:gravity="center_horizontal"
+        android:text="@string/onboard_welcome_desc"
+        android:textColor="@color/agronify_black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@id/iv_onboard_welcome"
+        app:layout_constraintStart_toStartOf="@id/iv_onboard_welcome"
+        app:layout_constraintTop_toBottomOf="@id/tv_onboard_welcome_title" />
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/nunito_sans_bold"
+        android:text="@string/onboard_login_button"
+        android:textColor="@color/agronify_white"
+        android:textSize="16sp"
+        style="?attr/materialButtonStyle"
+        app:layout_constraintVertical_bias="1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_register"
+        app:layout_constraintEnd_toEndOf="@id/tv_onboard_welcome_title"
+        app:layout_constraintStart_toStartOf="@id/tv_onboard_welcome_title" />
+
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="40dp"
+        android:fontFamily="@font/nunito_sans_bold"
+        android:text="@string/onboard_register_button"
+        android:textColor="@color/agronify_main"
+        android:textSize="16sp"
+        style="?attr/materialButtonOutlinedStyle"
+        app:layout_constraintVertical_bias="0.95"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/tv_onboard_welcome_title"
+        app:layout_constraintStart_toStartOf="@id/tv_onboard_welcome_title" />
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

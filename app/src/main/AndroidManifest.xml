@@ -59,14 +59,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.activity.main.MainActivity"
-            android:exported="true"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".view.activity.main.RegisterActivity"
             android:exported="false"
@@ -81,8 +75,14 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.activity.main.OnboardActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
