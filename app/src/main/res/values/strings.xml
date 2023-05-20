@@ -15,4 +15,17 @@
     <string name="title_agro_fin">AgroFin</string>
     <string name="title_more">Lainnya</string>
     <string name="title_agro_spotlight">AgroSpotlight</string>
+
+    <string name="onboard_skip">Lewati</string>
+    <string name="onboard_next_button">Selanjutnya</string>
+    <string name="onboard_first_title">Jadi Petani Lebih Cerdas!</string>
+    <string name="onboard_first_desc">Temukan perkiraan cuaca, informasi tanaman, dan identifikasi penyakit untuk meningkatkan kinerja agribisnismu.</string>
+    <string name="onboard_second_title">Kolaborasi Seru!</string>
+    <string name="onboard_second_desc">Bergabung dengan petani lainnya, tanyakan pertanyaan, dan bagikan pengetahuanmu. Jalin jaringan yang mendukung dan tumbuh bersama dalam dunia pertanian!</string>
+    <string name="onboard_third_title">Tingkatkan Agribisnismu!</string>
+    <string name="onboard_third_desc">Biar agribisnismu lancar jaya, Agronify punya alat canggih! Mulai dari perencanaan keuangan hingga dapetin penawaran terbaik di pasar, semuanya ada di sini.</string>
+    <string name="onboard_welcome_desc">Udah punya akun atau mau daftar? Gabung dengan Agronify dan nikmati fitur lengkapnya.</string>
+    <string name="onboard_welcome_title">Selamat Datang di \nAgronify!</string>
+    <string name="onboard_login_button">Masuk</string>
+    <string name="onboard_register_button">Belum ada akun? Daftar dulu</string>
 </resources>

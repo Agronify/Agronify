@@ -6,6 +6,9 @@
 
         <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
         <item name="floatingActionButtonStyle">@style/Widget.App.FloatingActionButton</item>
+        <item name="materialButtonStyle">@style/Widget.App.Button</item>
+        <item name="materialButtonOutlinedStyle">@style/Widget.App.Button.Outlined</item>
+        <item name="borderlessButtonStyle">@style/Widget.App.Button.Borderless</item>
     </style>
 
     <style name="Widget.App.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
@@ -41,5 +44,37 @@
     <style name="ThemeOverlay.App.FloatingActionButton" parent="">
         <item name="colorContainer">@color/agronify_main</item>
         <item name="colorOnContainer">@color/agronify_white</item>
+    </style>
+
+    <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10dp</item>
+    </style>
+
+    <style name="Widget.App.Button" parent="Widget.Material3.Button">
+        <item name="rippleColor">@android:color/transparent</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.App.SmallComponent</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.Button</item>
+    </style>
+
+    <style name="Widget.App.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="rippleColor">@color/agronify_white</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.App.SmallComponent</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.Button.Outlined</item>
+    </style>
+
+    <style name="Widget.App.Button.Borderless" parent="Widget.Material3.Button.TextButton">
+        <item name="rippleColor">@color/agronify_white</item>
+    </style>
+
+    <style name="ThemeOverlay.App.Button" parent="">
+        <item name="colorContainer">@color/agronify_main</item>
+        <item name="colorOnContainer">@color/agronify_main</item>
+    </style>
+
+    <style name="ThemeOverlay.App.Button.Outlined" parent="">
+        <item name="colorContainer">@android:color/transparent</item>
+        <item name="colorOnSurface">@color/agronify_main</item>
+        <item name="colorOutline">@color/agronify_main</item>
     </style>
 </resources>
