@@ -53,4 +53,12 @@
     <string name="weather_wind_title">Angin</string>
 
     <string name="edu_desc_title">Deskripsi</string>
+
+    <string name="profile_change_password_title">Ubah Kata Sandi</string>
+    <string name="profile_help_title">Pusat Bantuan</string>
+    <string name="profile_term_condition_title">Syarat dan Ketentuan</string>
+    <string name="profile_about_title">Tentang Agronify</string>
+    <string name="profile_rating_title">Beri Rating Aplikasi</string>
+    <string name="profile_logout_title">Keluar</string>
+    <string name="profile_no_account">Anda Belum Masuk</string>
 </resources>
