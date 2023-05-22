@@ -4,6 +4,369 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activity.agro.scan.ScanAddActivity">
+    android:background="@color/agronify_main"
+    tools:context=".view.activity.agro.scan.ScanAddActivity"
+    tools:ignore="ContentDescription">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/top_app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/agronify_main"
+            app:navigationIcon="@drawable/ic_back"
+            app:title="@string/add_detect_title"
+            app:titleTextAppearance="@style/TextAppearance.App.TitleLarge"
+            app:titleTextColor="@color/agronify_white" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ImageView
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_rounded_top"
+        app:layout_constraintTop_toBottomOf="@id/app_bar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_image"
+        android:layout_width="0dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:backgroundTint="@color/agronify_light_gray"
+        style="?attr/materialCardViewFilledStyle"
+        app:layout_constraintTop_toTopOf="@id/main"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_image"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop" />
+
+        <ImageView
+            android:id="@+id/iv_image_alt"
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="64dp"
+            android:src="@drawable/ic_image"
+            app:tint="@color/agronify_gray" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <Button
+        android:id="@+id/btn_camera"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:fontFamily="@font/nunito_sans_bold"
+        android:text="@string/add_camera_title"
+        android:textColor="@color/agronify_main"
+        android:textSize="16sp"
+        style="?attr/materialButtonOutlinedStyle"
+        app:layout_constraintTop_toBottomOf="@id/cv_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btn_gallery"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="20dp"
+        android:fontFamily="@font/nunito_sans_bold"
+        android:text="@string/add_gallery_title"
+        android:textColor="@color/agronify_main"
+        android:textSize="16sp"
+        style="?attr/materialButtonOutlinedStyle"
+        app:layout_constraintTop_toBottomOf="@id/btn_camera"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btn_detect"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="20dp"
+        android:fontFamily="@font/nunito_sans_bold"
+        android:text="@string/add_detect_title"
+        android:textColor="@color/agronify_white"
+        android:textSize="16sp"
+        style="?attr/materialButtonStyle"
+        app:layout_constraintTop_toBottomOf="@id/btn_gallery"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <FrameLayout
+            android:id="@+id/sheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_sheet"
+            app:layout_behavior="@string/bottom_sheet_behavior">
+
+            <com.google.android.material.bottomsheet.BottomSheetDragHandleView
+                android:id="@+id/drag_handle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tint="@color/agronify_light_gray" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginVertical="40dp"
+                android:layout_marginHorizontal="20dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ripeness_success"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iv_ripeness_success"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        app:srcCompat="@drawable/ic_success"
+                        app:tint="@color/agronify_main"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_ripeness_success"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/nunito_sans_bold"
+                        android:text="@string/add_success_title"
+                        android:textColor="@color/agronify_main"
+                        android:textSize="24sp"
+                        android:textAlignment="center"
+                        app:layout_constraintTop_toBottomOf="@id/iv_ripeness_success"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_ripeness_success_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/nunito_sans"
+                        android:text="@string/add_success_ripeness"
+                        android:textColor="#80000000"
+                        android:textSize="14sp"
+                        android:textAlignment="center"
+                        app:layout_constraintTop_toBottomOf="@id/tv_ripeness_success"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_ripeness_result"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/nunito_sans_bold"
+                        android:textColor="@color/agronify_main"
+                        android:textSize="24sp"
+                        android:textAlignment="center"
+                        app:layout_constraintTop_toBottomOf="@id/tv_ripeness_success_desc"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        tools:text="Matang" />
+
+                    <TextView
+                        android:id="@+id/tv_ripeness_accuracy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:paddingHorizontal="32dp"
+                        android:paddingVertical="4dp"
+                        android:background="@drawable/shape_tag"
+                        android:backgroundTint="@color/agronify_gray"
+                        android:fontFamily="@font/nunito_sans_bold"
+                        android:text="@string/add_accuracy"
+                        android:textColor="@color/agronify_white"
+                        android:textSize="16sp"
+                        android:textAlignment="center"
+                        app:layout_constraintTop_toBottomOf="@id/tv_ripeness_result"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        tools:text="50.23% Akurasi" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/disease_success"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iv_disease_success"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        app:srcCompat="@drawable/ic_success"
+                        app:tint="@color/agronify_main"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_disease_success"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/nunito_sans_bold"
+                        android:text="@string/add_success_title"
+                        android:textColor="@color/agronify_main"
+                        android:textSize="24sp"
+                        android:textAlignment="center"
+                        app:layout_constraintTop_toBottomOf="@id/iv_disease_success"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_disease_success_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/nunito_sans"
+                        android:text="@string/add_success_disease"
+                        android:textColor="#80000000"
+                        android:textSize="14sp"
+                        android:textAlignment="center"
+                        app:layout_constraintTop_toBottomOf="@id/tv_disease_success"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_disease_result"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/nunito_sans_bold"
+                        android:textColor="@color/agronify_main"
+                        android:textSize="24sp"
+                        android:textAlignment="center"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        app:layout_constraintTop_toBottomOf="@id/tv_disease_success_desc"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        tools:text="Bacterial Blight" />
+
+                    <TextView
+                        android:id="@+id/tv_disease_accuracy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:paddingHorizontal="32dp"
+                        android:paddingVertical="4dp"
+                        android:background="@drawable/shape_tag"
+                        android:backgroundTint="@color/agronify_gray"
+                        android:fontFamily="@font/nunito_sans_bold"
+                        android:text="@string/add_accuracy"
+                        android:textColor="@color/agronify_white"
+                        android:textSize="16sp"
+                        android:textAlignment="center"
+                        app:layout_constraintTop_toBottomOf="@id/tv_disease_result"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        tools:text="50.23% Akurasi" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/failure"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iv_failure"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        app:srcCompat="@drawable/ic_failure"
+                        android:rotation="45"
+                        app:tint="#FFCB3A31"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_failure"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/nunito_sans_bold"
+                        android:text="@string/add_failure_title"
+                        android:textColor="#FFCB3A31"
+                        android:textSize="24sp"
+                        android:textAlignment="center"
+                        app:layout_constraintTop_toBottomOf="@id/iv_failure"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_failure_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/nunito_sans"
+                        android:text="@string/add_failure"
+                        android:textColor="#80000000"
+                        android:textSize="14sp"
+                        android:textAlignment="center"
+                        app:layout_constraintTop_toBottomOf="@id/tv_failure"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <Button
+                        android:id="@+id/btn_retake"
+                        android:layout_width="0dp"
+                        android:layout_height="56dp"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/nunito_sans_bold"
+                        android:text="@string/add_failure_retake"
+                        android:textColor="@color/agronify_white"
+                        android:textSize="16sp"
+                        style="?attr/materialButtonStyle"
+                        app:layout_constraintTop_toBottomOf="@id/tv_failure_desc"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </FrameLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

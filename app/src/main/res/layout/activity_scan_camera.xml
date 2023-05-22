@@ -6,4 +6,76 @@
     android:layout_height="match_parent"
     tools:context=".view.activity.agro.scan.ScanCameraActivity">
 
+    <androidx.camera.view.PreviewView
+        android:id="@+id/viewfinder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:fitsSystemWindows="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/top_app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="@drawable/ic_back_tint" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/shape_placeholder"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:layout_marginBottom="48dp"
+        android:background="@drawable/shape_scan"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_scan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        style="?attr/floatingActionButtonStyle"
+        app:elevation="0dp"
+        app:pressedTranslationZ="0dp"
+        app:backgroundTint="@android:color/transparent"
+        app:fabCustomSize="68dp"
+        app:maxImageSize="40dp"
+        app:srcCompat="@drawable/ic_scan"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/btn_flash"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:padding="5dp"
+        android:layout_marginEnd="32dp"
+        app:srcCompat="@drawable/ic_flash"
+        app:altSrc="@drawable/ic_flash_alt"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintTop_toTopOf="@id/fab_scan"
+        app:layout_constraintBottom_toBottomOf="@id/fab_scan"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
