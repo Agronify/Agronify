@@ -245,7 +245,7 @@
         android:layout_height="56dp"
         android:layout_marginBottom="10dp"
         android:fontFamily="@font/nunito_sans_bold"
-        android:text="@string/onboard_login_button"
+        android:text="@string/login_button"
         android:textColor="@color/agronify_white"
         android:textSize="16sp"
         style="?attr/materialButtonStyle"

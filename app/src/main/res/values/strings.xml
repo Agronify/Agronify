@@ -26,6 +26,31 @@
     <string name="onboard_third_desc">Biar agribisnismu lancar jaya, Agronify punya alat canggih! Mulai dari perencanaan keuangan hingga dapetin penawaran terbaik di pasar, semuanya ada di sini.</string>
     <string name="onboard_welcome_desc">Udah punya akun atau mau daftar? Gabung dengan Agronify dan nikmati fitur lengkapnya.</string>
     <string name="onboard_welcome_title">Selamat Datang di \nAgronify!</string>
-    <string name="onboard_login_button">Masuk</string>
     <string name="onboard_register_button">Belum ada akun? Daftar dulu</string>
+
+    <string name="form_email">Email</string>
+    <string name="form_password">Kata Sandi</string>
+    <string name="form_name">Nama Lengkap</string>
+    <string name="form_confirm_password">Konfirmasi Kata Sandi</string>
+    <string name="form_search">Cari</string>
+    <string name="login_button">Masuk</string>
+    <string name="register_button">Daftar</string>
+
+    <string name="login_title">Selamat Datang!</string>
+    <string name="login_desc">Udah punya akun? masuk sekarang dan kembali bergabung di Agronify!</string>
+    <string name="login_forgot_password">Lupa kata sandi?</string>
+    <string name="login_register_text">Belum punya akun?</string>
+
+    <string name="register_desc">Jadilah bagian dari Agronify dengan mendaftar akun baru.</string>
+    <string name="register_login_text">Sudah punya akun?</string>
+
+    <string name="weather_today_title">Hari Ini</string>
+    <string name="weather_tomorrow_title">Besok</string>
+    <string name="weather_after_title">Lusa</string>
+    <string name="weather_min_title">Minimum</string>
+    <string name="weather_max_title">Maksimum</string>
+    <string name="weather_precipitation_title">Presipitasi</string>
+    <string name="weather_wind_title">Angin</string>
+
+    <string name="edu_desc_title">Deskripsi</string>
 </resources>
