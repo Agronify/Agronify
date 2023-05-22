@@ -41,7 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/shape_rounded"
         android:backgroundTint="@color/agronify_secondary"
         app:layout_constraintEnd_toEndOf="parent"
@@ -115,7 +115,7 @@
         android:id="@+id/cl_main"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/shape_rounded_top"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -127,20 +127,17 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="24dp"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:cardElevation="3dp"
+            style="?attr/materialCardViewFilledStyle"
             app:cardBackgroundColor="@color/agronify_main"
-            app:cardCornerRadius="10dp"
-            app:strokeWidth="0dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/guideline_vertical_first"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_edu" />
+                android:src="@drawable/ic_feature_edu" />
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -161,21 +158,19 @@
             android:id="@+id/btn_agro_scan"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            app:cardElevation="3dp"
+            style="?attr/materialCardViewFilledStyle"
             app:cardBackgroundColor="@color/agronify_main"
-            app:cardCornerRadius="10dp"
-            app:strokeWidth="0dp"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@id/guideline_vertical_first"
             app:layout_constraintEnd_toStartOf="@id/guideline_vertical"
             app:layout_constraintBottom_toBottomOf="@+id/btn_agro_edu"
             app:layout_constraintTop_toTopOf="@id/btn_agro_edu">
 
             <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_scan" />
+                android:padding="3dp"
+                android:src="@drawable/ic_feature_scan" />
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -196,21 +191,18 @@
             android:id="@+id/btn_agro_hub"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            app:cardElevation="3dp"
+            style="?attr/materialCardViewFilledStyle"
             app:cardBackgroundColor="@color/agronify_gray"
-            app:cardCornerRadius="10dp"
-            app:strokeWidth="0dp"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@id/guideline_vertical"
             app:layout_constraintEnd_toStartOf="@id/guideline_vertical_last"
             app:layout_constraintBottom_toBottomOf="@id/btn_agro_mart"
             app:layout_constraintTop_toTopOf="@id/btn_agro_mart">
 
             <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_hub" />
+                android:src="@drawable/ic_feature_hub" />
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -232,11 +224,8 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="24dp"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:cardElevation="3dp"
+            style="?attr/materialCardViewFilledStyle"
             app:cardBackgroundColor="@color/agronify_gray"
-            app:cardCornerRadius="10dp"
-            app:strokeWidth="0dp"
             app:layout_constraintStart_toEndOf="@id/guideline_vertical_last"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -245,7 +234,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_test" />
+                android:src="@drawable/ic_feature_mart" />
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -267,10 +256,8 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
-            app:cardElevation="3dp"
+            style="?attr/materialCardViewFilledStyle"
             app:cardBackgroundColor="@color/agronify_gray"
-            app:cardCornerRadius="10dp"
-            app:strokeWidth="0dp"
             app:layout_constraintStart_toStartOf="@id/btn_agro_edu"
             app:layout_constraintEnd_toEndOf="@id/btn_agro_edu"
             app:layout_constraintTop_toBottomOf="@id/tv_agro_edu">
@@ -279,7 +266,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_test" />
+                android:src="@drawable/ic_feature_work" />
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -301,10 +288,8 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
-            app:cardElevation="3dp"
+            style="?attr/materialCardViewFilledStyle"
             app:cardBackgroundColor="@color/agronify_gray"
-            app:cardCornerRadius="10dp"
-            app:strokeWidth="0dp"
             app:layout_constraintStart_toStartOf="@id/btn_agro_scan"
             app:layout_constraintEnd_toEndOf="@id/btn_agro_scan"
             app:layout_constraintTop_toBottomOf="@id/tv_agro_scan">
@@ -313,7 +298,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_test" />
+                android:src="@drawable/ic_feature_plan" />
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -335,10 +320,8 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
-            app:cardElevation="3dp"
+            style="?attr/materialCardViewFilledStyle"
             app:cardBackgroundColor="@color/agronify_gray"
-            app:cardCornerRadius="10dp"
-            app:strokeWidth="0dp"
             app:layout_constraintStart_toStartOf="@id/btn_agro_hub"
             app:layout_constraintEnd_toEndOf="@id/btn_agro_hub"
             app:layout_constraintTop_toBottomOf="@id/tv_agro_hub">
@@ -347,7 +330,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_test" />
+                android:src="@drawable/ic_feature_fin" />
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -369,10 +352,8 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
-            app:cardElevation="3dp"
+            style="?attr/materialCardViewFilledStyle"
             app:cardBackgroundColor="@color/agronify_gray"
-            app:cardCornerRadius="10dp"
-            app:strokeWidth="0dp"
             app:layout_constraintStart_toStartOf="@id/btn_agro_mart"
             app:layout_constraintEnd_toEndOf="@id/btn_agro_mart"
             app:layout_constraintTop_toBottomOf="@id/tv_agro_mart">
@@ -381,7 +362,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_test" />
+                android:padding="4dp"
+                android:src="@drawable/ic_feature_more" />
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -505,22 +487,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_gravity="bottom"
-                app:backgroundTint="@color/agronify_white"
-                app:addElevationShadow="true"
-                app:elevation="3dp"
-                app:contentInsetStart="0dp"
-                app:contentInsetEnd="0dp"
-                app:fabAlignmentMode="center"
-                app:fabAnchorMode="cradle"
-                app:fabCradleRoundedCornerRadius="30dp"
-                app:fabCradleMargin="8dp"
-                app:fabCradleVerticalOffset="4dp">
+                android:backgroundTint="@color/agronify_white"
+                style="?attr/bottomAppBarStyle">
 
                 <com.google.android.material.bottomnavigation.BottomNavigationView
                     android:id="@+id/bottom_navigation_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_transparent"
+                    style="?attr/bottomNavigationStyle"
                     app:menu="@menu/bottom_navigation_menu" />
 
             </com.google.android.material.bottomappbar.BottomAppBar>
@@ -536,11 +511,11 @@
                 android:id="@+id/fab_agro_scan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="?attr/floatingActionButtonStyle"
                 app:backgroundTint="@android:color/transparent"
                 app:fabCustomSize="68dp"
                 app:maxImageSize="40dp"
                 app:srcCompat="@drawable/ic_scan"
-                app:elevation="0dp"
                 app:layout_anchor="@id/bottom_app_bar" />
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
