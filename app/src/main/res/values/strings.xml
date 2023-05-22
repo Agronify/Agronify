@@ -61,4 +61,38 @@
     <string name="profile_rating_title">Beri Rating Aplikasi</string>
     <string name="profile_logout_title">Keluar</string>
     <string name="profile_no_account">Anda Belum Masuk</string>
+
+    <string name="scan_ripeness_title">Kematangan Buah</string>
+    <string name="scan_title">Mau deteksi apa?</string>
+    <string name="scan_disease_title">Penyakit Tanaman</string>
+
+    <string name="ripe_type_title">Jenis Buah</string>
+    <string name="ripe_type_desc">Pilih buah untuk deteksi kematangan</string>
+    <string name="ripe_apple_title">Apel</string>
+    <string name="ripe_orange_title">Jeruk</string>
+    <string name="ripe_banana_title">Pisang</string>
+
+    <string name="disease_type_title">Deteksi Penyakit Tanaman</string>
+    <string name="disease_type_desc">Pilih jenis tanaman untuk deteksi penyakit</string>
+    <string name="disease_chilli_title">Cabai</string>
+    <string name="disease_corn_title">Jagung</string>
+    <string name="disease_potato_title">Kentang</string>
+    <string name="disease_coffee_title">Kopi</string>
+    <string name="disease_garden_title">Perkebunan</string>
+    <string name="disease_field_title">Pertanian</string>
+    <string name="disease_paddy_title">Padi</string>
+    <string name="disease_cassava_title">Singkong</string>
+    <string name="disease_cane_title">Tebu</string>
+    <string name="disease_tea_title">Teh</string>
+
+    <string name="add_detect_title">Deteksi</string>
+    <string name="add_camera_title">Ambil dari Kamera</string>
+    <string name="add_gallery_title">Ambil dari Galeri</string>
+    <string name="add_success_title">Berhasil</string>
+    <string name="add_success_ripeness">AgroScan berhasl mendeteksi tingkat kematangan buah Anda</string>
+    <string name="add_success_disease">AgroScan berhasil mendeteksi adanya penyakit pada tanaman Anda</string>
+    <string name="add_accuracy">%f\% Akurasi</string>
+    <string name="add_failure_title">Gagal</string>
+    <string name="add_failure">AgroScan tidak dapat mendeteksi gambar Anda</string>
+    <string name="add_failure_retake">Ambil Ulang Gambar</string>
 </resources>
