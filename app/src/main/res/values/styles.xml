@@ -69,8 +69,6 @@
     </style>
 
     <style name="Widget.App.FloatingActionButton" parent="Widget.Material3.FloatingActionButton.Primary">
-        <item name="elevation">0dp</item>
-        <item name="pressedTranslationZ">0dp</item>
         <item name="shapeAppearanceOverlay">@style/ThemeOverlay.App.ShapeAppearanceOverlay</item>
         <item name="materialThemeOverlay">@style/ThemeOverlay.App.FloatingActionButton</item>
     </style>
