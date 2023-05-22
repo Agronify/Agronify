@@ -4,6 +4,7 @@
         <item name="colorPrimary">@color/agronify_main</item>
         <item name="colorSurface">@color/agronify_main</item>
 
+        <item name="bottomAppBarStyle">@style/Widget.App.BottomAppBar</item>
         <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
         <item name="floatingActionButtonStyle">@style/Widget.App.FloatingActionButton</item>
         <item name="materialButtonStyle">@style/Widget.App.Button</item>
@@ -40,6 +41,18 @@
         <item name="cornerSize">10dp</item>
     </style>
 
+    <style name="Widget.App.BottomAppBar" parent="Widget.Material3.BottomAppBar">
+        <item name="addElevationShadow">true</item>
+        <item name="elevation">3dp</item>
+        <item name="contentInsetStart">0dp</item>
+        <item name="contentInsetEnd">0dp</item>
+        <item name="fabAlignmentMode">center</item>
+        <item name="fabAnchorMode">cradle</item>
+        <item name="fabCradleRoundedCornerRadius">30dp</item>
+        <item name="fabCradleMargin">8dp</item>
+        <item name="fabCradleVerticalOffset">4dp</item>
+    </style>
+
     <style name="Widget.App.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
         <item name="itemRippleColor">@color/agronify_white</item>
         <item name="labelVisibilityMode">labeled</item>
@@ -56,6 +69,8 @@
     </style>
 
     <style name="Widget.App.FloatingActionButton" parent="Widget.Material3.FloatingActionButton.Primary">
+        <item name="elevation">0dp</item>
+        <item name="pressedTranslationZ">0dp</item>
         <item name="shapeAppearanceOverlay">@style/ThemeOverlay.App.ShapeAppearanceOverlay</item>
         <item name="materialThemeOverlay">@style/ThemeOverlay.App.FloatingActionButton</item>
     </style>
