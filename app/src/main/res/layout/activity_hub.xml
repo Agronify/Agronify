@@ -4,6 +4,86 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activity.agro.hub.HubActivity">
+    android:background="@color/agronify_main"
+    tools:context=".view.activity.agro.hub.HubActivity"
+    tools:ignore="ContentDescription">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/top_app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/agronify_main"
+            app:titleCentered="true"
+            app:title="@string/title_agro_hub"
+            app:titleTextAppearance="@style/TextAppearance.App.TitleLarge"
+            app:titleTextColor="@color/agronify_white" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ImageView
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_rounded_top"
+        app:layout_constraintTop_toBottomOf="@id/app_bar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottom_app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="bottom"
+            android:backgroundTint="@color/agronify_white"
+            style="?attr/bottomAppBarStyle">
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_navigation_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_transparent"
+                style="?attr/bottomNavigationStyle"
+                app:menu="@menu/bottom_navigation_menu" />
+
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+        <ImageView
+            android:layout_width="68dp"
+            android:layout_height="68dp"
+            android:background="@drawable/shape_scan"
+            app:layout_anchor="@id/fab_agro_scan"
+            app:layout_anchorGravity="center" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_agro_scan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?attr/floatingActionButtonStyle"
+            app:elevation="0dp"
+            app:pressedTranslationZ="0dp"
+            app:backgroundTint="@android:color/transparent"
+            app:fabCustomSize="68dp"
+            app:maxImageSize="40dp"
+            app:srcCompat="@drawable/ic_scan"
+            app:layout_anchor="@id/bottom_app_bar" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
