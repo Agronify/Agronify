@@ -63,9 +63,9 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:4.9.1'
 
     // Hilt
-    def hilt_version = "2.38.1"
+    def hilt_version = "2.46.1"
     implementation "com.google.dagger:hilt-android:$hilt_version"
-    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
 
     // DataStore
     implementation 'androidx.datastore:datastore-preferences:1.0.0'
@@ -85,4 +85,10 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KaptGenerateStubs).configureEach {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
