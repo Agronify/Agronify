@@ -95,10 +95,9 @@
             android:id="@+id/tv_weather_today_min"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            motion:layout_constraintTop_toTopOf="@id/cv_weather_min"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintEnd_toStartOf="@id/cv_weather_min"
+            motion:layout_constraintEnd_toStartOf="@id/tv_weather_min_unit"
+            motion:layout_constraintTop_toTopOf="@id/cv_weather_min"
             motion:layout_constraintBottom_toBottomOf="@id/cv_weather_min"
             motion:layout_constraintVertical_bias="0"
             motion:layout_constraintHorizontal_bias="1">
@@ -110,11 +109,11 @@
             android:id="@+id/tv_weather_tomorrow_min"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            motion:layout_constraintTop_toTopOf="@id/cv_weather_min"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintEnd_toStartOf="@id/tv_weather_today_min"
+            motion:layout_constraintEnd_toStartOf="@id/tv_weather_min_unit"
+            motion:layout_constraintTop_toTopOf="@id/cv_weather_min"
             motion:layout_constraintBottom_toBottomOf="@id/cv_weather_min"
-            motion:layout_constraintVertical_bias="0.2"
+            motion:layout_constraintVertical_bias="0"
             motion:layout_constraintHorizontal_bias="1">
             <CustomAttribute
                 motion:attributeName="alpha"
@@ -124,11 +123,11 @@
             android:id="@+id/tv_weather_after_min"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            motion:layout_constraintTop_toTopOf="@id/cv_weather_min"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintEnd_toStartOf="@id/tv_weather_today_min"
+            motion:layout_constraintEnd_toStartOf="@id/tv_weather_min_unit"
+            motion:layout_constraintTop_toTopOf="@id/cv_weather_min"
             motion:layout_constraintBottom_toBottomOf="@id/cv_weather_min"
-            motion:layout_constraintVertical_bias="0.2"
+            motion:layout_constraintVertical_bias="0"
             motion:layout_constraintHorizontal_bias="1">
             <CustomAttribute
                 motion:attributeName="alpha"
@@ -136,13 +135,13 @@
         </Constraint>
         <Constraint
             android:id="@+id/tv_weather_today_max"
-            motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             motion:layout_constraintTop_toTopOf="@id/cv_weather_max"
-            motion:layout_constraintStart_toEndOf="@id/cv_weather_max"
             motion:layout_constraintBottom_toBottomOf="@id/cv_weather_max"
+            motion:layout_constraintStart_toEndOf="@id/cv_weather_max"
+            motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintVertical_bias="0"
             motion:layout_constraintHorizontal_bias="0">
             <CustomAttribute
@@ -151,13 +150,14 @@
         </Constraint>
         <Constraint
             android:id="@+id/tv_weather_tomorrow_max"
-            motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             motion:layout_constraintTop_toTopOf="@id/cv_weather_max"
-            motion:layout_constraintStart_toEndOf="@id/tv_weather_today_max"
             motion:layout_constraintBottom_toBottomOf="@id/cv_weather_max"
-            motion:layout_constraintVertical_bias="0.2"
+            motion:layout_constraintStart_toEndOf="@id/cv_weather_max"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintVertical_bias="0"
             motion:layout_constraintHorizontal_bias="0">
             <CustomAttribute
                 motion:attributeName="alpha"
@@ -165,13 +165,14 @@
         </Constraint>
         <Constraint
             android:id="@+id/tv_weather_after_max"
-            motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             motion:layout_constraintTop_toTopOf="@id/cv_weather_max"
-            motion:layout_constraintStart_toEndOf="@id/tv_weather_today_max"
             motion:layout_constraintBottom_toBottomOf="@id/cv_weather_max"
-            motion:layout_constraintVertical_bias="0.2"
+            motion:layout_constraintStart_toEndOf="@id/cv_weather_max"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintVertical_bias="0"
             motion:layout_constraintHorizontal_bias="0">
             <CustomAttribute
                 motion:attributeName="alpha"
@@ -181,11 +182,10 @@
             android:id="@+id/tv_weather_today_precipitation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
             motion:layout_constraintTop_toTopOf="@id/cv_weather_precipitation"
-            motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintEnd_toStartOf="@id/cv_weather_precipitation"
             motion:layout_constraintBottom_toBottomOf="@id/cv_weather_precipitation"
+            motion:layout_constraintEnd_toStartOf="@id/tv_weather_precipitation_unit"
+            motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintVertical_bias="0"
             motion:layout_constraintHorizontal_bias="1">
             <CustomAttribute
@@ -197,10 +197,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             motion:layout_constraintTop_toTopOf="@id/cv_weather_precipitation"
-            motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintEnd_toStartOf="@id/tv_weather_today_precipitation"
             motion:layout_constraintBottom_toBottomOf="@id/cv_weather_precipitation"
-            motion:layout_constraintVertical_bias="0.2"
+            motion:layout_constraintEnd_toStartOf="@id/tv_weather_precipitation_unit"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintVertical_bias="0"
             motion:layout_constraintHorizontal_bias="1">
             <CustomAttribute
                 motion:attributeName="alpha"
@@ -211,10 +211,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             motion:layout_constraintTop_toTopOf="@id/cv_weather_precipitation"
-            motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintEnd_toStartOf="@id/tv_weather_today_precipitation"
             motion:layout_constraintBottom_toBottomOf="@id/cv_weather_precipitation"
-            motion:layout_constraintVertical_bias="0.2"
+            motion:layout_constraintEnd_toStartOf="@id/tv_weather_precipitation_unit"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintVertical_bias="0"
             motion:layout_constraintHorizontal_bias="1">
             <CustomAttribute
                 motion:attributeName="alpha"
@@ -222,13 +222,13 @@
         </Constraint>
         <Constraint
             android:id="@+id/tv_weather_today_wind"
-            motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             motion:layout_constraintTop_toTopOf="@id/cv_weather_wind"
-            motion:layout_constraintStart_toEndOf="@id/cv_weather_wind"
             motion:layout_constraintBottom_toBottomOf="@id/cv_weather_wind"
+            motion:layout_constraintStart_toEndOf="@id/cv_weather_wind"
+            motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintVertical_bias="0"
             motion:layout_constraintHorizontal_bias="0">
             <CustomAttribute
@@ -237,13 +237,14 @@
         </Constraint>
         <Constraint
             android:id="@+id/tv_weather_tomorrow_wind"
-            motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             motion:layout_constraintTop_toTopOf="@id/cv_weather_wind"
-            motion:layout_constraintStart_toEndOf="@id/tv_weather_today_wind"
             motion:layout_constraintBottom_toBottomOf="@id/cv_weather_wind"
-            motion:layout_constraintVertical_bias="0.2"
+            motion:layout_constraintStart_toEndOf="@id/cv_weather_wind"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintVertical_bias="0"
             motion:layout_constraintHorizontal_bias="0">
             <CustomAttribute
                 motion:attributeName="alpha"
@@ -251,13 +252,14 @@
         </Constraint>
         <Constraint
             android:id="@+id/tv_weather_after_wind"
-            motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             motion:layout_constraintTop_toTopOf="@id/cv_weather_wind"
-            motion:layout_constraintStart_toEndOf="@id/tv_weather_today_wind"
             motion:layout_constraintBottom_toBottomOf="@id/cv_weather_wind"
-            motion:layout_constraintVertical_bias="0.2"
+            motion:layout_constraintStart_toEndOf="@id/cv_weather_wind"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintVertical_bias="0"
             motion:layout_constraintHorizontal_bias="0">
             <CustomAttribute
                 motion:attributeName="alpha"
@@ -334,12 +336,11 @@
             android:id="@+id/tv_weather_today_min"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
             motion:layout_constraintTop_toTopOf="@id/cv_weather_min"
-            motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintEnd_toStartOf="@id/tv_weather_tomorrow_min"
             motion:layout_constraintBottom_toBottomOf="@id/cv_weather_min"
-            motion:layout_constraintVertical_bias="0.2"
+            motion:layout_constraintEnd_toStartOf="@id/tv_weather_min_unit"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintVertical_bias="0"
             motion:layout_constraintHorizontal_bias="1">
             <CustomAttribute
                 motion:attributeName="alpha"
@@ -349,11 +350,10 @@
             android:id="@+id/tv_weather_tomorrow_min"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
             motion:layout_constraintTop_toTopOf="@id/cv_weather_min"
-            motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintEnd_toStartOf="@id/cv_weather_min"
             motion:layout_constraintBottom_toBottomOf="@id/cv_weather_min"
+            motion:layout_constraintEnd_toStartOf="@id/tv_weather_min_unit"
+            motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintVertical_bias="0"
             motion:layout_constraintHorizontal_bias="1">
             <CustomAttribute
@@ -365,10 +365,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             motion:layout_constraintTop_toTopOf="@id/cv_weather_min"
-            motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintEnd_toStartOf="@id/tv_weather_tomorrow_min"
             motion:layout_constraintBottom_toBottomOf="@id/cv_weather_min"
-            motion:layout_constraintVertical_bias="0.2"
+            motion:layout_constraintEnd_toStartOf="@id/tv_weather_min_unit"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintVertical_bias="0"
             motion:layout_constraintHorizontal_bias="1">
             <CustomAttribute
                 motion:attributeName="alpha"
@@ -378,11 +378,12 @@
             android:id="@+id/tv_weather_today_max"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="10dp"
             motion:layout_constraintTop_toTopOf="@id/cv_weather_max"
-            motion:layout_constraintStart_toEndOf="@id/tv_weather_tomorrow_max"
             motion:layout_constraintBottom_toBottomOf="@id/cv_weather_max"
-            motion:layout_constraintVertical_bias="0.2"
+            motion:layout_constraintStart_toEndOf="@id/cv_weather_max"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintVertical_bias="0"
             motion:layout_constraintHorizontal_bias="0">
             <CustomAttribute
                 motion:attributeName="alpha"
@@ -393,10 +394,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintTop_toTopOf="@id/cv_weather_max"
-            motion:layout_constraintStart_toEndOf="@id/cv_weather_max"
             motion:layout_constraintBottom_toBottomOf="@id/cv_weather_max"
+            motion:layout_constraintStart_toEndOf="@id/cv_weather_max"
+            motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintVertical_bias="0"
             motion:layout_constraintHorizontal_bias="0">
             <CustomAttribute
@@ -407,11 +408,12 @@
             android:id="@+id/tv_weather_after_max"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="10dp"
             motion:layout_constraintTop_toTopOf="@id/cv_weather_max"
-            motion:layout_constraintStart_toEndOf="@id/tv_weather_tomorrow_max"
             motion:layout_constraintBottom_toBottomOf="@id/cv_weather_max"
-            motion:layout_constraintVertical_bias="0.2"
+            motion:layout_constraintStart_toEndOf="@id/cv_weather_max"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintVertical_bias="0"
             motion:layout_constraintHorizontal_bias="0">
             <CustomAttribute
                 motion:attributeName="alpha"
@@ -422,10 +424,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             motion:layout_constraintTop_toTopOf="@id/cv_weather_precipitation"
-            motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintEnd_toStartOf="@id/tv_weather_tomorrow_precipitation"
             motion:layout_constraintBottom_toBottomOf="@id/cv_weather_precipitation"
-            motion:layout_constraintVertical_bias="0.2"
+            motion:layout_constraintEnd_toStartOf="@id/tv_weather_precipitation_unit"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintVertical_bias="0"
             motion:layout_constraintHorizontal_bias="1">
             <CustomAttribute
                 motion:attributeName="alpha"
@@ -435,11 +437,10 @@
             android:id="@+id/tv_weather_tomorrow_precipitation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
             motion:layout_constraintTop_toTopOf="@id/cv_weather_precipitation"
-            motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintEnd_toStartOf="@id/cv_weather_precipitation"
             motion:layout_constraintBottom_toBottomOf="@id/cv_weather_precipitation"
+            motion:layout_constraintEnd_toStartOf="@id/tv_weather_precipitation_unit"
+            motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintVertical_bias="0"
             motion:layout_constraintHorizontal_bias="1">
             <CustomAttribute
@@ -451,10 +452,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             motion:layout_constraintTop_toTopOf="@id/cv_weather_precipitation"
-            motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintEnd_toStartOf="@id/tv_weather_tomorrow_precipitation"
             motion:layout_constraintBottom_toBottomOf="@id/cv_weather_precipitation"
-            motion:layout_constraintVertical_bias="0.2"
+            motion:layout_constraintEnd_toStartOf="@id/tv_weather_precipitation_unit"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintVertical_bias="0"
             motion:layout_constraintHorizontal_bias="1">
             <CustomAttribute
                 motion:attributeName="alpha"
@@ -465,11 +466,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintTop_toTopOf="@id/cv_weather_wind"
-            motion:layout_constraintStart_toEndOf="@id/tv_weather_tomorrow_wind"
             motion:layout_constraintBottom_toBottomOf="@id/cv_weather_wind"
-            motion:layout_constraintVertical_bias="0.2"
+            motion:layout_constraintStart_toEndOf="@id/cv_weather_wind"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintVertical_bias="0"
             motion:layout_constraintHorizontal_bias="0">
             <CustomAttribute
                 motion:attributeName="alpha"
@@ -480,10 +481,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintTop_toTopOf="@id/cv_weather_wind"
-            motion:layout_constraintStart_toEndOf="@id/cv_weather_wind"
             motion:layout_constraintBottom_toBottomOf="@id/cv_weather_wind"
+            motion:layout_constraintStart_toEndOf="@id/cv_weather_wind"
+            motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintVertical_bias="0"
             motion:layout_constraintHorizontal_bias="0">
             <CustomAttribute
@@ -494,11 +495,12 @@
             android:id="@+id/tv_weather_after_wind"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="10dp"
             motion:layout_constraintTop_toTopOf="@id/cv_weather_wind"
-            motion:layout_constraintStart_toEndOf="@id/tv_weather_tomorrow_wind"
             motion:layout_constraintBottom_toBottomOf="@id/cv_weather_wind"
-            motion:layout_constraintVertical_bias="0.2"
+            motion:layout_constraintStart_toEndOf="@id/cv_weather_wind"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintVertical_bias="0"
             motion:layout_constraintHorizontal_bias="0">
             <CustomAttribute
                 motion:attributeName="alpha"
@@ -576,12 +578,11 @@
             android:id="@+id/tv_weather_tomorrow_min"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
             motion:layout_constraintTop_toTopOf="@id/cv_weather_min"
-            motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintEnd_toStartOf="@id/tv_weather_today_min"
             motion:layout_constraintBottom_toBottomOf="@id/cv_weather_min"
-            motion:layout_constraintVertical_bias="0.2"
+            motion:layout_constraintEnd_toStartOf="@id/tv_weather_min_unit"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintVertical_bias="0"
             motion:layout_constraintHorizontal_bias="1">
             <CustomAttribute
                 motion:attributeName="alpha"
@@ -591,11 +592,10 @@
             android:id="@+id/tv_weather_after_min"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
             motion:layout_constraintTop_toTopOf="@id/cv_weather_min"
-            motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintEnd_toStartOf="@id/cv_weather_min"
             motion:layout_constraintBottom_toBottomOf="@id/cv_weather_min"
+            motion:layout_constraintEnd_toStartOf="@id/tv_weather_min_unit"
+            motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintVertical_bias="0"
             motion:layout_constraintHorizontal_bias="1">
             <CustomAttribute
@@ -606,11 +606,12 @@
             android:id="@+id/tv_weather_today_max"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="10dp"
             motion:layout_constraintTop_toTopOf="@id/cv_weather_max"
-            motion:layout_constraintStart_toEndOf="@id/tv_weather_after_max"
             motion:layout_constraintBottom_toBottomOf="@id/cv_weather_max"
-            motion:layout_constraintVertical_bias="0.2"
+            motion:layout_constraintStart_toEndOf="@id/cv_weather_max"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintVertical_bias="0"
             motion:layout_constraintHorizontal_bias="0">
             <CustomAttribute
                 motion:attributeName="alpha"
@@ -620,11 +621,12 @@
             android:id="@+id/tv_weather_tomorrow_max"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="10dp"
             motion:layout_constraintTop_toTopOf="@id/cv_weather_max"
-            motion:layout_constraintStart_toEndOf="@id/tv_weather_after_max"
             motion:layout_constraintBottom_toBottomOf="@id/cv_weather_max"
-            motion:layout_constraintVertical_bias="0.2"
+            motion:layout_constraintStart_toEndOf="@id/cv_weather_max"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintVertical_bias="0"
             motion:layout_constraintHorizontal_bias="0">
             <CustomAttribute
                 motion:attributeName="alpha"
@@ -635,10 +637,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintTop_toTopOf="@id/cv_weather_max"
-            motion:layout_constraintStart_toEndOf="@id/cv_weather_max"
             motion:layout_constraintBottom_toBottomOf="@id/cv_weather_max"
+            motion:layout_constraintStart_toEndOf="@id/cv_weather_max"
+            motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintVertical_bias="0"
             motion:layout_constraintHorizontal_bias="0">
             <CustomAttribute
@@ -650,10 +652,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             motion:layout_constraintTop_toTopOf="@id/cv_weather_precipitation"
-            motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintEnd_toStartOf="@id/tv_weather_after_precipitation"
             motion:layout_constraintBottom_toBottomOf="@id/cv_weather_precipitation"
-            motion:layout_constraintVertical_bias="0.2"
+            motion:layout_constraintEnd_toStartOf="@id/tv_weather_precipitation_unit"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintVertical_bias="0"
             motion:layout_constraintHorizontal_bias="1">
             <CustomAttribute
                 motion:attributeName="alpha"
@@ -664,10 +666,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             motion:layout_constraintTop_toTopOf="@id/cv_weather_precipitation"
-            motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintEnd_toStartOf="@id/tv_weather_after_precipitation"
             motion:layout_constraintBottom_toBottomOf="@id/cv_weather_precipitation"
-            motion:layout_constraintVertical_bias="0.2"
+            motion:layout_constraintEnd_toStartOf="@id/tv_weather_precipitation_unit"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintVertical_bias="0"
             motion:layout_constraintHorizontal_bias="1">
             <CustomAttribute
                 motion:attributeName="alpha"
@@ -677,11 +679,10 @@
             android:id="@+id/tv_weather_after_precipitation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
             motion:layout_constraintTop_toTopOf="@id/cv_weather_precipitation"
-            motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintEnd_toStartOf="@id/cv_weather_precipitation"
             motion:layout_constraintBottom_toBottomOf="@id/cv_weather_precipitation"
+            motion:layout_constraintEnd_toStartOf="@id/tv_weather_precipitation_unit"
+            motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintVertical_bias="0"
             motion:layout_constraintHorizontal_bias="1">
             <CustomAttribute
@@ -693,11 +694,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintTop_toTopOf="@id/cv_weather_wind"
-            motion:layout_constraintStart_toEndOf="@id/tv_weather_after_wind"
             motion:layout_constraintBottom_toBottomOf="@id/cv_weather_wind"
-            motion:layout_constraintVertical_bias="0.2"
+            motion:layout_constraintStart_toEndOf="@id/cv_weather_wind"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintVertical_bias="0"
             motion:layout_constraintHorizontal_bias="0">
             <CustomAttribute
                 motion:attributeName="alpha"
@@ -707,11 +708,12 @@
             android:id="@+id/tv_weather_tomorrow_wind"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="10dp"
             motion:layout_constraintTop_toTopOf="@id/cv_weather_wind"
-            motion:layout_constraintStart_toEndOf="@id/tv_weather_after_wind"
             motion:layout_constraintBottom_toBottomOf="@id/cv_weather_wind"
-            motion:layout_constraintVertical_bias="0.2"
+            motion:layout_constraintStart_toEndOf="@id/cv_weather_wind"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintVertical_bias="0"
             motion:layout_constraintHorizontal_bias="0">
             <CustomAttribute
                 motion:attributeName="alpha"
@@ -722,10 +724,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintTop_toTopOf="@id/cv_weather_wind"
-            motion:layout_constraintStart_toEndOf="@id/cv_weather_wind"
             motion:layout_constraintBottom_toBottomOf="@id/cv_weather_wind"
+            motion:layout_constraintStart_toEndOf="@id/cv_weather_wind"
+            motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintVertical_bias="0"
             motion:layout_constraintHorizontal_bias="0">
             <CustomAttribute
