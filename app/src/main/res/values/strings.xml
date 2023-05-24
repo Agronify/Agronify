@@ -44,6 +44,21 @@
     <string name="register_desc">Jadilah bagian dari Agronify dengan mendaftar akun baru.</string>
     <string name="register_login_text">Sudah punya akun?</string>
 
+    <string name="weather_tap_detail">Ketuk untuk detail</string>
+    <string name="weather_temp">%d\°</string>
+    <string name="weather_clear">Cerah</string>
+    <string name="weather_mainly_clear">Cerah Berawan</string>
+    <string name="weather_partly_cloudy">Sebagian Berawan</string>
+    <string name="weather_overcast">Berawan Tebal</string>
+    <string name="weather_drizzle">Gerimis</string>
+    <string name="weather_rain">Hujan</string>
+    <string name="weather_thunderstorm">Hujan Petir</string>
+    <string name="weather_cloudy">Berawan</string>
+
+    <string name="unit_degree">°</string>
+    <string name="unit_percent">%</string>
+    <string name="unit_speed">km/jam</string>
+
     <string name="weather_today_title">Hari Ini</string>
     <string name="weather_tomorrow_title">Besok</string>
     <string name="weather_after_title">Lusa</string>

@@ -62,7 +62,7 @@
     </style>
 
     <style name="ThemeOverlay.App.BottomNavigationView" parent="">
-        <item name="colorSecondaryContainer">@color/agronify_white</item>
+        <item name="colorSecondaryContainer">@android:color/transparent</item>
         <item name="colorOnSecondaryContainer">@color/agronify_main</item>
         <item name="colorOnSurface">@color/agronify_main</item>
         <item name="colorOnSurfaceVariant">@color/agronify_gray</item>
