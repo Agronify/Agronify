@@ -60,7 +60,7 @@
             app:layout_constraintEnd_toEndOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/profile"
+                android:id="@+id/profile_main"
                 android:alpha="0"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
