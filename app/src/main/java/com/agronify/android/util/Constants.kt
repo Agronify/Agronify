@@ -9,4 +9,9 @@ object Constants {
     const val EXTRA_LOCATION = "extra_location"
     const val EXTRA_TOKEN = "extra_token"
     const val EXTRA_LOGIN = "extra_login"
+    const val EXTRA_EDU_ID = "extra_edu_id"
+    const val EXTRA_EDU_TITLE = "extra_edu_title"
+    const val EXTRA_EDU_IMAGE = "extra_edu_image"
+    const val EXTRA_EDU_CONTENT = "extra_edu_content"
+    const val EXTRA_EDU_TAGS = "extra_edu_tags"
 }
