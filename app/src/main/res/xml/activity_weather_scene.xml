@@ -265,6 +265,21 @@
                 motion:attributeName="alpha"
                 motion:customFloatValue="0" />
         </Constraint>
+        <Constraint
+            android:id="@+id/tv_weather_max_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            motion:layout_constraintStart_toEndOf="@id/tv_weather_today_max"
+            motion:layout_constraintTop_toTopOf="@id/cv_weather_max" />
+        <Constraint
+            android:id="@+id/tv_weather_wind_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
+            motion:layout_constraintStart_toEndOf="@id/tv_weather_today_wind"
+            motion:layout_constraintTop_toTopOf="@id/cv_weather_wind" />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/cs_tomorrow">
@@ -506,6 +521,21 @@
                 motion:attributeName="alpha"
                 motion:customFloatValue="0" />
         </Constraint>
+        <Constraint
+            android:id="@+id/tv_weather_max_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            motion:layout_constraintStart_toEndOf="@id/tv_weather_tomorrow_max"
+            motion:layout_constraintTop_toTopOf="@id/cv_weather_max" />
+        <Constraint
+            android:id="@+id/tv_weather_wind_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
+            motion:layout_constraintStart_toEndOf="@id/tv_weather_tomorrow_wind"
+            motion:layout_constraintTop_toTopOf="@id/cv_weather_wind" />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/cs_after"
@@ -734,5 +764,20 @@
                 motion:attributeName="alpha"
                 motion:customFloatValue="1" />
         </Constraint>
+        <Constraint
+            android:id="@+id/tv_weather_max_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            motion:layout_constraintStart_toEndOf="@id/tv_weather_after_max"
+            motion:layout_constraintTop_toTopOf="@id/cv_weather_max" />
+        <Constraint
+            android:id="@+id/tv_weather_wind_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
+            motion:layout_constraintStart_toEndOf="@id/tv_weather_after_wind"
+            motion:layout_constraintTop_toTopOf="@id/cv_weather_wind" />
     </ConstraintSet>
 </MotionScene>

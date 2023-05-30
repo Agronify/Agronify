@@ -2,7 +2,6 @@ package com.agronify.android.view.activity.agro.weather
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.telecom.TelecomManager.EXTRA_LOCATION
 import android.view.View
 import androidx.activity.viewModels
 import com.agronify.android.R
@@ -59,8 +58,8 @@ class WeatherActivity : AppCompatActivity() {
         val lat = userLat?.toFloat()
         val lon = userLon?.toFloat()
 
-        weatherViewModel.apply {
-            if (lat != null && lon != null) {
+        if (lat != null && lon != null) {
+            weatherViewModel.apply {
                 getForecastWeather(lat, lon).also {
                     forecastWeather.observe(this@WeatherActivity) {
                         if (it != null) {
