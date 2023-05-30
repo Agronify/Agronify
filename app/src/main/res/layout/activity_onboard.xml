@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/agronify_white"
     app:layoutDescription="@xml/activity_onboard_scene"
     tools:context=".view.activity.main.OnboardActivity">
 
