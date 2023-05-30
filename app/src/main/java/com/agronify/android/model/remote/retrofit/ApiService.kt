@@ -2,6 +2,7 @@ package com.agronify.android.model.remote.retrofit
 
 import com.agronify.android.model.remote.response.Auth
 import com.agronify.android.model.remote.response.CurrentWeatherResponse
+import com.agronify.android.model.remote.response.Edu
 import com.agronify.android.model.remote.response.ForecastWeatherResponse
 import com.agronify.android.model.remote.response.LoginResponse
 import com.google.gson.JsonObject
@@ -34,4 +35,7 @@ interface ApiService {
         @Query("lon") lon: Float,
         @Query("tz") tz: String
     ): Call<ForecastWeatherResponse>
+
+    @GET("knowledges")
+    fun getEdu(): Call<List<Edu>>
 }
