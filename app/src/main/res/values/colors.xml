@@ -5,6 +5,7 @@
     <color name="agronify_accent">#FFFFB800</color>
     <color name="agronify_gray">#FFD9D9D9</color>
     <color name="agronify_light_gray">#FFF7F7F7</color>
+    <color name="agronify_error">#FFF25022</color>
     <color name="agronify_black">#FF000000</color>
     <color name="agronify_white">#FFFFFFFF</color>
 </resources>

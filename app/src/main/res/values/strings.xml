@@ -110,4 +110,12 @@
     <string name="add_failure_title">Gagal</string>
     <string name="add_failure">AgroScan tidak dapat mendeteksi gambar Anda</string>
     <string name="add_failure_retake">Ambil Ulang Gambar</string>
+
+    <string name="error_empty_email">Email tidak boleh kosong</string>
+    <string name="error_invalid_email">Email tidak valid</string>
+    <string name="error_empty_password">Kata sandi tidak boleh kosong</string>
+    <string name="error_password">Kata sandi minimal 5 karakter</string>
+    <string name="error_form">Lengkapi terlebih dahulu</string>
+    <string name="error_empty_name">Nama tidak boleh kosong</string>
+    <string name="error_confirm_password">Kata sandi tidak sama</string>
 </resources>

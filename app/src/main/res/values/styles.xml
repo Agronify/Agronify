@@ -121,6 +121,7 @@
         <item name="colorOutline">#80000000</item>
         <item name="colorOnSurfaceVariant">#80000000</item>
         <item name="colorControlActivated">@color/agronify_main</item>
+        <item name="colorError">@color/agronify_error</item>
         <item name="editTextStyle">@style/Widget.Material3.TextInputEditText.OutlinedBox</item>
     </style>
 
