@@ -40,6 +40,7 @@
         android:id="@+id/cl_weather"
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        android:elevation="2dp"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/shape_rounded"
@@ -105,6 +106,7 @@
         android:id="@+id/iv_weather"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:elevation="4dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="@id/cl_weather"
@@ -127,6 +129,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="24dp"
+            app:cardElevation="4dp"
             style="?attr/materialCardViewFilledStyle"
             app:cardBackgroundColor="@color/agronify_main"
             app:layout_constraintStart_toStartOf="parent"
@@ -158,6 +161,7 @@
             android:id="@+id/btn_agro_scan"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            app:cardElevation="4dp"
             style="?attr/materialCardViewFilledStyle"
             app:cardBackgroundColor="@color/agronify_main"
             app:layout_constraintStart_toEndOf="@id/guideline_vertical_first"
@@ -191,6 +195,7 @@
             android:id="@+id/btn_agro_hub"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            app:cardElevation="4dp"
             style="?attr/materialCardViewFilledStyle"
             app:cardBackgroundColor="@color/agronify_gray"
             app:layout_constraintStart_toEndOf="@id/guideline_vertical"
@@ -224,6 +229,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="24dp"
+            app:cardElevation="4dp"
             style="?attr/materialCardViewFilledStyle"
             app:cardBackgroundColor="@color/agronify_gray"
             app:layout_constraintStart_toEndOf="@id/guideline_vertical_last"
@@ -256,6 +262,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
+            app:cardElevation="4dp"
             style="?attr/materialCardViewFilledStyle"
             app:cardBackgroundColor="@color/agronify_gray"
             app:layout_constraintStart_toStartOf="@id/btn_agro_edu"
@@ -288,6 +295,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
+            app:cardElevation="4dp"
             style="?attr/materialCardViewFilledStyle"
             app:cardBackgroundColor="@color/agronify_gray"
             app:layout_constraintStart_toStartOf="@id/btn_agro_scan"
@@ -320,6 +328,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
+            app:cardElevation="4dp"
             style="?attr/materialCardViewFilledStyle"
             app:cardBackgroundColor="@color/agronify_gray"
             app:layout_constraintStart_toStartOf="@id/btn_agro_hub"
@@ -352,6 +361,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
+            app:cardElevation="4dp"
             style="?attr/materialCardViewFilledStyle"
             app:cardBackgroundColor="@color/agronify_gray"
             app:layout_constraintStart_toStartOf="@id/btn_agro_mart"
@@ -395,18 +405,38 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/btn_agro_spotlight"
+            android:id="@+id/cv_agro_spotlight"
             android:layout_width="match_parent"
             android:layout_height="144dp"
             android:layout_marginTop="16dp"
             android:layout_marginHorizontal="20dp"
-            app:cardElevation="3dp"
+            app:cardElevation="4dp"
             app:cardBackgroundColor="@color/agronify_gray"
             app:cardCornerRadius="10dp"
             app:strokeWidth="0dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_agro_spotlight">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:id="@+id/cpi_spotlight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:elevation="4dp"
+                    android:indeterminate="true"
+                    android:visibility="visible"
+                    app:indicatorColor="@color/agronify_white"
+                    app:indicatorSize="48dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <ImageView
                 android:id="@+id/iv_agro_spotlight"
@@ -416,8 +446,10 @@
                 tools:src="@tools:sample/backgrounds/scenic" />
 
             <ImageView
+                android:id="@+id/iv_agro_spotlight_overlay"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:visibility="invisible"
                 android:background="@drawable/shape_spotlight" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -481,6 +513,7 @@
         android:id="@+id/cpi_weather"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:elevation="4dp"
         android:indeterminate="true"
         android:visibility="visible"
         app:indicatorColor="@color/agronify_white"

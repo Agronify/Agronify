@@ -9,19 +9,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import com.agronify.android.BuildConfig.BUCKET_URL
 import com.agronify.android.R
 import com.agronify.android.databinding.FragmentHomeBinding
 import com.agronify.android.model.remote.response.CurrentWeather
+import com.agronify.android.model.remote.response.Edu
+import com.agronify.android.util.Constants.EXTRA_EDU_CONTENT
+import com.agronify.android.util.Constants.EXTRA_EDU_IMAGE
+import com.agronify.android.util.Constants.EXTRA_EDU_TAGS
+import com.agronify.android.util.Constants.EXTRA_EDU_TITLE
 import com.agronify.android.util.Constants.EXTRA_LAT
 import com.agronify.android.util.Constants.EXTRA_LOCATION
 import com.agronify.android.util.Constants.EXTRA_LOGIN
 import com.agronify.android.util.Constants.EXTRA_LON
 import com.agronify.android.util.Constants.EXTRA_TOKEN
+import com.agronify.android.view.activity.agro.edu.EduDetailActivity
 import com.agronify.android.view.activity.agro.weather.WeatherActivity
 import com.agronify.android.view.activity.main.MainActivity
 import com.agronify.android.view.fragment.agro.edu.EduFragment
 import com.agronify.android.view.fragment.agro.scan.ScanFragment
 import com.agronify.android.viewmodel.HomeViewModel
+import com.bumptech.glide.Glide
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.Priority
@@ -51,7 +59,6 @@ class HomeFragment : Fragment() {
             hasLoggedIn = it.getBoolean(EXTRA_LOGIN)
             token = it.getString(EXTRA_TOKEN).toString()
         }
-        checkLocationPermission()
     }
 
     override fun onCreateView(
@@ -63,6 +70,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        checkLocationPermission()
         setupView()
     }
 
@@ -91,6 +99,7 @@ class HomeFragment : Fragment() {
 
     private fun setupView() {
         getUserLocation()
+        getSpotlight()
         setupFeature()
     }
 
@@ -163,6 +172,54 @@ class HomeFragment : Fragment() {
                     it.putExtra(EXTRA_LAT, userLat)
                     it.putExtra(EXTRA_LON, userLon)
                     it.putExtra(EXTRA_LOCATION, userLocation)
+                    startActivity(it)
+                }
+            }
+        }
+    }
+
+    private fun getSpotlight() {
+        binding.apply {
+            if (isAdded) {
+                homeViewModel.apply {
+                    isSpotlightLoading.observe(requireActivity()) {
+                        if (!it) {
+                            val spotlight = spotlight.value
+                            if (spotlight != null) {
+                                showSpotlight(spotlight)
+                            }
+                            cpiSpotlight.visibility = View.GONE
+                        } else {
+                            cpiSpotlight.visibility = View.VISIBLE
+                        }
+                    }
+
+                    getSpotlight()
+                }
+            }
+        }
+    }
+
+    private fun showSpotlight(edu: Edu) {
+        binding.apply {
+            val image = edu.image
+            Glide.with(requireActivity())
+                .load(BUCKET_URL + image)
+                .into(ivAgroSpotlight)
+            ivAgroSpotlightOverlay.visibility = View.VISIBLE
+            tvAgroSpotlightTitle.text = edu.title
+            tvAgroSpotlightDesc.text = edu.content
+
+            val tags: ArrayList<String> = arrayListOf()
+            for (tag in edu.tags) {
+                tags.add(tag)
+            }
+            cvAgroSpotlight.setOnClickListener {
+                Intent(requireActivity(), EduDetailActivity::class.java).also {
+                    it.putExtra(EXTRA_EDU_IMAGE, image)
+                    it.putExtra(EXTRA_EDU_TITLE, edu.title)
+                    it.putExtra(EXTRA_EDU_CONTENT, edu.content)
+                    it.putExtra(EXTRA_EDU_TAGS, tags)
                     startActivity(it)
                 }
             }
