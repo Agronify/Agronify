@@ -39,14 +39,6 @@
         tools:ignore="LockedOrientationActivity"
         tools:targetApi="31">
         <activity
-            android:name=".view.activity.agro.profile.ProfileActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".view.activity.agro.hub.HubActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".view.activity.agro.scan.ScanCameraActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
@@ -63,15 +55,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.activity.agro.scan.ScanActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".view.activity.agro.edu.EduDetailActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".view.activity.agro.edu.EduActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
