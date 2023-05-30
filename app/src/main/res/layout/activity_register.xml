@@ -65,6 +65,7 @@
         android:layout_marginHorizontal="20dp"
         android:hint="@string/form_email"
         app:hintTextAppearance="@style/TextAppearance.App.FormHint"
+        app:errorTextAppearance="@style/TextAppearance.App.FormHint"
         style="?attr/textInputOutlinedStyle"
         app:endIconMode="clear_text"
         app:layout_constraintTop_toBottomOf="@id/tv_register_desc"
@@ -75,6 +76,7 @@
             android:id="@+id/ed_register_email"
             android:layout_width="match_parent"
             android:layout_height="56dp"
+            android:textColor="@color/agronify_black"
             android:textAppearance="@style/TextAppearance.App.FormInput"
             android:inputType="textEmailAddress" />
 
@@ -88,6 +90,7 @@
         android:layout_marginHorizontal="20dp"
         android:hint="@string/form_name"
         app:hintTextAppearance="@style/TextAppearance.App.FormHint"
+        app:errorTextAppearance="@style/TextAppearance.App.FormHint"
         style="?attr/textInputOutlinedStyle"
         app:endIconMode="clear_text"
         app:layout_constraintTop_toBottomOf="@id/til_register_email"
@@ -98,6 +101,7 @@
             android:id="@+id/ed_register_name"
             android:layout_width="match_parent"
             android:layout_height="56dp"
+            android:textColor="@color/agronify_black"
             android:textAppearance="@style/TextAppearance.App.FormInput"
             android:inputType="textEmailAddress" />
 
@@ -111,6 +115,7 @@
         android:layout_marginHorizontal="20dp"
         android:hint="@string/form_password"
         app:hintTextAppearance="@style/TextAppearance.App.FormHint"
+        app:errorTextAppearance="@style/TextAppearance.App.FormHint"
         style="?attr/textInputOutlinedStyle"
         app:endIconMode="password_toggle"
         app:layout_constraintTop_toBottomOf="@id/til_register_name"
@@ -121,6 +126,7 @@
             android:id="@+id/ed_register_password"
             android:layout_width="match_parent"
             android:layout_height="56dp"
+            android:textColor="@color/agronify_black"
             android:textAppearance="@style/TextAppearance.App.FormInput"
             android:inputType="textPassword" />
 
@@ -134,6 +140,7 @@
         android:layout_marginHorizontal="20dp"
         android:hint="@string/form_confirm_password"
         app:hintTextAppearance="@style/TextAppearance.App.FormHint"
+        app:errorTextAppearance="@style/TextAppearance.App.FormHint"
         style="?attr/textInputOutlinedStyle"
         app:endIconMode="password_toggle"
         app:layout_constraintTop_toBottomOf="@id/til_register_password"
@@ -144,6 +151,7 @@
             android:id="@+id/ed_register_confirm_password"
             android:layout_width="match_parent"
             android:layout_height="56dp"
+            android:textColor="@color/agronify_black"
             android:textAppearance="@style/TextAppearance.App.FormInput"
             android:inputType="textPassword" />
 
@@ -195,5 +203,18 @@
         app:layout_constraintTop_toTopOf="@id/tv_login_desc"
         app:layout_constraintBottom_toBottomOf="@id/tv_login_desc"
         app:layout_constraintStart_toEndOf="@id/tv_login_desc" />
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/cpi_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:indicatorColor="@color/agronify_main"
+        app:indicatorSize="48dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
