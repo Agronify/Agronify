@@ -1,3 +1,9 @@
 <resources>
+    <style name="Theme.Agronify.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/agronify_white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>
+        <item name="windowSplashScreenAnimationDuration">3000</item>
+        <item name="postSplashScreenTheme">@style/Theme.Agronify</item>
+    </style>
     <style name="Theme.Agronify" parent="Base.Theme.Agronify" />
 </resources>
