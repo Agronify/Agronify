@@ -6,10 +6,17 @@ import java.util.Locale
 
 object DateUtil {
     private const val DATE_FORMAT = "EEEE, d MMMM yyyy"
+    private const val FULL_FORMAT = "HH-mm-ss-dd-MM-yyyy"
 
     fun getCurrentDate(): String {
         val currentDate = Date()
         val dateFormat = SimpleDateFormat(DATE_FORMAT, Locale("id", "ID"))
+        return dateFormat.format(currentDate)
+    }
+
+    fun getCurrentTime(): String {
+        val currentDate = Date()
+        val dateFormat = SimpleDateFormat(FULL_FORMAT, Locale("id", "ID"))
         return dateFormat.format(currentDate)
     }
 }
