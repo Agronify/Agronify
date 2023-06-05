@@ -27,6 +27,7 @@ class OnboardActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        installSplash()
         setContentView(binding.root)
         setupView()
         setupAction()
@@ -35,7 +36,6 @@ class OnboardActivity : AppCompatActivity() {
     private fun setupView() {
         hideStatusBar()
         checkUser()
-        installSplash()
     }
 
     private fun setupAction() {
