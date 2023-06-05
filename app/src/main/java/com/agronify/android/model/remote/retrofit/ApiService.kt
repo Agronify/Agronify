@@ -5,7 +5,10 @@ import com.agronify.android.model.remote.response.CurrentWeatherResponse
 import com.agronify.android.model.remote.response.Edu
 import com.agronify.android.model.remote.response.ForecastWeatherResponse
 import com.agronify.android.model.remote.response.LoginResponse
+import com.agronify.android.model.remote.response.Scan
+import com.agronify.android.model.remote.response.UploadResponse
 import com.google.gson.JsonObject
+import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -38,4 +41,14 @@ interface ApiService {
 
     @GET("knowledges")
     fun getEdu(): Call<List<Edu>>
+
+    @GET("crops")
+    fun getScan(): Call<List<Scan>>
+
+    @Multipart
+    @POST("upload")
+    fun uploadScan(
+        @Part file: MultipartBody.Part,
+        @Part("type") name: String = "predicts"
+    ): Call<UploadResponse>
 }
