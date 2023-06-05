@@ -307,8 +307,8 @@
                     android:id="@+id/iv_about"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:padding="8dp"
-                    android:src="@drawable/dummy_logo"
+                    android:padding="4dp"
+                    android:src="@drawable/logo"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent" />

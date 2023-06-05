@@ -1,20 +1,18 @@
 package com.agronify.android.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.agronify.android.model.repository.AuthRepository
-import com.agronify.android.model.repository.EduRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val authRepository: AuthRepository,
-    private val eduRepository: EduRepository
+    private val authRepository: AuthRepository
 ): ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
@@ -30,17 +28,14 @@ class MainViewModel @Inject constructor(
 
     init {
         checkLogin()
-        getRandomEdu()
     }
 
-    fun checkLogin() {
+    fun checkLogin() = viewModelScope.launch {
         _isLoading.value = true
-        viewModelScope.launch {
+        runBlocking {
             _token.value = authRepository.getToken()
             _isLogin.value = authRepository.getToken().isNotEmpty()
-            _isLoading.value = false
         }
+        _isLoading.value = false
     }
-
-    private fun getRandomEdu() {}
 }

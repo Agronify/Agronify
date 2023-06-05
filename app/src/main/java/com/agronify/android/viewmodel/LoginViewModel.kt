@@ -8,6 +8,7 @@ import com.agronify.android.model.repository.AuthRepository
 import com.google.gson.JsonObject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import org.json.JSONObject
 import retrofit2.HttpException
 import javax.inject.Inject
@@ -38,9 +39,11 @@ class LoginViewModel @Inject constructor(
             authRepository.userLogin(request)
         }.let { result ->
             result.onSuccess {
-                val token = it.token
-                authRepository.saveToken(token)
-                authRepository.saveUser(it.name, it.email)
+                runBlocking {
+                    val token = it.token
+                    authRepository.saveToken(token)
+                    authRepository.saveUser(it.name, it.email)
+                }
                 _isLoading.value = false
             }
 

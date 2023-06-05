@@ -27,6 +27,7 @@ import com.agronify.android.view.activity.agro.edu.EduDetailActivity
 import com.agronify.android.view.activity.agro.weather.WeatherActivity
 import com.agronify.android.view.activity.main.MainActivity
 import com.agronify.android.view.fragment.agro.edu.EduFragment
+import com.agronify.android.view.fragment.agro.hub.HubFragment
 import com.agronify.android.view.fragment.agro.scan.ScanFragment
 import com.agronify.android.viewmodel.HomeViewModel
 import com.bumptech.glide.Glide
@@ -167,7 +168,7 @@ class HomeFragment : Fragment() {
                 }
             }
 
-            clWeather.setOnClickListener {
+            cvWeather.setOnClickListener {
                 Intent(requireActivity(), WeatherActivity::class.java).also {
                     it.putExtra(EXTRA_LAT, userLat)
                     it.putExtra(EXTRA_LON, userLon)
@@ -180,47 +181,47 @@ class HomeFragment : Fragment() {
 
     private fun getSpotlight() {
         binding.apply {
-            if (isAdded) {
-                homeViewModel.apply {
-                    isSpotlightLoading.observe(requireActivity()) {
-                        if (!it) {
-                            val spotlight = spotlight.value
-                            if (spotlight != null) {
-                                showSpotlight(spotlight)
-                            }
-                            cpiSpotlight.visibility = View.GONE
-                        } else {
-                            cpiSpotlight.visibility = View.VISIBLE
+            homeViewModel.apply {
+                isSpotlightLoading.observe(requireActivity()) {
+                    if (!it) {
+                        val spotlight = spotlight.value
+                        if (spotlight != null) {
+                            showSpotlight(spotlight)
                         }
+                        cpiSpotlight.visibility = View.GONE
+                    } else {
+                        cpiSpotlight.visibility = View.VISIBLE
                     }
-
-                    getSpotlight()
                 }
+
+                getSpotlight()
             }
         }
     }
 
     private fun showSpotlight(edu: Edu) {
         binding.apply {
-            val image = edu.image
-            Glide.with(requireActivity())
-                .load(BUCKET_URL + image)
-                .into(ivAgroSpotlight)
-            ivAgroSpotlightOverlay.visibility = View.VISIBLE
-            tvAgroSpotlightTitle.text = edu.title
-            tvAgroSpotlightDesc.text = edu.content
+            if (isAdded) {
+                val image = edu.image
+                Glide.with(requireActivity())
+                    .load(BUCKET_URL + image)
+                    .into(ivAgroSpotlight)
+                ivAgroSpotlightOverlay.visibility = View.VISIBLE
+                tvAgroSpotlightTitle.text = edu.title
+                tvAgroSpotlightDesc.text = edu.content
 
-            val tags: ArrayList<String> = arrayListOf()
-            for (tag in edu.tags) {
-                tags.add(tag)
-            }
-            cvAgroSpotlight.setOnClickListener {
-                Intent(requireActivity(), EduDetailActivity::class.java).also {
-                    it.putExtra(EXTRA_EDU_IMAGE, image)
-                    it.putExtra(EXTRA_EDU_TITLE, edu.title)
-                    it.putExtra(EXTRA_EDU_CONTENT, edu.content)
-                    it.putExtra(EXTRA_EDU_TAGS, tags)
-                    startActivity(it)
+                val tags: ArrayList<String> = arrayListOf()
+                for (tag in edu.tags) {
+                    tags.add(tag)
+                }
+                cvAgroSpotlight.setOnClickListener {
+                    Intent(requireActivity(), EduDetailActivity::class.java).also {
+                        it.putExtra(EXTRA_EDU_IMAGE, image)
+                        it.putExtra(EXTRA_EDU_TITLE, edu.title)
+                        it.putExtra(EXTRA_EDU_CONTENT, edu.content)
+                        it.putExtra(EXTRA_EDU_TAGS, tags)
+                        startActivity(it)
+                    }
                 }
             }
         }
@@ -239,6 +240,21 @@ class HomeFragment : Fragment() {
                 (requireActivity() as MainActivity).apply {
                     navigateToFragment(ScanFragment())
                     onNavigationItemSelected(R.id.agro_scan)
+                }
+            }
+
+            val upcomingFeature = arrayOf(
+                btnAgroHub,
+                btnAgroMart,
+                btnAgroWork,
+                btnAgroPlan,
+                btnAgroFin,
+                btnAgroMore
+            )
+
+            upcomingFeature.forEach {
+                it.setOnClickListener {
+                    (requireActivity() as MainActivity).showSoonDialog()
                 }
             }
         }

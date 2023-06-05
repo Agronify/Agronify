@@ -8,6 +8,7 @@ import com.agronify.android.model.remote.response.Auth
 import com.agronify.android.model.repository.AuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 @HiltViewModel
@@ -26,7 +27,9 @@ class ProfileViewModel @Inject constructor(
     fun getUser() {
         _isLoading.value = true
         viewModelScope.launch {
-            _user.value = authRepository.getUser()
+            runBlocking {
+                _user.value = authRepository.getUser()
+            }
             _isLoading.value = false
         }
     }
