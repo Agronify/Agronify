@@ -19,4 +19,11 @@ object DateUtil {
         val dateFormat = SimpleDateFormat(FULL_FORMAT, Locale("id", "ID"))
         return dateFormat.format(currentDate)
     }
+
+    fun getDayOrNight(): String {
+        val currentDate = Date()
+        val dateFormat = SimpleDateFormat("HH", Locale("id", "ID"))
+        val time = dateFormat.format(currentDate).toInt()
+        return if (time in 6..17) "day" else "night"
+    }
 }
