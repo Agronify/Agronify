@@ -1,27 +1,33 @@
 package com.agronify.android.viewmodel
 
-import android.Manifest
 import android.app.Activity.RESULT_OK
 import android.content.Context
-import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
 import androidx.activity.result.ActivityResult
-import androidx.activity.result.ActivityResultLauncher
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.agronify.android.model.remote.response.PredictResponse
 import com.agronify.android.model.remote.response.Scan
 import com.agronify.android.model.repository.ScanRepository
-import com.agronify.android.util.CameraUtil.reduceFileImage
-import com.agronify.android.util.CameraUtil.rescaleFile
+import com.agronify.android.util.CameraUtil.processFileCamera
+import com.agronify.android.util.CameraUtil.processFileGallery
+import com.agronify.android.util.CameraUtil.reduceFile
 import com.agronify.android.util.CameraUtil.uriToFile
+import com.agronify.android.util.Constants.CAMERA_X_ROTATION
+import com.agronify.android.util.Constants.CAMERA_X_SUCCESS
+import com.agronify.android.util.Constants.EXTRA_SCAN_IMAGE
+import com.google.gson.JsonObject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
 import retrofit2.HttpException
 import java.io.File
@@ -36,6 +42,9 @@ class ScanViewModel @Inject constructor(
 
     private val _isUploaded = MutableLiveData<Boolean>()
     val isUploaded: LiveData<Boolean> = _isUploaded
+
+    private val _prediction = MutableLiveData<PredictResponse>()
+    val prediction: LiveData<PredictResponse> = _prediction
 
     private val _error = MutableLiveData<String?>()
     val error: LiveData<String?> = _error
@@ -55,35 +64,18 @@ class ScanViewModel @Inject constructor(
     private val _previewBitmap = MutableLiveData<Bitmap>()
     val previewBitmap: LiveData<Bitmap> = _previewBitmap
 
-    private lateinit var permissionLauncher: ActivityResultLauncher<String>
-
-    private val _cameraPermissionGranted = MutableLiveData<Boolean>()
-    val cameraPermissionGranted: LiveData<Boolean> = _cameraPermissionGranted
-
-    fun requestPermission(context: Context) {
-        _cameraPermissionGranted.value = ContextCompat.checkSelfPermission(context, CAMERA_PERMISSION) == PackageManager.PERMISSION_GRANTED
-                && ContextCompat.checkSelfPermission(context, GALLERY_PERMISSION) == PackageManager.PERMISSION_GRANTED
-                && ContextCompat.checkSelfPermission(context, IMAGE_PERMISSION) == PackageManager.PERMISSION_GRANTED
-        if (_cameraPermissionGranted.value == false) {
-            permissionLauncher.apply {
-                launch(CAMERA_PERMISSION)
-                launch(GALLERY_PERMISSION)
-                launch(IMAGE_PERMISSION)
-            }
-        }
-    }
-
     fun handleCameraActivityResult(result: ActivityResult) {
         if (result.resultCode == CAMERA_X_SUCCESS) {
             val file = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                result.data?.getSerializableExtra("picture", File::class.java)
+                result.data?.getSerializableExtra(EXTRA_SCAN_IMAGE, File::class.java)
             } else {
-                result.data?.getSerializableExtra("picture")
+                result.data?.getSerializableExtra(EXTRA_SCAN_IMAGE)
             } as? File
-            val imageRotationDegree = result.data?.getIntExtra("rotation", 0) as Int
+            val imageRotationDegrees = result.data?.getIntExtra(CAMERA_X_ROTATION, 0) as Int
 
             file?.let {
-                rescaleFile(it, imageRotationDegree)
+                processFileCamera(it, imageRotationDegrees)
+                reduceFile(it)
                 _file.value = it
                 _previewBitmap.value = BitmapFactory.decodeFile(it.path)
             }
@@ -93,20 +85,15 @@ class ScanViewModel @Inject constructor(
     fun handleGalleryActivityResult(result: ActivityResult, context: Context) {
         if (result.resultCode == RESULT_OK) {
             val selected = result.data?.data as Uri
-            selected.let {
-                val file = uriToFile(it, context)
-                _file.value = file
-                _previewBitmap.value = BitmapFactory.decodeFile(file.path)
+            val file = uriToFile(selected, context)
+
+            file.let {
+                processFileGallery(it, 90)
+                reduceFile(it)
+                _file.value = it
+                _previewBitmap.value = BitmapFactory.decodeFile(it.path)
             }
         }
-    }
-
-    fun uploadScan(file: File) = viewModelScope.launch {
-        _isLoading.value = true
-        _isUploaded.value = false
-
-        val file = reduceFileImage(file)
-
     }
 
     fun getScan() = viewModelScope.launch {
@@ -123,7 +110,7 @@ class ScanViewModel @Inject constructor(
             result.onFailure { e ->
                 if (e is HttpException) {
                     val errorResponse = e.response()?.errorBody()?.string()
-                    val errorMessage = errorResponse?.let { JSONObject(it).getString("message") }
+                    val errorMessage = errorResponse?.let { JSONObject(it).getString("error") }
                     _error.value = errorMessage
                 }
                 _isLoading.value = false
@@ -146,8 +133,8 @@ class ScanViewModel @Inject constructor(
 
         for (i in disease) {
             when (i.type) {
-                "perkebunan" -> diseaseGarden.add(i)
-                "pertanian" -> diseaseField.add(i)
+                "Perkebunan" -> diseaseGarden.add(i)
+                "Pertanian" -> diseaseField.add(i)
             }
         }
 
@@ -156,10 +143,56 @@ class ScanViewModel @Inject constructor(
         _scanRipeness.value = ripeness
     }
 
-    private companion object {
-        const val CAMERA_X_SUCCESS = 200
-        const val CAMERA_PERMISSION = Manifest.permission.CAMERA
-        const val IMAGE_PERMISSION = Manifest.permission.READ_MEDIA_IMAGES
-        const val GALLERY_PERMISSION = Manifest.permission.READ_EXTERNAL_STORAGE
+    fun uploadScan(token: String, file: File, id: Int, type: String) = viewModelScope.launch {
+        _isLoading.value = true
+        _isUploaded.value = false
+
+        val image = file.asRequestBody("image/jpeg".toMediaType())
+        val uploadType = "predicts".toRequestBody("text/plain".toMediaType())
+        val multipart: MultipartBody.Part = MultipartBody.Part.createFormData("file", file.name, image)
+
+        runCatching {
+            scanRepository.uploadScan(token, multipart, uploadType)
+        }.let { result ->
+            result.onSuccess {
+                predictScan(token, id, type, it.path)
+            }
+
+            result.onFailure { e ->
+                if (e is HttpException) {
+                    val errorResponse = e.response()?.errorBody()?.string()
+                    val errorMessage = errorResponse?.let { JSONObject(it).getString("error") }
+                    _error.value = errorMessage
+                }
+                _isLoading.value = false
+            }
+        }
+    }
+
+    private fun predictScan(token: String, id: Int, type: String, path: String) = viewModelScope.launch {
+        val request = JsonObject().apply {
+            addProperty("type", type)
+            addProperty("crop_id", id)
+            addProperty("path", path)
+        }
+
+        runCatching {
+            scanRepository.predictScan(token, request)
+        }.let { result ->
+            result.onSuccess {
+                _prediction.value = it
+                _isUploaded.value = true
+                _isLoading.value = false
+            }
+
+            result.onFailure { e ->
+                if (e is HttpException) {
+                    val errorResponse = e.response()?.errorBody()?.string()
+                    val errorMessage = errorResponse?.let { JSONObject(it).getString("error") }
+                    _error.value = errorMessage
+                }
+                _isLoading.value = false
+            }
+        }
     }
 }
