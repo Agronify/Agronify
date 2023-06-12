@@ -5,10 +5,12 @@ import com.agronify.android.model.remote.response.CurrentWeatherResponse
 import com.agronify.android.model.remote.response.Edu
 import com.agronify.android.model.remote.response.ForecastWeatherResponse
 import com.agronify.android.model.remote.response.LoginResponse
+import com.agronify.android.model.remote.response.PredictResponse
 import com.agronify.android.model.remote.response.Scan
 import com.agronify.android.model.remote.response.UploadResponse
 import com.google.gson.JsonObject
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -48,7 +50,14 @@ interface ApiService {
     @Multipart
     @POST("upload")
     fun uploadScan(
+        @Header("Authorization") token: String,
         @Part file: MultipartBody.Part,
-        @Part("type") name: String = "predicts"
+        @Part("type") type: RequestBody
     ): Call<UploadResponse>
+
+    @POST("predict")
+    fun predictScan(
+        @Header("Authorization") token: String,
+        @Body request: JsonObject
+    ): Call<PredictResponse>
 }
