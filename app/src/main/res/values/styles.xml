@@ -12,6 +12,7 @@
         <item name="borderlessButtonStyle">@style/Widget.App.Button.Borderless</item>
         <item name="textInputOutlinedStyle">@style/Widget.App.TextInputOutlinedLayout</item>
         <item name="materialCardViewFilledStyle">@style/Widget.App.CardView</item>
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.App.BottomSheetDialog</item>
     </style>
 
     <style name="TextAppearance.App.TitleSmall" parent="TextAppearance.Material3.TitleSmall">
@@ -39,6 +40,11 @@
     <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.Material3.SmallComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">10dp</item>
+    </style>
+
+    <style name="ShapeAppearance.App.LargeComponent" parent="ShapeAppearance.Material3.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">30dp</item>
     </style>
 
     <style name="Widget.App.BottomAppBar" parent="Widget.Material3.BottomAppBar">
@@ -132,5 +138,14 @@
 
     <style name="ThemeOverlay.App.CardView" parent="">
         <item name="colorOnSurface">@color/agronify_black</item>
+    </style>
+
+    <style name="ThemeOverlay.App.BottomSheetDialog" parent="ThemeOverlay.Material3.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/ModalBottomSheet</item>
+    </style>
+
+    <style name="ModalBottomSheet" parent="Widget.Material3.BottomSheet.Modal">
+        <item name="backgroundTint">@color/agronify_white</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.App.LargeComponent</item>
     </style>
 </resources>
