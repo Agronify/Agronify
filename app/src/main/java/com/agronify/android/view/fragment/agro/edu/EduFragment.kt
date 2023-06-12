@@ -13,16 +13,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.agronify.android.databinding.FragmentEduBinding
 import com.agronify.android.model.remote.response.Edu
 import com.agronify.android.util.Constants.EXTRA_EDU_CONTENT
-import com.agronify.android.util.Constants.EXTRA_EDU_ID
 import com.agronify.android.util.Constants.EXTRA_EDU_IMAGE
 import com.agronify.android.util.Constants.EXTRA_EDU_TAGS
 import com.agronify.android.util.Constants.EXTRA_EDU_TITLE
 import com.agronify.android.view.activity.agro.edu.EduDetailActivity
-import com.agronify.android.view.activity.main.MainActivity
 import com.agronify.android.view.adapter.EduAdapter
 import com.agronify.android.viewmodel.EduViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import java.io.Serializable
 
 @AndroidEntryPoint
 class EduFragment : Fragment() {
