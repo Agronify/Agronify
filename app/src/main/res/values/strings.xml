@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Agronify</string>
 
-    <string name="greeting">Halo, Agromates!</string>
+    <string name="greeting">Halo, %s!</string>
     <string name="greeting_desc">Mau melakukan apa hari ini?</string>
 
     <string name="title_home">Home</string>

@@ -26,6 +26,9 @@ class MainViewModel @Inject constructor(
     private val _isLogin = MutableLiveData<Boolean>()
     val isLogin: LiveData<Boolean> = _isLogin
 
+    private val _name = MutableLiveData<String>()
+    val name: LiveData<String> = _name
+
     init {
         checkLogin()
     }
@@ -33,8 +36,14 @@ class MainViewModel @Inject constructor(
     fun checkLogin() = viewModelScope.launch {
         _isLoading.value = true
         runBlocking {
-            _token.value = authRepository.getToken()
-            _isLogin.value = authRepository.getToken().isNotEmpty()
+            val userToken = authRepository.getToken()
+            _token.value = userToken
+            _isLogin.value = userToken.isNotEmpty()
+
+            if (userToken.isNotEmpty()) {
+                val user = authRepository.getUser()
+                _name.value = user.name
+            }
         }
         _isLoading.value = false
     }

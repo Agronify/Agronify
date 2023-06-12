@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity(), NavigationCallback {
     private val mainViewModel: MainViewModel by viewModels()
 
     private lateinit var userToken: String
+    private lateinit var userName: String
     private var hasLoggedIn: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,6 +54,7 @@ class MainActivity : AppCompatActivity(), NavigationCallback {
                 if (!it && isLogin.value != null && token.value != null) {
                     hasLoggedIn = isLogin.value!!
                     userToken = token.value!!
+                    userName = name.value!!
                     setupFeature()
                 }
             }
@@ -62,11 +64,11 @@ class MainActivity : AppCompatActivity(), NavigationCallback {
     }
 
     private fun setupFeature() {
-        navigateToFragment(HomeFragment.newInstance(hasLoggedIn, userToken))
+        navigateToFragment(HomeFragment.newInstance(hasLoggedIn, userToken, userName))
         binding.apply {
             bottomNavigationView.setOnItemSelectedListener {
                 when (it.itemId) {
-                    R.id.home -> navigateToFragment(HomeFragment.newInstance(hasLoggedIn, userToken))
+                    R.id.home -> navigateToFragment(HomeFragment.newInstance(hasLoggedIn, userToken, userName))
                     R.id.agro_edu -> navigateToFragment(EduFragment())
                     R.id.agro_hub -> showSoonDialogHub()
                     R.id.profile -> navigateToFragment(ProfileFragment.newInstance(hasLoggedIn))
