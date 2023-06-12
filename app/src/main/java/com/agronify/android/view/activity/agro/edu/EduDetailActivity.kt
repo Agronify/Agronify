@@ -1,5 +1,6 @@
 package com.agronify.android.view.activity.agro.edu
 
+import android.app.Dialog
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.WindowInsets
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.agronify.android.BuildConfig.BUCKET_URL
+import com.agronify.android.R
 import com.agronify.android.databinding.ActivityEduDetailBinding
 import com.agronify.android.util.Constants.EXTRA_EDU_CONTENT
 import com.agronify.android.util.Constants.EXTRA_EDU_IMAGE
@@ -65,6 +67,18 @@ class EduDetailActivity : AppCompatActivity() {
                     }
                 }
             }
+
+            fabShare.setOnClickListener {
+                showSoonDialog()
+            }
+        }
+    }
+
+    private fun showSoonDialog() {
+        Dialog(this).apply {
+            setContentView(R.layout.dialog_soon)
+            window?.setBackgroundDrawableResource(android.R.color.transparent)
+            show()
         }
     }
 }
