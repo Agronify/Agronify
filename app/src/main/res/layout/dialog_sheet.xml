@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.bottomsheet.BottomSheetDragHandleView
+        android:id="@+id/drag_handle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tint="@color/agronify_gray"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintTop_toBottomOf="@id/drag_handle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ripeness_success"
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_ripeness_success"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                app:srcCompat="@drawable/ic_success"
+                app:tint="@color/agronify_main"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_ripeness_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/nunito_sans_bold"
+                android:textColor="@color/agronify_black"
+                android:textSize="24sp"
+                android:textAlignment="center"
+                app:layout_constraintTop_toBottomOf="@id/iv_ripeness_success"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="@string/add_success_title" />
+
+            <TextView
+                android:id="@+id/tv_ripeness_accuracy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="4dp"
+                android:background="@drawable/shape_tag"
+                android:backgroundTint="#FFFFB800"
+                android:fontFamily="@font/nunito_sans_bold"
+                android:text="@string/add_accuracy"
+                android:textColor="@color/agronify_white"
+                android:textSize="12sp"
+                android:textAlignment="center"
+                app:layout_constraintTop_toBottomOf="@id/tv_ripeness_result"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="50.23% Akurasi" />
+
+            <TextView
+                android:id="@+id/tv_ripeness_success_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/nunito_sans"
+                android:text="@string/add_success_ripeness"
+                android:textColor="#80000000"
+                android:textSize="14sp"
+                android:textAlignment="center"
+                app:layout_constraintTop_toBottomOf="@id/tv_ripeness_accuracy"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_ripeness_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:paddingVertical="8dp"
+                android:paddingHorizontal="20dp"
+                android:fontFamily="@font/nunito_sans_bold"
+                android:text="@string/add_back"
+                android:textColor="@color/agronify_main"
+                android:textSize="14sp"
+                android:textAlignment="center"
+                app:layout_constraintTop_toBottomOf="@id/tv_ripeness_success_desc"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/disease_success"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_disease_success"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                app:srcCompat="@drawable/ic_success"
+                app:tint="@color/agronify_main"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_disease_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/nunito_sans_bold"
+                android:textColor="@color/agronify_black"
+                android:textSize="24sp"
+                android:textAlignment="center"
+                app:layout_constraintTop_toBottomOf="@id/iv_disease_success"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="Bacterial Blight" />
+
+            <TextView
+                android:id="@+id/tv_disease_accuracy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="4dp"
+                android:background="@drawable/shape_tag"
+                android:backgroundTint="#FFFFB800"
+                android:fontFamily="@font/nunito_sans_bold"
+                android:text="@string/add_accuracy"
+                android:textColor="@color/agronify_white"
+                android:textSize="12sp"
+                android:textAlignment="center"
+                app:layout_constraintTop_toBottomOf="@id/tv_disease_result"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="50.23% Akurasi" />
+
+            <TextView
+                android:id="@+id/tv_disease_success_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/nunito_sans"
+                android:text="@string/add_success_disease"
+                android:textColor="#80000000"
+                android:textSize="14sp"
+                android:textAlignment="center"
+                app:layout_constraintTop_toBottomOf="@id/tv_disease_accuracy"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_disease_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/nunito_sans_bold"
+                android:text="@string/add_detail"
+                android:textColor="@color/agronify_white"
+                android:textSize="14sp"
+                app:backgroundTint="@color/agronify_main"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.App.SmallComponent"
+                style="?attr/materialButtonStyle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_disease_success_desc" />
+
+            <TextView
+                android:id="@+id/tv_disease_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:paddingVertical="8dp"
+                android:paddingHorizontal="20dp"
+                android:fontFamily="@font/nunito_sans_bold"
+                android:text="@string/add_back"
+                android:textColor="@color/agronify_main"
+                android:textSize="14sp"
+                android:textAlignment="center"
+                app:layout_constraintTop_toBottomOf="@id/btn_disease_detail"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/failure"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_failure"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                app:srcCompat="@drawable/ic_failure"
+                android:rotation="45"
+                app:tint="@color/agronify_error"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_failure"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/nunito_sans_bold"
+                android:text="@string/add_failure_title"
+                android:textColor="@color/agronify_black"
+                android:textSize="24sp"
+                android:textAlignment="center"
+                app:layout_constraintTop_toBottomOf="@id/iv_failure"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_failure_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/nunito_sans"
+                android:text="@string/add_failure"
+                android:textColor="#80000000"
+                android:textSize="14sp"
+                android:textAlignment="center"
+                app:layout_constraintTop_toBottomOf="@id/tv_failure"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_failure_retake"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/nunito_sans_bold"
+                android:text="@string/add_failure_retake"
+                android:textColor="@color/agronify_white"
+                android:textSize="14sp"
+                app:backgroundTint="@color/agronify_main"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.App.SmallComponent"
+                style="?attr/materialButtonStyle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_failure_desc" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
