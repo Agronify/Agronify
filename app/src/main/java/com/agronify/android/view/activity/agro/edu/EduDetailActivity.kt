@@ -10,10 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.agronify.android.BuildConfig.BUCKET_URL
 import com.agronify.android.R
 import com.agronify.android.databinding.ActivityEduDetailBinding
-import com.agronify.android.util.Constants.EXTRA_EDU_CONTENT
-import com.agronify.android.util.Constants.EXTRA_EDU_IMAGE
-import com.agronify.android.util.Constants.EXTRA_EDU_TAGS
-import com.agronify.android.util.Constants.EXTRA_EDU_TITLE
+import com.agronify.android.model.remote.response.Edu
+import com.agronify.android.util.Constants.EXTRA_EDU
 import com.agronify.android.view.adapter.EduTagAdapter
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
@@ -50,16 +48,22 @@ class EduDetailActivity : AppCompatActivity() {
     }
 
     private fun showEdu() {
+        val edu = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            intent.getParcelableExtra(EXTRA_EDU, Edu::class.java)
+        } else {
+            intent.getParcelableExtra(EXTRA_EDU)
+        }
+
         binding.apply {
             intent.apply {
-                val image = getStringExtra(EXTRA_EDU_IMAGE)
+                val image = edu?.image
                 Glide.with(this@EduDetailActivity)
                     .load(BUCKET_URL + image)
                     .into(ivEduImage)
-                tvEduTitle.text = getStringExtra(EXTRA_EDU_TITLE)
-                tvEduDesc.text = getStringExtra(EXTRA_EDU_CONTENT)
+                tvEduTitle.text = edu?.title
+                tvEduDesc.text = edu?.content
 
-                val tags = getStringArrayListExtra(EXTRA_EDU_TAGS)
+                val tags = edu?.tags
                 if (!tags.isNullOrEmpty()) {
                     rvEduTag.apply {
                         adapter = EduTagAdapter(tags)

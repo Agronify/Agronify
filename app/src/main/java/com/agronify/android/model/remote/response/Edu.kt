@@ -1,7 +1,10 @@
 package com.agronify.android.model.remote.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Edu(
     @field:SerializedName("id")
     val id: Int,
@@ -17,4 +20,4 @@ data class Edu(
 
     @field:SerializedName("tags")
     val tags: List<String>
-)
+) : Parcelable

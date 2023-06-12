@@ -12,10 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.agronify.android.databinding.FragmentEduBinding
 import com.agronify.android.model.remote.response.Edu
-import com.agronify.android.util.Constants.EXTRA_EDU_CONTENT
-import com.agronify.android.util.Constants.EXTRA_EDU_IMAGE
-import com.agronify.android.util.Constants.EXTRA_EDU_TAGS
-import com.agronify.android.util.Constants.EXTRA_EDU_TITLE
+import com.agronify.android.util.Constants.EXTRA_EDU
 import com.agronify.android.view.activity.agro.edu.EduDetailActivity
 import com.agronify.android.view.adapter.EduAdapter
 import com.agronify.android.viewmodel.EduViewModel
@@ -84,15 +81,8 @@ class EduFragment : Fragment() {
 
         eduAdapter.setOnClickCallback(object: EduAdapter.OnClickCallback {
             override fun onClicked(edu: Edu) {
-                val tags: ArrayList<String> = arrayListOf()
-                for (tag in edu.tags) {
-                    tags.add(tag)
-                }
                 Intent(requireContext(), EduDetailActivity::class.java).also {
-                    it.putExtra(EXTRA_EDU_IMAGE, edu.image)
-                    it.putExtra(EXTRA_EDU_TITLE, edu.title)
-                    it.putExtra(EXTRA_EDU_CONTENT, edu.content)
-                    it.putExtra(EXTRA_EDU_TAGS, tags)
+                    it.putExtra(EXTRA_EDU, edu)
                     startActivity(it)
                 }
             }

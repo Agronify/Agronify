@@ -4,9 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.agronify.android.databinding.ItemEduTagBinding
-import java.util.ArrayList
 
-class EduTagAdapter(private val tagList: ArrayList<String>) : RecyclerView.Adapter<EduTagAdapter.ViewHolder>() {
+class EduTagAdapter(private val tagList: List<String>) : RecyclerView.Adapter<EduTagAdapter.ViewHolder>() {
     inner class ViewHolder(val itemEduTagBinding: ItemEduTagBinding) : RecyclerView.ViewHolder(itemEduTagBinding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
