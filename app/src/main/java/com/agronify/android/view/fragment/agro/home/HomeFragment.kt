@@ -27,7 +27,6 @@ import com.agronify.android.view.activity.agro.edu.EduDetailActivity
 import com.agronify.android.view.activity.agro.weather.WeatherActivity
 import com.agronify.android.view.activity.main.MainActivity
 import com.agronify.android.view.fragment.agro.edu.EduFragment
-import com.agronify.android.view.fragment.agro.hub.HubFragment
 import com.agronify.android.view.fragment.agro.scan.ScanFragment
 import com.agronify.android.viewmodel.HomeViewModel
 import com.bumptech.glide.Glide
@@ -238,7 +237,7 @@ class HomeFragment : Fragment() {
 
             btnAgroScan.setOnClickListener {
                 (requireActivity() as MainActivity).apply {
-                    navigateToFragment(ScanFragment())
+                    navigateToFragment(ScanFragment.newInstance(hasLoggedIn, token))
                     onNavigationItemSelected(R.id.agro_scan)
                 }
             }
