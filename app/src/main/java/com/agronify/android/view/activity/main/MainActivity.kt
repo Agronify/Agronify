@@ -11,12 +11,10 @@ import com.agronify.android.databinding.ActivityMainBinding
 import com.agronify.android.util.NavigationCallback
 import com.agronify.android.view.fragment.agro.edu.EduFragment
 import com.agronify.android.view.fragment.agro.home.HomeFragment
-import com.agronify.android.view.fragment.agro.hub.HubFragment
 import com.agronify.android.view.fragment.agro.profile.ProfileFragment
 import com.agronify.android.view.fragment.agro.scan.ScanFragment
 import com.agronify.android.viewmodel.MainViewModel
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -86,6 +84,7 @@ class MainActivity : AppCompatActivity(), NavigationCallback {
     fun showLoginDialog() {
         Dialog(this).apply {
             setContentView(R.layout.dialog_login)
+            window?.setBackgroundDrawableResource(android.R.color.transparent)
             findViewById<MaterialButton>(R.id.btn_dialog_login).setOnClickListener {
                 Intent(this@MainActivity, LoginActivity::class.java).apply {
                     startActivity(this)
@@ -99,6 +98,7 @@ class MainActivity : AppCompatActivity(), NavigationCallback {
     fun showSoonDialog() {
         Dialog(this).apply {
             setContentView(R.layout.dialog_soon)
+            window?.setBackgroundDrawableResource(android.R.color.transparent)
             show()
         }
     }
@@ -106,6 +106,7 @@ class MainActivity : AppCompatActivity(), NavigationCallback {
     private fun showSoonDialogHub() {
         Dialog(this).apply {
             setContentView(R.layout.dialog_soon)
+            window?.setBackgroundDrawableResource(android.R.color.transparent)
             setOnDismissListener { onNavigationItemSelected(R.id.home) }
             show()
         }
