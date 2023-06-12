@@ -1,10 +1,5 @@
 package com.agronify.android.viewmodel
 
-import android.Manifest
-import android.content.Context
-import android.content.pm.PackageManager
-import androidx.activity.result.ActivityResultLauncher
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -38,18 +33,6 @@ class HomeViewModel @Inject constructor(
 
     private val _spotlight = MutableLiveData<Edu>()
     val spotlight: LiveData<Edu> = _spotlight
-
-    private lateinit var permissionLauncher: ActivityResultLauncher<String>
-
-    private val _locationPermissionGranted = MutableLiveData<Boolean>()
-    val locationPermissionGranted: LiveData<Boolean> = _locationPermissionGranted
-
-    fun requestPermission(context: Context) {
-        _locationPermissionGranted.value = ContextCompat.checkSelfPermission(context, LOCATION_PERMISSION) == PackageManager.PERMISSION_GRANTED
-        if (_locationPermissionGranted.value == false) {
-            permissionLauncher.launch(LOCATION_PERMISSION)
-        }
-    }
 
     fun getCurrentWeather(
         lat: Float,
@@ -97,9 +80,5 @@ class HomeViewModel @Inject constructor(
                 _isSpotlightLoading.value = false
             }
         }
-    }
-
-    private companion object {
-        const val LOCATION_PERMISSION = Manifest.permission.ACCESS_FINE_LOCATION
     }
 }

@@ -4,17 +4,19 @@ import android.content.Context
 import android.widget.ImageView
 import android.widget.TextView
 import com.agronify.android.R
+import com.agronify.android.util.DateUtil.getDayOrNight
 
 object WeatherUtil {
     fun setWeather(context: Context, code: Int, tvWeatherType: TextView, ivWeather: ImageView) {
+        val day = getDayOrNight() == "day"
         when (code) {
             0 -> {
                 tvWeatherType.text = context.getString(R.string.weather_clear)
-                ivWeather.setImageResource(R.drawable.ic_weather_clear)
+                if (day) ivWeather.setImageResource(R.drawable.ic_weather_clear) else ivWeather.setImageResource(R.drawable.ic_weather_clear_night)
             }
             in 1..2 -> {
                 tvWeatherType.text = context.getString(R.string.weather_partly_cloudy)
-                ivWeather.setImageResource(R.drawable.ic_weather_partly_cloudy)
+                if (day) ivWeather.setImageResource(R.drawable.ic_weather_partly_cloudy) else ivWeather.setImageResource(R.drawable.ic_weather_partly_cloudy_night)
             }
             3 -> {
                 tvWeatherType.text = context.getString(R.string.weather_overcast)

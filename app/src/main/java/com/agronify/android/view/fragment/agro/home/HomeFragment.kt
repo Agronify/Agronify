@@ -1,28 +1,32 @@
 package com.agronify.android.view.fragment.agro.home
 
-import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.location.Geocoder
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import com.agronify.android.BuildConfig.BUCKET_URL
+import com.agronify.android.BuildConfig.WEATHER_DAY
+import com.agronify.android.BuildConfig.WEATHER_NIGHT
 import com.agronify.android.R
 import com.agronify.android.databinding.FragmentHomeBinding
 import com.agronify.android.model.remote.response.CurrentWeather
 import com.agronify.android.model.remote.response.Edu
-import com.agronify.android.util.Constants.EXTRA_EDU_CONTENT
-import com.agronify.android.util.Constants.EXTRA_EDU_IMAGE
-import com.agronify.android.util.Constants.EXTRA_EDU_TAGS
-import com.agronify.android.util.Constants.EXTRA_EDU_TITLE
+import com.agronify.android.util.Constants.DEFAULT_LAT
+import com.agronify.android.util.Constants.DEFAULT_LON
+import com.agronify.android.util.Constants.EXTRA_EDU
 import com.agronify.android.util.Constants.EXTRA_LAT
 import com.agronify.android.util.Constants.EXTRA_LOCATION
 import com.agronify.android.util.Constants.EXTRA_LOGIN
 import com.agronify.android.util.Constants.EXTRA_LON
+import com.agronify.android.util.Constants.EXTRA_NAME
 import com.agronify.android.util.Constants.EXTRA_TOKEN
+import com.agronify.android.util.DateUtil.getDayOrNight
 import com.agronify.android.util.WeatherUtil.setWeather
 import com.agronify.android.view.activity.agro.edu.EduDetailActivity
 import com.agronify.android.view.activity.agro.weather.WeatherActivity
@@ -36,6 +40,7 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.Priority
 import com.google.android.gms.tasks.CancellationTokenSource
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.runBlocking
 import java.util.Locale
 
 @AndroidEntryPoint
@@ -46,6 +51,7 @@ class HomeFragment : Fragment() {
     private val homeViewModel: HomeViewModel by viewModels()
     private var hasLoggedIn: Boolean = false
     private lateinit var token: String
+    private lateinit var name: String
 
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var geocoder: Geocoder
@@ -59,6 +65,7 @@ class HomeFragment : Fragment() {
         arguments?.let {
             hasLoggedIn = it.getBoolean(EXTRA_LOGIN)
             token = it.getString(EXTRA_TOKEN).toString()
+            name = it.getString(EXTRA_NAME).toString()
         }
     }
 
@@ -71,28 +78,25 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        checkLocationPermission()
         setupView()
+        setupAction()
     }
 
-    private fun checkLocationPermission() {
-        homeViewModel.apply {
-            locationPermissionGranted.observe(requireActivity()) { isGranted ->
-                if (!isGranted) {
-                    requestPermission(requireActivity())
-                }
-            }
-        }
-    }
-
-    @SuppressLint("MissingPermission")
     private fun getUserLocation() {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireActivity())
         geocoder = Geocoder(requireActivity(), Locale.getDefault())
 
-        fusedLocationProviderClient.getCurrentLocation(LOCATION_PRIORITY, LOCATION_TOKEN).addOnSuccessListener {
-            userLat = it.latitude
-            userLon = it.longitude
+        val granted = ContextCompat.checkSelfPermission(requireActivity(), android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+        if (granted) {
+            fusedLocationProviderClient.getCurrentLocation(LOCATION_PRIORITY, LOCATION_TOKEN).addOnSuccessListener {
+                userLat = it.latitude
+                userLon = it.longitude
+                userLocation = geocoder.getFromLocation(userLat!!, userLon!!, 1)?.get(0)?.locality
+                getCurrentWeather()
+            }
+        } else {
+            userLat = DEFAULT_LAT
+            userLon = DEFAULT_LON
             userLocation = geocoder.getFromLocation(userLat!!, userLon!!, 1)?.get(0)?.locality
             getCurrentWeather()
         }
@@ -100,8 +104,13 @@ class HomeFragment : Fragment() {
 
     private fun setupView() {
         getUserLocation()
+        getName()
         getSpotlight()
         setupFeature()
+    }
+
+    private fun setupAction() {
+        onSwipeRefresh()
     }
 
     private fun getCurrentWeather() {
@@ -118,6 +127,7 @@ class HomeFragment : Fragment() {
                     isLoading.observe(requireActivity()) {
                         binding.apply {
                             cpiWeather.visibility = if (it) View.VISIBLE else View.GONE
+                            ivWeatherOverlay.visibility = if (it) View.GONE else View.VISIBLE
                             tvWeatherDetail.visibility = if (it) View.GONE else View.VISIBLE
                         }
                     }
@@ -129,10 +139,31 @@ class HomeFragment : Fragment() {
     }
 
     private fun showCurrentWeather(currentWeather: CurrentWeather) {
+        val current = getDayOrNight()
+
         binding.apply {
             tvWeatherDetail.text = getString(R.string.weather_tap_detail)
             tvWeatherLocation.text = userLocation
             tvWeatherTemperature.text = getString(R.string.weather_temp, currentWeather.temperature.toInt())
+
+            runBlocking {
+                when (current) {
+                    "day" -> {
+                        Glide.with(requireActivity())
+                            .load(BUCKET_URL + WEATHER_DAY)
+                            .into(ivWeatherBackground)
+                    }
+                    "night" -> {
+                        Glide.with(requireActivity())
+                            .load(BUCKET_URL + WEATHER_NIGHT)
+                            .into(ivWeatherBackground)
+                    }
+                    else -> {
+                        ivWeatherBackground.visibility = View.GONE
+                        ivWeatherOverlay.visibility = View.GONE
+                    }
+                }
+            }
 
             setWeather(requireContext(), currentWeather.code, tvWeatherType, ivWeather)
 
@@ -144,6 +175,12 @@ class HomeFragment : Fragment() {
                     startActivity(it)
                 }
             }
+        }
+    }
+
+    private fun getName() {
+        binding.apply {
+            tvGreeting.text = if (name != "") getString(R.string.greeting, name) else getString(R.string.greeting, "Agromates")
         }
     }
 
@@ -178,16 +215,9 @@ class HomeFragment : Fragment() {
                 tvAgroSpotlightTitle.text = edu.title
                 tvAgroSpotlightDesc.text = edu.content
 
-                val tags: ArrayList<String> = arrayListOf()
-                for (tag in edu.tags) {
-                    tags.add(tag)
-                }
                 cvAgroSpotlight.setOnClickListener {
                     Intent(requireActivity(), EduDetailActivity::class.java).also {
-                        it.putExtra(EXTRA_EDU_IMAGE, image)
-                        it.putExtra(EXTRA_EDU_TITLE, edu.title)
-                        it.putExtra(EXTRA_EDU_CONTENT, edu.content)
-                        it.putExtra(EXTRA_EDU_TAGS, tags)
+                        it.putExtra(EXTRA_EDU, edu)
                         startActivity(it)
                     }
                 }
@@ -228,16 +258,25 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun onSwipeRefresh() {
+        binding.swipeHome.setOnRefreshListener {
+            (requireActivity() as MainActivity).apply {
+                navigateToFragment(newInstance(hasLoggedIn, token, name))
+            }
+        }
+    }
+
     companion object {
         const val LOCATION_PRIORITY = Priority.PRIORITY_HIGH_ACCURACY
         val LOCATION_TOKEN = CancellationTokenSource().token
 
         @JvmStatic
-        fun newInstance(hasLoggedIn: Boolean, token: String) =
+        fun newInstance(hasLoggedIn: Boolean, token: String, name: String) =
             HomeFragment().apply {
                 arguments = Bundle().apply {
                     putBoolean(EXTRA_LOGIN, hasLoggedIn)
                     putString(EXTRA_TOKEN, token)
+                    putString(EXTRA_NAME, name)
                 }
             }
     }
