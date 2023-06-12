@@ -76,8 +76,8 @@
                 android:id="@+id/iv_ripeness"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                tools:src="@tools:sample/backgrounds/scenic" />
+                android:src="@drawable/scan_ripeness"
+                android:scaleType="centerCrop" />
 
             <ImageView
                 android:layout_width="match_parent"
@@ -122,8 +122,8 @@
                 android:id="@+id/iv_disease"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                tools:src="@tools:sample/backgrounds/scenic" />
+                android:src="@drawable/scan_disease"
+                android:scaleType="centerCrop" />
 
             <ImageView
                 android:layout_width="match_parent"
