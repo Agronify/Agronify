@@ -161,12 +161,12 @@ class OnboardActivity : AppCompatActivity() {
     private companion object {
         val LOCATION_PERMISSION = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             arrayOf(
-                android.Manifest.permission.ACCESS_FINE_LOCATION,
-                android.Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION,
             )
         } else {
             arrayOf(
-                android.Manifest.permission.ACCESS_FINE_LOCATION
+                Manifest.permission.ACCESS_FINE_LOCATION
             )
         }
     }

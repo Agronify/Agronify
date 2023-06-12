@@ -13,7 +13,6 @@ import com.agronify.android.util.Constants.EXTRA_SCAN_RESULT
 import com.agronify.android.util.Constants.EXTRA_SCAN_SUCCESS
 import com.agronify.android.util.Constants.EXTRA_SCAN_TYPE
 import com.agronify.android.view.activity.agro.scan.ScanResultActivity
-import com.agronify.android.view.activity.main.MainActivity
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class ModalBottomSheet : BottomSheetDialogFragment() {

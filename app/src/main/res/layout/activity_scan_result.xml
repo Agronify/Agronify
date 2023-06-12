@@ -98,7 +98,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="20dp"
         android:src="@drawable/ic_info"
-        app:tint="#FFFFB800"
+        app:tint="@color/agronify_accent"
         app:layout_constraintTop_toBottomOf="@id/tv_result_title"
         app:layout_constraintStart_toStartOf="parent" />
 
