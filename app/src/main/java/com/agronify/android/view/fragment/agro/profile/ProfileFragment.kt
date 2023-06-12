@@ -41,10 +41,31 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupView()
+        setupFeature()
     }
 
     private fun setupView() {
         checkUser()
+    }
+
+    private fun setupFeature() {
+        binding.apply {
+            val upcomingFeature = arrayOf(
+                cvProfile,
+                btnEdit,
+                cvHelp,
+                cvTermCondition,
+                cvAbout,
+                cvRating,
+                cvPassword
+            )
+
+            upcomingFeature.forEach {
+                it.setOnClickListener  {
+                    (activity as MainActivity).showSoonDialog()
+                }
+            }
+        }
     }
 
     private fun checkUser() {
