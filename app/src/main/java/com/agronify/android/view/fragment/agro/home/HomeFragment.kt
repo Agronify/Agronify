@@ -23,6 +23,7 @@ import com.agronify.android.util.Constants.EXTRA_LOCATION
 import com.agronify.android.util.Constants.EXTRA_LOGIN
 import com.agronify.android.util.Constants.EXTRA_LON
 import com.agronify.android.util.Constants.EXTRA_TOKEN
+import com.agronify.android.util.WeatherUtil.setWeather
 import com.agronify.android.view.activity.agro.edu.EduDetailActivity
 import com.agronify.android.view.activity.agro.weather.WeatherActivity
 import com.agronify.android.view.activity.main.MainActivity
@@ -132,40 +133,8 @@ class HomeFragment : Fragment() {
             tvWeatherDetail.text = getString(R.string.weather_tap_detail)
             tvWeatherLocation.text = userLocation
             tvWeatherTemperature.text = getString(R.string.weather_temp, currentWeather.temperature.toInt())
-            when (currentWeather.code) {
-                0 -> {
-                    tvWeatherType.text = getString(R.string.weather_clear)
-                    ivWeather.setImageResource(R.drawable.ic_weather_clear)
-                }
-                1 -> {
-                    tvWeatherType.text = getString(R.string.weather_mainly_clear)
-                    ivWeather.setImageResource(R.drawable.ic_weather_mainly_clear)
-                }
-                2 -> {
-                    tvWeatherType.text = getString(R.string.weather_partly_cloudy)
-                    ivWeather.setImageResource(R.drawable.ic_weather_partly_cloudy)
-                }
-                3 -> {
-                    tvWeatherType.text = getString(R.string.weather_overcast)
-                    ivWeather.setImageResource(R.drawable.ic_weather_overcast)
-                }
-                51, 53, 55 -> {
-                    tvWeatherType.text = getString(R.string.weather_drizzle)
-                    ivWeather.setImageResource(R.drawable.ic_weather_drizzle)
-                }
-                61, 63, 65, 80, 81, 82 -> {
-                    tvWeatherType.text = getString(R.string.weather_rain)
-                    ivWeather.setImageResource(R.drawable.ic_weather_rain)
-                }
-                95, 96, 99 -> {
-                    tvWeatherType.text = getString(R.string.weather_thunderstorm)
-                    ivWeather.setImageResource(R.drawable.ic_weather_thunderstorm)
-                }
-                else -> {
-                    tvWeatherType.text = getString(R.string.weather_cloudy)
-                    ivWeather.setImageResource(R.drawable.ic_weather_cloudy)
-                }
-            }
+
+            setWeather(requireContext(), currentWeather.code, tvWeatherType, ivWeather)
 
             cvWeather.setOnClickListener {
                 Intent(requireActivity(), WeatherActivity::class.java).also {
