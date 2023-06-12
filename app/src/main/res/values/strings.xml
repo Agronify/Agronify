@@ -47,7 +47,6 @@
     <string name="weather_tap_detail">Ketuk untuk detail</string>
     <string name="weather_temp">%d\°</string>
     <string name="weather_clear">Cerah</string>
-    <string name="weather_mainly_clear">Cerah Berawan</string>
     <string name="weather_partly_cloudy">Sebagian Berawan</string>
     <string name="weather_overcast">Berawan Tebal</string>
     <string name="weather_drizzle">Gerimis</string>
