@@ -40,6 +40,8 @@
                 android:fontFamily="@font/nunito_sans_bold"
                 android:textColor="@color/agronify_black"
                 android:textSize="18sp"
+                android:maxLines="1"
+                android:ellipsize="end"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toEndOf="@id/iv_edu_image"
                 app:layout_constraintEnd_toEndOf="parent" />
@@ -57,6 +59,8 @@
                 android:textColor="@color/agronify_white"
                 android:textSize="11sp"
                 android:background="@drawable/shape_tag"
+                android:maxLength="8"
+                android:ellipsize="end"
                 app:layout_constraintStart_toEndOf="@id/iv_edu_image"
                 app:layout_constraintTop_toBottomOf="@id/tv_edu_title" />
 
@@ -73,6 +77,8 @@
                 android:textColor="@color/agronify_white"
                 android:textSize="11sp"
                 android:background="@drawable/shape_tag"
+                android:maxLength="8"
+                android:ellipsize="end"
                 app:layout_constraintStart_toEndOf="@id/tv_edu_tag_1"
                 app:layout_constraintTop_toBottomOf="@id/tv_edu_title" />
 
