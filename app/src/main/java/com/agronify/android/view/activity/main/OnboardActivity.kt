@@ -10,12 +10,12 @@ import android.view.View
 import android.view.WindowInsets
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.agronify.android.databinding.ActivityOnboardBinding
 import com.agronify.android.viewmodel.OnboardViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.runBlocking
 
 @AndroidEntryPoint
 class OnboardActivity : AppCompatActivity() {
@@ -70,14 +70,16 @@ class OnboardActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             installSplashScreen().apply {
                 setKeepOnScreenCondition {
-                    !hasLoaded && !hasPermission
+                    !hasLoaded
                 }
 
                 setOnExitAnimationListener {
-                    if (newUser && hasLoaded && hasPermission) {
+                    if (newUser && hasLoaded) {
                         it.remove()
-                    } else if (!newUser && hasLoaded && hasPermission) {
+                        requestLocationPermission()
+                    } else if (!newUser && hasLoaded) {
                         navigateToMain()
+                        requestLocationPermission()
                     }
                 }
             }
@@ -105,20 +107,7 @@ class OnboardActivity : AppCompatActivity() {
             ContextCompat.checkSelfPermission(applicationContext, it) == PackageManager.PERMISSION_GRANTED
         }
 
-        if (granted) {
-            hasPermission = true
-        } else {
-            val shouldShowRationale = LOCATION_PERMISSION.any {
-                ActivityCompat.shouldShowRequestPermissionRationale(this, it)
-            }
-
-            if (shouldShowRationale) {
-                hasPermission = false
-            } else {
-                hasPermission = false
-                locationPermissionRequest.launch(LOCATION_PERMISSION)
-            }
-        }
+        if (!granted) locationPermissionRequest.launch(LOCATION_PERMISSION)
     }
 
     private fun checkUser() {
@@ -129,7 +118,6 @@ class OnboardActivity : AppCompatActivity() {
 
             isLoading.observe(this@OnboardActivity) {
                 hasLoaded = !it
-                requestLocationPermission()
             }
         }
     }
