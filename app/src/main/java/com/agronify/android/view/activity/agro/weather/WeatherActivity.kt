@@ -9,7 +9,7 @@ import com.agronify.android.model.remote.response.ForecastWeather
 import com.agronify.android.util.Constants.DEFAULT_LAT
 import com.agronify.android.util.Constants.DEFAULT_LON
 import com.agronify.android.util.DateUtil.getCurrentDate
-import com.agronify.android.util.WeatherUtil.setWeather
+import com.agronify.android.util.WeatherUtil.setForecastWeather
 import com.agronify.android.viewmodel.WeatherViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -82,12 +82,13 @@ class WeatherActivity : AppCompatActivity() {
     }
 
     private fun showForecastWeather(forecastWeather: ForecastWeather) {
+        val tips = weatherViewModel.getTips()
         binding.apply {
             tvWeatherLocation.text = userLocation
             for (i in 0..2) {
                 when (i) {
                     0 -> {
-                        setWeather(applicationContext, forecastWeather.code[i], tvWeatherTodayType, ivWeatherToday)
+                        setForecastWeather(applicationContext, forecastWeather.code[i], tvWeatherTodayType, ivWeatherToday, tips, tvTodayTipsContent)
 
                         tvWeatherTodayMin.text = forecastWeather.min[i].toInt().toString()
                         tvWeatherTodayMax.text = forecastWeather.max[i].toInt().toString()
@@ -96,7 +97,7 @@ class WeatherActivity : AppCompatActivity() {
                     }
 
                     1 -> {
-                        setWeather(applicationContext, forecastWeather.code[i], tvWeatherTomorrowType, ivWeatherTomorrow)
+                        setForecastWeather(applicationContext, forecastWeather.code[i], tvWeatherTomorrowType, ivWeatherTomorrow, tips, tvTomorrowTipsContent)
 
                         tvWeatherTomorrowMin.text = forecastWeather.min[i].toInt().toString()
                         tvWeatherTomorrowMax.text = forecastWeather.max[i].toInt().toString()
@@ -105,7 +106,7 @@ class WeatherActivity : AppCompatActivity() {
                     }
 
                     2 -> {
-                        setWeather(applicationContext, forecastWeather.code[i], tvWeatherAfterType, ivWeatherAfter)
+                        setForecastWeather(applicationContext, forecastWeather.code[i], tvWeatherAfterType, ivWeatherAfter, tips, tvAfterTipsContent)
 
                         tvWeatherAfterMin.text = forecastWeather.min[i].toInt().toString()
                         tvWeatherAfterMax.text = forecastWeather.max[i].toInt().toString()

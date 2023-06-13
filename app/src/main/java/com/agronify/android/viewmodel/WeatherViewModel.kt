@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.agronify.android.model.local.dummy.DummyTips.generateDummyTips
+import com.agronify.android.model.local.dummy.Tips
 import com.agronify.android.model.remote.response.ForecastWeather
 import com.agronify.android.model.repository.WeatherRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -24,6 +26,10 @@ class WeatherViewModel @Inject constructor(
 
     private val _error = MutableLiveData<String?>()
     val error: LiveData<String?> = _error
+
+    fun getTips(): List<Tips> {
+        return generateDummyTips()
+    }
 
     fun getForecastWeather(
         lat: Float,

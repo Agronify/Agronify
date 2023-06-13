@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
+        android:background="@android:color/transparent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -21,7 +22,6 @@
             android:id="@+id/top_app_bar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/agronify_main"
             app:titleCentered="true"
             app:title="AgroWeather"
             app:titleTextAppearance="@style/TextAppearance.App.TitleLarge"
@@ -43,26 +43,25 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Selasa, 16 Mei 2023" />
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="128dp"
+        android:background="@drawable/shape_rounded_top"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
     <androidx.constraintlayout.motion.widget.MotionLayout
         android:id="@+id/cl_main"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="56dp"
         app:layoutDescription="@xml/activity_weather_scene"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_date">
-
-        <ImageView
-            android:id="@+id/main"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:background="@drawable/shape_rounded_top"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_weather_after" />
 
         <TextView
             android:id="@+id/tv_weather_today"
@@ -116,16 +115,17 @@
             android:id="@+id/tv_weather_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="12dp"
             android:fontFamily="@font/nunito_sans_bold"
-            android:gravity="center_horizontal"
+            android:gravity="center"
             android:paddingHorizontal="48dp"
             android:paddingTop="8dp"
-            android:textColor="@color/agronify_main"
+            android:textColor="@color/agronify_black"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/main"
+            app:layout_constraintTop_toBottomOf="@id/tv_weather_tomorrow"
             tools:text="Surabaya" />
 
         <androidx.constraintlayout.widget.Guideline
@@ -133,7 +133,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.55" />
+            app:layout_constraintGuide_begin="378dp" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_vertical"
@@ -147,8 +147,8 @@
             style="?attr/materialCardViewFilledStyle"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
             app:cardBackgroundColor="#FF7FBAD3"
             app:layout_constraintEnd_toStartOf="@id/guideline_vertical"
             app:layout_constraintTop_toBottomOf="@id/guideline_horizontal">
@@ -170,9 +170,8 @@
             android:text="@string/unit_degree"
             android:textColor="@color/agronify_black"
             android:textSize="20sp"
-            app:layout_constraintTop_toTopOf="@id/cv_weather_min"
-            app:layout_constraintEnd_toStartOf="@id/cv_weather_min" />
-
+            app:layout_constraintEnd_toStartOf="@id/cv_weather_min"
+            app:layout_constraintTop_toTopOf="@id/cv_weather_min" />
 
         <TextView
             android:id="@+id/tv_weather_min"
@@ -193,7 +192,7 @@
             style="?attr/materialCardViewFilledStyle"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="10dp"
             app:cardBackgroundColor="#FFF25022"
             app:layout_constraintBottom_toBottomOf="@id/cv_weather_min"
             app:layout_constraintStart_toEndOf="@id/guideline_vertical"
@@ -215,8 +214,8 @@
             android:text="@string/unit_degree"
             android:textColor="@color/agronify_black"
             android:textSize="20sp"
-            app:layout_constraintTop_toTopOf="@id/cv_weather_max"
-            app:layout_constraintStart_toEndOf="@id/tv_weather_today_max" />
+            app:layout_constraintStart_toEndOf="@id/tv_weather_today_max"
+            app:layout_constraintTop_toTopOf="@id/cv_weather_max" />
 
         <TextView
             android:id="@+id/tv_weather_max"
@@ -237,8 +236,8 @@
             style="?attr/materialCardViewFilledStyle"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
             app:cardBackgroundColor="#FF7FD3A2"
             app:layout_constraintEnd_toStartOf="@id/guideline_vertical"
             app:layout_constraintTop_toBottomOf="@id/cv_weather_min">
@@ -261,8 +260,8 @@
             android:text="@string/unit_percent"
             android:textColor="@color/agronify_black"
             android:textSize="14sp"
-            app:layout_constraintTop_toTopOf="@id/cv_weather_precipitation"
-            app:layout_constraintEnd_toStartOf="@id/cv_weather_precipitation" />
+            app:layout_constraintEnd_toStartOf="@id/cv_weather_precipitation"
+            app:layout_constraintTop_toTopOf="@id/cv_weather_precipitation" />
 
         <TextView
             android:id="@+id/tv_weather_precipitation"
@@ -283,8 +282,8 @@
             style="?attr/materialCardViewFilledStyle"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
             app:cardBackgroundColor="#FFA6B5AC"
             app:layout_constraintStart_toEndOf="@id/guideline_vertical"
             app:layout_constraintTop_toBottomOf="@id/cv_weather_max">
@@ -301,14 +300,14 @@
             android:id="@+id/tv_weather_wind_unit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
             android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
             android:fontFamily="@font/nunito_sans"
             android:text="@string/unit_speed"
             android:textColor="@color/agronify_black"
             android:textSize="14sp"
-            app:layout_constraintTop_toTopOf="@id/cv_weather_wind"
-            app:layout_constraintStart_toEndOf="@id/tv_weather_today_wind" />
+            app:layout_constraintStart_toEndOf="@id/tv_weather_today_wind"
+            app:layout_constraintTop_toTopOf="@id/cv_weather_wind" />
 
         <TextView
             android:id="@+id/tv_weather_wind"
@@ -326,8 +325,8 @@
 
         <ImageView
             android:id="@+id/iv_weather_today"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="240dp"
+            android:layout_height="240dp"
             app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -371,11 +370,11 @@
             android:fontFamily="@font/nunito_sans_semi_bold"
             android:textColor="@color/agronify_black"
             android:textSize="20sp"
-            app:layout_constraintTop_toTopOf="@id/cv_weather_max"
             app:layout_constraintBottom_toBottomOf="@id/cv_weather_max"
-            app:layout_constraintStart_toEndOf="@id/cv_weather_max"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@id/cv_weather_max"
+            app:layout_constraintTop_toTopOf="@id/cv_weather_max"
             app:layout_constraintVertical_bias="0"
             tools:text="28" />
 
@@ -386,11 +385,11 @@
             android:fontFamily="@font/nunito_sans_semi_bold"
             android:textColor="@color/agronify_black"
             android:textSize="20sp"
-            app:layout_constraintTop_toTopOf="@id/cv_weather_precipitation"
             app:layout_constraintBottom_toBottomOf="@id/cv_weather_precipitation"
             app:layout_constraintEnd_toStartOf="@id/tv_weather_precipitation_unit"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/cv_weather_precipitation"
             app:layout_constraintVertical_bias="0"
             tools:text="20" />
 
@@ -402,22 +401,22 @@
             android:fontFamily="@font/nunito_sans_semi_bold"
             android:textColor="@color/agronify_black"
             android:textSize="20sp"
-            app:layout_constraintTop_toTopOf="@id/cv_weather_wind"
             app:layout_constraintBottom_toBottomOf="@id/cv_weather_wind"
-            app:layout_constraintStart_toEndOf="@id/cv_weather_wind"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@id/cv_weather_wind"
+            app:layout_constraintTop_toTopOf="@id/cv_weather_wind"
             app:layout_constraintVertical_bias="0"
             tools:text="22" />
 
         <ImageView
             android:id="@+id/iv_weather_tomorrow"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="240dp"
+            android:layout_height="240dp"
             app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal"
             app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_weather_location"
-            app:layout_constraintVertical_bias="0.15"
+            app:layout_constraintVertical_bias="0.2"
             tools:src="@drawable/ic_weather_rain" />
 
         <TextView
@@ -435,6 +434,7 @@
 
         <TextView
             android:id="@+id/tv_weather_tomorrow_min"
+            android:alpha="0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nunito_sans_semi_bold"
@@ -450,59 +450,62 @@
 
         <TextView
             android:id="@+id/tv_weather_tomorrow_max"
+            android:alpha="0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:fontFamily="@font/nunito_sans_semi_bold"
             android:textColor="@color/agronify_black"
             android:textSize="20sp"
-            app:layout_constraintTop_toTopOf="@id/cv_weather_max"
             app:layout_constraintBottom_toBottomOf="@id/cv_weather_max"
-            app:layout_constraintStart_toEndOf="@id/cv_weather_max"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@id/cv_weather_max"
+            app:layout_constraintTop_toTopOf="@id/cv_weather_max"
             app:layout_constraintVertical_bias="0"
             tools:text="27" />
 
         <TextView
             android:id="@+id/tv_weather_tomorrow_precipitation"
+            android:alpha="0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nunito_sans_semi_bold"
             android:textColor="@color/agronify_black"
             android:textSize="20sp"
-            app:layout_constraintTop_toTopOf="@id/cv_weather_precipitation"
             app:layout_constraintBottom_toBottomOf="@id/cv_weather_precipitation"
             app:layout_constraintEnd_toStartOf="@id/tv_weather_precipitation_unit"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/cv_weather_precipitation"
             app:layout_constraintVertical_bias="0"
             tools:text="23" />
 
         <TextView
             android:id="@+id/tv_weather_tomorrow_wind"
+            android:alpha="0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:fontFamily="@font/nunito_sans_semi_bold"
             android:textColor="@color/agronify_black"
             android:textSize="20sp"
-            app:layout_constraintTop_toTopOf="@id/cv_weather_wind"
             app:layout_constraintBottom_toBottomOf="@id/cv_weather_wind"
-            app:layout_constraintStart_toEndOf="@id/cv_weather_wind"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@id/cv_weather_wind"
+            app:layout_constraintTop_toTopOf="@id/cv_weather_wind"
             app:layout_constraintVertical_bias="0"
             tools:text="21" />
 
         <ImageView
             android:id="@+id/iv_weather_after"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="240dp"
+            android:layout_height="240dp"
             app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal"
             app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_weather_location"
-            app:layout_constraintVertical_bias="0.15"
+            app:layout_constraintVertical_bias="0.2"
             tools:src="@drawable/ic_weather_thunderstorm" />
 
         <TextView
@@ -520,6 +523,7 @@
 
         <TextView
             android:id="@+id/tv_weather_after_min"
+            android:alpha="0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nunito_sans_semi_bold"
@@ -535,50 +539,167 @@
 
         <TextView
             android:id="@+id/tv_weather_after_max"
+            android:alpha="0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:fontFamily="@font/nunito_sans_semi_bold"
             android:textColor="@color/agronify_black"
             android:textSize="20sp"
-            app:layout_constraintTop_toTopOf="@id/cv_weather_max"
             app:layout_constraintBottom_toBottomOf="@id/cv_weather_max"
-            app:layout_constraintStart_toEndOf="@id/cv_weather_max"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@id/cv_weather_max"
+            app:layout_constraintTop_toTopOf="@id/cv_weather_max"
             app:layout_constraintVertical_bias="0"
             tools:text="29" />
 
         <TextView
             android:id="@+id/tv_weather_after_precipitation"
+            android:alpha="0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nunito_sans_semi_bold"
             android:textColor="@color/agronify_black"
             android:textSize="20sp"
-            app:layout_constraintTop_toTopOf="@id/cv_weather_precipitation"
             app:layout_constraintBottom_toBottomOf="@id/cv_weather_precipitation"
             app:layout_constraintEnd_toStartOf="@id/tv_weather_precipitation_unit"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/cv_weather_precipitation"
             app:layout_constraintVertical_bias="0"
             tools:text="42" />
 
         <TextView
             android:id="@+id/tv_weather_after_wind"
+            android:alpha="0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:fontFamily="@font/nunito_sans_semi_bold"
             android:textColor="@color/agronify_black"
             android:textSize="20sp"
-            app:layout_constraintTop_toTopOf="@id/cv_weather_wind"
             app:layout_constraintBottom_toBottomOf="@id/cv_weather_wind"
-            app:layout_constraintStart_toEndOf="@id/cv_weather_wind"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@id/cv_weather_wind"
+            app:layout_constraintTop_toTopOf="@id/cv_weather_wind"
             app:layout_constraintVertical_bias="0"
             tools:text="25" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_today_tips"
+            style="?attr/materialCardViewFilledStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="40dp"
+            app:cardBackgroundColor="@color/agronify_light_gray"
+            app:cardElevation="3dp"
+            app:contentPadding="10dp"
+            app:contentPaddingBottom="20dp"
+            app:contentPaddingTop="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cv_weather_precipitation"
+            app:layout_constraintVertical_bias="0">
+
+            <TextView
+                android:id="@+id/tv_today_tips_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_sans_semi_bold"
+                android:maxLines="3"
+                android:textAlignment="center"
+                android:textColor="@color/agronify_black"
+                android:textSize="14sp"
+                tools:text="Siram tanaman Anda, menyiram tanaman pada cuaca ini memungkinkan penyerapan optimal dan mengurangi risiko penguapan." />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_tomorrow_tips"
+            android:alpha="0"
+            style="?attr/materialCardViewFilledStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="40dp"
+            app:cardBackgroundColor="@color/agronify_light_gray"
+            app:cardElevation="3dp"
+            app:contentPadding="10dp"
+            app:contentPaddingBottom="20dp"
+            app:contentPaddingTop="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cv_weather_precipitation"
+            app:layout_constraintVertical_bias="0">
+
+            <TextView
+                android:id="@+id/tv_tomorrow_tips_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_sans_semi_bold"
+                android:maxLines="3"
+                android:textAlignment="center"
+                android:textColor="@color/agronify_black"
+                android:textSize="14sp"
+                tools:text="Siram tanaman Anda, menyiram tanaman pada cuaca ini memungkinkan penyerapan optimal dan mengurangi risiko penguapan." />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_after_tips"
+            android:alpha="0"
+            style="?attr/materialCardViewFilledStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="40dp"
+            app:cardBackgroundColor="@color/agronify_light_gray"
+            app:cardElevation="3dp"
+            app:contentPadding="10dp"
+            app:contentPaddingBottom="20dp"
+            app:contentPaddingTop="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cv_weather_precipitation"
+            app:layout_constraintVertical_bias="0">
+
+            <TextView
+                android:id="@+id/tv_after_tips_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_sans_semi_bold"
+                android:maxLines="3"
+                android:textAlignment="center"
+                android:textColor="@color/agronify_black"
+                android:textSize="14sp"
+                tools:text="Siram tanaman Anda, menyiram tanaman pada cuaca ini memungkinkan penyerapan optimal dan mengurangi risiko penguapan." />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/tv_tips_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-14dp"
+            android:background="@drawable/shape_tag"
+            android:backgroundTint="@color/agronify_accent"
+            android:elevation="4dp"
+            android:fontFamily="@font/nunito_sans_bold"
+            android:gravity="center"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="4dp"
+            android:text="AgroTips"
+            android:textColor="@color/agronify_white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/cv_today_tips"
+            app:layout_constraintStart_toStartOf="@id/cv_today_tips"
+            app:layout_constraintTop_toTopOf="@id/cv_today_tips" />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
 

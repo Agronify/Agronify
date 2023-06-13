@@ -11,8 +11,6 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import com.agronify.android.BuildConfig.BUCKET_URL
-import com.agronify.android.BuildConfig.WEATHER_DAY
-import com.agronify.android.BuildConfig.WEATHER_NIGHT
 import com.agronify.android.R
 import com.agronify.android.databinding.FragmentHomeBinding
 import com.agronify.android.model.remote.response.CurrentWeather
@@ -27,7 +25,7 @@ import com.agronify.android.util.Constants.EXTRA_LON
 import com.agronify.android.util.Constants.EXTRA_NAME
 import com.agronify.android.util.Constants.EXTRA_TOKEN
 import com.agronify.android.util.DateUtil.getDayOrNight
-import com.agronify.android.util.WeatherUtil.setWeather
+import com.agronify.android.util.WeatherUtil.setCurrentWeather
 import com.agronify.android.view.activity.agro.edu.EduDetailActivity
 import com.agronify.android.view.activity.agro.weather.WeatherActivity
 import com.agronify.android.view.activity.main.MainActivity
@@ -150,12 +148,12 @@ class HomeFragment : Fragment() {
                 when (current) {
                     "day" -> {
                         Glide.with(requireActivity())
-                            .load(BUCKET_URL + WEATHER_DAY)
+                            .load(R.drawable.weather_day)
                             .into(ivWeatherBackground)
                     }
                     "night" -> {
                         Glide.with(requireActivity())
-                            .load(BUCKET_URL + WEATHER_NIGHT)
+                            .load(R.drawable.weather_night)
                             .into(ivWeatherBackground)
                     }
                     else -> {
@@ -165,7 +163,7 @@ class HomeFragment : Fragment() {
                 }
             }
 
-            setWeather(requireContext(), currentWeather.code, tvWeatherType, ivWeather)
+            setCurrentWeather(requireContext(), currentWeather.code, tvWeatherType, ivWeather)
 
             cvWeather.setOnClickListener {
                 Intent(requireActivity(), WeatherActivity::class.java).also {
