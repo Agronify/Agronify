@@ -43,6 +43,8 @@ class MainViewModel @Inject constructor(
             if (userToken.isNotEmpty()) {
                 val user = authRepository.getUser()
                 _name.value = user.name
+            } else {
+                _name.value = ""
             }
         }
         _isLoading.value = false
