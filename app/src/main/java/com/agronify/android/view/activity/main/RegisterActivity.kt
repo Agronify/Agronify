@@ -94,10 +94,7 @@ class RegisterActivity : AppCompatActivity() {
     private fun setupFeature() {
         binding.apply {
             tvLogin.setOnClickListener {
-                Intent(this@RegisterActivity, LoginActivity::class.java).apply {
-                    startActivity(this)
-                    finish()
-                }
+                navigateToLogin()
             }
         }
     }

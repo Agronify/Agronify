@@ -1,5 +1,6 @@
 package com.agronify.android.view.activity.main
 
+import android.app.Dialog
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -92,11 +93,14 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setupFeature() {
         binding.apply {
-            tvLoginForgotPassword.setOnClickListener {}
+            tvLoginForgotPassword.setOnClickListener {
+                showSoonDialog()
+            }
 
             tvRegister.setOnClickListener {
                 Intent(this@LoginActivity, RegisterActivity::class.java).also {
                     startActivity(it)
+                    finish()
                 }
             }
         }
@@ -163,6 +167,14 @@ class LoginActivity : AppCompatActivity() {
         })
 
         return !(binding.edLoginEmail.error != null || binding.edLoginPassword.error != null)
+    }
+
+    private fun showSoonDialog() {
+        Dialog(this).apply {
+            setContentView(R.layout.dialog_soon)
+            window?.setBackgroundDrawableResource(android.R.color.transparent)
+            show()
+        }
     }
 
     private fun showToast(message: String) {
