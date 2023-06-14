@@ -18,6 +18,8 @@
         android:text="@string/greeting"
         android:textColor="@color/agronify_white"
         android:textSize="24sp"
+        android:maxLines="1"
+        android:ellipsize="end"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
