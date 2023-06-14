@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.WindowInsets
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.agronify.android.BuildConfig.BUCKET_URL
 import com.agronify.android.R
@@ -30,6 +31,7 @@ class EduDetailActivity : AppCompatActivity() {
     private fun setupView() {
         hideStatusBar()
         setupAppBar()
+        setScroll()
         showEdu()
     }
 
@@ -44,6 +46,19 @@ class EduDetailActivity : AppCompatActivity() {
     private fun setupAppBar() {
         binding.topAppBar.apply {
             setNavigationOnClickListener { onBackPressedDispatcher.onBackPressed() }
+        }
+    }
+
+    private fun setScroll() {
+        binding.apply {
+            val threshold = (256 * resources.displayMetrics.density).toInt()
+            nsvEdu.setOnScrollChangeListener { _, _, scrollY, _, _ ->
+                if (scrollY > threshold) {
+                    fabShareScroll.show()
+                } else {
+                    fabShareScroll.hide()
+                }
+            }
         }
     }
 
@@ -73,6 +88,10 @@ class EduDetailActivity : AppCompatActivity() {
             }
 
             fabShare.setOnClickListener {
+                showSoonDialog()
+            }
+
+            fabShareScroll.setOnClickListener {
                 showSoonDialog()
             }
         }
