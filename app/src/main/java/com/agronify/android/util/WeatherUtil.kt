@@ -11,7 +11,7 @@ object WeatherUtil {
     private fun setWeatherType(code: Int): String {
         return when (code) {
             0 -> "clear"
-            in 1..2 ->"partly cloudy"
+            in 1..2 -> "partly_cloudy"
             3 -> "overcast"
             in 51..55 -> "drizzle"
             in 61..82 -> "rain"
