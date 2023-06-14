@@ -31,12 +31,20 @@ class ScanRipeActivity : AppCompatActivity() {
         userToken = intent.getStringExtra(Constants.EXTRA_TOKEN).toString()
 
         setupAppBar()
+        setScroll()
         getScan()
     }
 
     private fun setupAppBar() {
         binding.apply {
             topAppBar.setNavigationOnClickListener { onBackPressedDispatcher.onBackPressed() }
+        }
+    }
+
+    private fun setScroll() {
+        binding.nsvRipe.setOnScrollChangeListener { _, _, scrollY, _, oldScrollY ->
+            if (scrollY > oldScrollY) binding.topAppBar.visibility = View.GONE
+            else binding.topAppBar.visibility = View.VISIBLE
         }
     }
 
