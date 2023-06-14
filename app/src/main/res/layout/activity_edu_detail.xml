@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activity.agro.edu.EduDetailActivity">
+    tools:context=".view.activity.agro.edu.EduDetailActivity"
+    tools:ignore="ContentDescription">
     
     <ImageView
         android:id="@+id/iv_edu_image"
@@ -15,6 +16,115 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:src="@tools:sample/backgrounds/scenic" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:overScrollMode="always"
+        android:fillViewport="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/main"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="256dp"
+                android:background="@drawable/shape_rounded_top"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:id="@+id/tv_edu_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="4dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:fontFamily="@font/nunito_sans_bold"
+                    android:textColor="@color/agronify_black"
+                    android:textSize="20sp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="Lorem ipsum" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_edu_tag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="4dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@id/tv_edu_title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:listitem="@layout/item_edu_tag"
+                    tools:itemCount="5" />
+
+                <TextView
+                    android:id="@+id/tv_edu_desc_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="4dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:fontFamily="@font/nunito_sans_bold"
+                    android:text="@string/edu_desc_title"
+                    android:textColor="@color/agronify_black"
+                    android:textSize="20sp"
+                    app:layout_constraintTop_toBottomOf="@id/rv_edu_tag"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_edu_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="4dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:fontFamily="@font/nunito_sans"
+                    android:textColor="@color/agronify_black"
+                    android:textSize="16sp"
+                    app:layout_constraintVertical_bias="0"
+                    app:layout_constraintTop_toBottomOf="@id/tv_edu_desc_title"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="Lorem ipsum dolor sit amet." />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_share"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="6dp"
+                android:layout_marginTop="-30dp"
+                android:layout_marginEnd="25dp"
+                style="?attr/floatingActionButtonStyle"
+                app:srcCompat="@drawable/ic_share"
+                app:fabCustomSize="56dp"
+                app:maxImageSize="30dp"
+                app:layout_constraintVertical_bias="0"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/main" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
@@ -33,95 +143,5 @@
             app:navigationIcon="@drawable/ic_back_tint" />
 
     </com.google.android.material.appbar.AppBarLayout>
-
-    <ImageView
-        android:id="@+id/main"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:elevation="4dp"
-        android:layout_marginTop="-20dp"
-        android:background="@drawable/shape_rounded_top"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_edu_image" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_share"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:elevation="6dp"
-        android:layout_marginTop="-30dp"
-        android:layout_marginEnd="25dp"
-        style="?attr/floatingActionButtonStyle"
-        app:srcCompat="@drawable/ic_share"
-        app:fabCustomSize="56dp"
-        app:maxImageSize="30dp"
-        app:layout_constraintVertical_bias="0"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/main" />
-
-    <TextView
-        android:id="@+id/tv_edu_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:elevation="4dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginHorizontal="20dp"
-        android:fontFamily="@font/nunito_sans_bold"
-        android:textColor="@color/agronify_black"
-        android:textSize="28sp"
-        app:layout_constraintTop_toTopOf="@id/main"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:text="Lorem ipsum" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_edu_tag"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:elevation="4dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginHorizontal="20dp"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@id/tv_edu_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:listitem="@layout/item_edu_tag"
-        tools:itemCount="5" />
-
-    <TextView
-        android:id="@+id/tv_edu_desc_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:elevation="4dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginHorizontal="20dp"
-        android:fontFamily="@font/nunito_sans_bold"
-        android:text="@string/edu_desc_title"
-        android:textColor="@color/agronify_black"
-        android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/rv_edu_tag"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_edu_desc"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:elevation="4dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="30dp"
-        android:layout_marginHorizontal="20dp"
-        android:fontFamily="@font/nunito_sans"
-        android:textColor="@color/agronify_black"
-        android:textSize="16sp"
-        app:layout_constraintVertical_bias="0"
-        app:layout_constraintTop_toBottomOf="@id/tv_edu_desc_title"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:text="Lorem ipsum dolor sit amet." />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
