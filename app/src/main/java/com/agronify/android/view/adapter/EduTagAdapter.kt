@@ -2,6 +2,7 @@ package com.agronify.android.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.agronify.android.databinding.ItemEduTagBinding
 
@@ -21,6 +22,26 @@ class EduTagAdapter(private val tagList: List<String>) : RecyclerView.Adapter<Ed
         holder.apply {
             itemEduTagBinding.apply {
                 tvEduTag.text = tagList[position]
+
+                val layoutParams = tvEduTag.layoutParams as ConstraintLayout.LayoutParams
+                val margin = (20 * holder.itemView.context.resources.displayMetrics.density).toInt()
+
+                when (position) {
+                    0 -> {
+                        layoutParams.marginStart = margin
+                        layoutParams.marginEnd = (margin / 2)
+                    }
+                    tagList.size - 1 -> {
+                        layoutParams.marginStart = 0
+                        layoutParams.marginEnd = margin
+                    }
+                    else -> {
+                        layoutParams.marginStart = 0
+                        layoutParams.marginEnd = (margin / 2)
+                    }
+                }
+
+                tvEduTag.layoutParams = layoutParams
             }
         }
     }
