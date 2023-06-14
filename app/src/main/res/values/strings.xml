@@ -115,4 +115,9 @@
     <string name="dialog_login_desc">Masuk untuk mengakses fitur ini</string>
     <string name="dialog_soon_title">Segera Hadir!</string>
     <string name="dialog_soon_desc">Fitur ini akan segera hadir</string>
+
+    <string name="permission_grant">Izinkan</string>
+    <string name="permission_location">AgroWeather membutuhkan lokasi Anda</string>
+    <string name="permission_camera">AgroScan membutuhkan kamera Anda</string>
+    <string name="permission_gallery">AgroScan membutuhkan galeri Anda</string>
 </resources>

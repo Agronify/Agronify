@@ -1,5 +1,6 @@
 package com.agronify.android.view.fragment.agro.home
 
+import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Geocoder
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import com.agronify.android.BuildConfig.BUCKET_URL
@@ -29,6 +31,7 @@ import com.agronify.android.util.WeatherUtil.setCurrentWeather
 import com.agronify.android.view.activity.agro.edu.EduDetailActivity
 import com.agronify.android.view.activity.agro.weather.WeatherActivity
 import com.agronify.android.view.activity.main.MainActivity
+import com.agronify.android.view.activity.main.OnboardActivity
 import com.agronify.android.view.fragment.agro.edu.EduFragment
 import com.agronify.android.view.fragment.agro.scan.ScanFragment
 import com.agronify.android.viewmodel.HomeViewModel
@@ -37,6 +40,7 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.Priority
 import com.google.android.gms.tasks.CancellationTokenSource
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.runBlocking
 import java.util.Locale
@@ -57,6 +61,19 @@ class HomeFragment : Fragment() {
     private var userLat: Double? = null
     private var userLon: Double? = null
     private var userLocation: String? = null
+
+    private val locationPermissionRequest = registerForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions()
+    ) { permissions ->
+        val fineLocationGranted = permissions[Manifest.permission.ACCESS_FINE_LOCATION] ?: false
+        val coarseLocationGranted = permissions[Manifest.permission.ACCESS_COARSE_LOCATION] ?: false
+
+        if (fineLocationGranted || coarseLocationGranted) {
+            navigateToWeather()
+        } else {
+            askPermission()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,7 +101,7 @@ class HomeFragment : Fragment() {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireActivity())
         geocoder = Geocoder(requireActivity(), Locale.getDefault())
 
-        val granted = ContextCompat.checkSelfPermission(requireActivity(), android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+        val granted = ContextCompat.checkSelfPermission(requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
         if (granted) {
             fusedLocationProviderClient.getCurrentLocation(LOCATION_PRIORITY, LOCATION_TOKEN).addOnSuccessListener {
                 userLat = it.latitude
@@ -92,11 +109,19 @@ class HomeFragment : Fragment() {
                 userLocation = geocoder.getFromLocation(userLat!!, userLon!!, 1)?.get(0)?.locality
                 getCurrentWeather()
             }
+
+            binding.cvWeather.setOnClickListener {
+                navigateToWeather()
+            }
         } else {
             userLat = DEFAULT_LAT
             userLon = DEFAULT_LON
-            userLocation = geocoder.getFromLocation(userLat!!, userLon!!, 1)?.get(0)?.locality
+            userLocation = geocoder.getFromLocation(DEFAULT_LAT, DEFAULT_LON, 1)?.get(0)?.countryName
             getCurrentWeather()
+
+            binding.cvWeather.setOnClickListener {
+                askPermission()
+            }
         }
     }
 
@@ -109,6 +134,14 @@ class HomeFragment : Fragment() {
 
     private fun setupAction() {
         onSwipeRefresh()
+    }
+
+    private fun requestLocationPermission() {
+        val granted = OnboardActivity.LOCATION_PERMISSION.all {
+            ContextCompat.checkSelfPermission(requireActivity(), it) == PackageManager.PERMISSION_GRANTED
+        }
+
+        if (!granted) locationPermissionRequest.launch(OnboardActivity.LOCATION_PERMISSION)
     }
 
     private fun getCurrentWeather() {
@@ -164,15 +197,15 @@ class HomeFragment : Fragment() {
             }
 
             setCurrentWeather(requireContext(), currentWeather.code, tvWeatherType, ivWeather)
+        }
+    }
 
-            cvWeather.setOnClickListener {
-                Intent(requireActivity(), WeatherActivity::class.java).also {
-                    it.putExtra(EXTRA_LAT, userLat)
-                    it.putExtra(EXTRA_LON, userLon)
-                    it.putExtra(EXTRA_LOCATION, userLocation)
-                    startActivity(it)
-                }
-            }
+    private fun navigateToWeather() {
+        Intent(requireActivity(), WeatherActivity::class.java).also {
+            it.putExtra(EXTRA_LAT, userLat)
+            it.putExtra(EXTRA_LON, userLon)
+            it.putExtra(EXTRA_LOCATION, userLocation)
+            startActivity(it)
         }
     }
 
@@ -262,6 +295,14 @@ class HomeFragment : Fragment() {
                 navigateToFragment(newInstance(hasLoggedIn, token, name))
             }
         }
+    }
+
+    private fun askPermission() {
+        Snackbar.make(binding.root, getString(R.string.permission_location), Snackbar.LENGTH_LONG)
+            .setAction(getString(R.string.permission_grant)) {
+                requestLocationPermission()
+            }
+            .show()
     }
 
     companion object {

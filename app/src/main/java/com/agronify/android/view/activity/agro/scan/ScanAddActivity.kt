@@ -8,6 +8,7 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -48,7 +49,7 @@ class ScanAddActivity : AppCompatActivity() {
         ActivityResultContracts.RequestPermission()
     ) { isGranted ->
         if (isGranted) {
-            binding.btnCamera.isEnabled = true
+            requestPermission()
         }
     }
 
@@ -56,7 +57,7 @@ class ScanAddActivity : AppCompatActivity() {
         ActivityResultContracts.RequestPermission()
     ) { isGranted ->
         if (isGranted) {
-            binding.btnGallery.isEnabled = true
+            requestPermission()
         }
     }
 
@@ -72,12 +73,26 @@ class ScanAddActivity : AppCompatActivity() {
         val grantedCamera = ContextCompat.checkSelfPermission(applicationContext, CAMERA_PERMISSION) == PackageManager.PERMISSION_GRANTED
         val grantedGallery = ContextCompat.checkSelfPermission(applicationContext, GALLERY_PERMISSION) == PackageManager.PERMISSION_GRANTED
 
-        if (!grantedCamera || !grantedGallery) {
-            cameraPermissionRequest.launch(CAMERA_PERMISSION)
-            galleryPermissionRequest.launch(GALLERY_PERMISSION)
-        } else {
-            binding.btnCamera.isEnabled = true
-            binding.btnGallery.isEnabled = true
+        binding.apply {
+            btnCamera.setOnClickListener {
+                if (!grantedCamera) {
+                    cameraPermissionRequest.launch(CAMERA_PERMISSION)
+                    showToast(getString(R.string.permission_camera))
+                    requestPermission()
+                } else {
+                    navigateToCamera()
+                }
+            }
+
+            btnGallery.setOnClickListener {
+                if (!grantedGallery) {
+                    galleryPermissionRequest.launch(GALLERY_PERMISSION)
+                    showToast(getString(R.string.permission_gallery))
+                    requestPermission()
+                } else {
+                    navigateToGallery()
+                }
+            }
         }
     }
 
@@ -113,6 +128,22 @@ class ScanAddActivity : AppCompatActivity() {
         }
     }
 
+    private fun navigateToCamera() {
+        Intent(this@ScanAddActivity, ScanCameraActivity::class.java).also {
+            imagePrediction = null
+            it.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            launcherIntentCameraX?.launch(it)
+        }
+    }
+
+    private fun navigateToGallery() {
+        Intent(ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI).also {
+            imagePrediction = null
+            it.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            launcherIntentGallery?.launch(it)
+        }
+    }
+
     private fun getImage() {
         binding.apply {
             scanViewModel.apply {
@@ -133,22 +164,6 @@ class ScanAddActivity : AppCompatActivity() {
 
     private fun setupAction() {
         binding.apply {
-            btnCamera.setOnClickListener {
-                Intent(this@ScanAddActivity, ScanCameraActivity::class.java).also {
-                    imagePrediction = null
-                    it.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-                    launcherIntentCameraX?.launch(it)
-                }
-            }
-
-            btnGallery.setOnClickListener {
-                Intent(ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI).also {
-                    imagePrediction = null
-                    it.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-                    launcherIntentGallery?.launch(it)
-                }
-            }
-
             btnDetect.apply {
                 text = getString(R.string.add_detect_title, cropName)
                 setOnClickListener {
@@ -197,6 +212,10 @@ class ScanAddActivity : AppCompatActivity() {
             }
             if (isImageUploaded == true) show(this@ScanAddActivity.supportFragmentManager, ModalBottomSheet.TAG)
         }
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     private companion object {

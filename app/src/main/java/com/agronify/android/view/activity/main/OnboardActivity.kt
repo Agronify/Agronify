@@ -15,7 +15,6 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.agronify.android.databinding.ActivityOnboardBinding
 import com.agronify.android.viewmodel.OnboardViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.runBlocking
 
 @AndroidEntryPoint
 class OnboardActivity : AppCompatActivity() {
@@ -30,10 +29,8 @@ class OnboardActivity : AppCompatActivity() {
     private val locationPermissionRequest = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
     ) { permissions ->
-        hasPermission = when {
-            permissions.getOrDefault(Manifest.permission.ACCESS_FINE_LOCATION, false) -> true
-            permissions.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION, false) -> true
-            else -> false
+        hasPermission = permissions.all {
+            it.value
         }
     }
 
@@ -88,6 +85,7 @@ class OnboardActivity : AppCompatActivity() {
                 if (hasPermission) {
                     navigateToMain()
                 } else {
+                    navigateToMain()
                     requestLocationPermission()
                 }
             }
@@ -146,7 +144,7 @@ class OnboardActivity : AppCompatActivity() {
         }
     }
 
-    private companion object {
+    companion object {
         val LOCATION_PERMISSION = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             arrayOf(
                 Manifest.permission.ACCESS_FINE_LOCATION,
