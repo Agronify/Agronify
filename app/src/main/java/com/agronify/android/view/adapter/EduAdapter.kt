@@ -36,14 +36,29 @@ class EduAdapter : ListAdapter<Edu, EduAdapter.ViewHolder>(EduDiffCallback()) {
                         .load(BUCKET_URL + edu.image)
                         .into(ivEduImage)
                     tvEduTitle.text = edu.title
-                    tvEduDesc.text = edu.content
                     if (edu.tags.size > 2) {
-                        tvEduTag1.text = edu.tags[0]
-                        tvEduTag2.text = edu.tags[1]
+                        tvEduTag1.text = if (edu.tags[0].contains(" ")) {
+                            edu.tags[0].split(" ")[0]
+                        } else {
+                            edu.tags[0]
+                        }
+                        tvEduTag2.text = if (edu.tags[1].contains(" ")) {
+                            edu.tags[1].split(" ")[0]
+                        } else {
+                            edu.tags[1]
+                        }
                         tvEduTagMore.text = "..."
                     } else {
-                        tvEduTag1.text = edu.tags[0]
-                        tvEduTag2.text = edu.tags[1]
+                        tvEduTag1.text = if (edu.tags[0].contains(" ")) {
+                            edu.tags[0].split(" ")[0]
+                        } else {
+                            edu.tags[0]
+                        }
+                        tvEduTag2.text = if (edu.tags[1].contains(" ")) {
+                            edu.tags[1].split(" ")[0]
+                        } else {
+                            edu.tags[1]
+                        }
                         tvEduTagMore.visibility = ViewGroup.GONE
                     }
                 }

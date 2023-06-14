@@ -86,7 +86,7 @@
                     android:id="@+id/rv_agro_edu"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:paddingHorizontal="20dp"
+                    android:paddingHorizontal="10dp"
                     android:paddingTop="20dp"
                     android:paddingBottom="110dp"
                     tools:listitem="@layout/item_edu"
