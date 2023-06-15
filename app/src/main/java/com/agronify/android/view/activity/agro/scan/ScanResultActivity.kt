@@ -4,6 +4,7 @@ import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
 import com.agronify.android.BuildConfig.BUCKET_URL
 import com.agronify.android.R
 import com.agronify.android.databinding.ActivityScanResultBinding
@@ -27,6 +28,7 @@ class ScanResultActivity : AppCompatActivity() {
 
     private fun setupView() {
         setupAppBar()
+        setScroll()
 
         val imagePrediction = intent.getParcelableExtra<PredictResponse>(EXTRA_SCAN_RESULT)
         binding.apply {
@@ -40,7 +42,6 @@ class ScanResultActivity : AppCompatActivity() {
             } else {
                 tvResultTitle.text = imagePrediction?.result
                 tvAccuracy.text = getString(R.string.add_accuracy, imagePrediction?.accuracy)
-                tvResultDescTitle.visibility = View.GONE
                 tvResultDesc.visibility = View.GONE
             }
         }
@@ -56,6 +57,28 @@ class ScanResultActivity : AppCompatActivity() {
         binding.apply {
             topAppBar.apply {
                 setNavigationOnClickListener { onBackPressedDispatcher.onBackPressed() }
+            }
+        }
+    }
+
+    private fun setScroll() {
+        binding.apply {
+            val threshold = (20 * resources.displayMetrics.density).toInt()
+            val fabThreshold = (484 * resources.displayMetrics.density).toInt()
+            nsvResult.setOnScrollChangeListener { _, _, scrollY, _, _ ->
+                if (scrollY > threshold) {
+                    topAppBar.navigationIcon = ContextCompat.getDrawable(this@ScanResultActivity, R.drawable.ic_back_tint)
+                    topAppBar.title = ""
+
+                    if (scrollY > fabThreshold) {
+                        fabShareScroll.show()
+                    } else {
+                        fabShareScroll.hide()
+                    }
+                } else {
+                    topAppBar.navigationIcon = ContextCompat.getDrawable(this@ScanResultActivity, R.drawable.ic_back)
+                    topAppBar.title = getString(R.string.result_title)
+                }
             }
         }
     }

@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
+import com.agronify.android.R
 import com.agronify.android.databinding.ActivityScanDiseaseBinding
 import com.agronify.android.model.remote.response.Scan
 import com.agronify.android.util.Constants.EXTRA_SCAN_ID
@@ -45,9 +47,17 @@ class ScanDiseaseActivity : AppCompatActivity() {
     }
 
     private fun setScroll() {
-        binding.nsvDisease.setOnScrollChangeListener { _, _, scrollY, _, oldScrollY ->
-            if (scrollY > oldScrollY) binding.topAppBar.visibility = View.GONE
-            else binding.topAppBar.visibility = View.VISIBLE
+        binding.apply {
+            val threshold = (20 * resources.displayMetrics.density).toInt()
+            nsvDisease.setOnScrollChangeListener { _, _, scrollY, _, _ ->
+                if (scrollY > threshold) {
+                    topAppBar.navigationIcon = ContextCompat.getDrawable(this@ScanDiseaseActivity, R.drawable.ic_back_tint)
+                    topAppBar.title = ""
+                } else {
+                    topAppBar.navigationIcon = ContextCompat.getDrawable(this@ScanDiseaseActivity, R.drawable.ic_back)
+                    topAppBar.title = getString(R.string.scan_disease_title)
+                }
+            }
         }
     }
 
