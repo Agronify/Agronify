@@ -103,6 +103,8 @@
     <string name="add_back">Kembali</string>
     <string name="add_detail">Lihat Detail</string>
 
+    <string name="result_title">Hasil Deteksi</string>
+
     <string name="error_empty_email">Email tidak boleh kosong</string>
     <string name="error_invalid_email">Email tidak valid</string>
     <string name="error_empty_password">Kata sandi tidak boleh kosong</string>

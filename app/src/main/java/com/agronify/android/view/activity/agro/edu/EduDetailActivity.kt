@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.WindowInsets
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.agronify.android.BuildConfig.BUCKET_URL
 import com.agronify.android.R
@@ -22,6 +21,7 @@ class EduDetailActivity : AppCompatActivity() {
     private val binding by lazy {
         ActivityEduDetailBinding.inflate(layoutInflater)
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
