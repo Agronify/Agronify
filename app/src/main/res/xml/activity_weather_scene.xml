@@ -7,24 +7,40 @@
         motion:constraintSetEnd="@id/tomorrow"
         motion:constraintSetStart="@id/today">
         <OnSwipe motion:dragDirection="dragLeft" />
+        <OnClick motion:targetId="@id/tv_weather_tomorrow" />
     </Transition>
 
     <Transition
         motion:constraintSetEnd="@id/today"
         motion:constraintSetStart="@id/tomorrow">
         <OnSwipe motion:dragDirection="dragRight" />
+        <OnClick motion:targetId="@id/tv_weather_today" />
     </Transition>
 
     <Transition
         motion:constraintSetEnd="@id/after"
         motion:constraintSetStart="@id/tomorrow">
         <OnSwipe motion:dragDirection="dragLeft" />
+        <OnClick motion:targetId="@id/tv_weather_after" />
     </Transition>
 
     <Transition
         motion:constraintSetEnd="@id/tomorrow"
         motion:constraintSetStart="@id/after">
         <OnSwipe motion:dragDirection="dragRight" />
+        <OnClick motion:targetId="@id/tv_weather_tomorrow" />
+    </Transition>
+
+    <Transition
+        motion:constraintSetEnd="@id/today"
+        motion:constraintSetStart="@id/after">
+        <OnClick motion:targetId="@id/tv_weather_today" />
+    </Transition>
+
+    <Transition
+        motion:constraintSetEnd="@id/today"
+        motion:constraintSetStart="@id/after">
+        <OnClick motion:targetId="@id/tv_weather_after" />
     </Transition>
 
     <ConstraintSet android:id="@+id/today">
