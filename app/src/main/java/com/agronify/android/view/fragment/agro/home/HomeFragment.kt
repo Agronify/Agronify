@@ -69,7 +69,9 @@ class HomeFragment : Fragment() {
         val coarseLocationGranted = permissions[Manifest.permission.ACCESS_COARSE_LOCATION] ?: false
 
         if (fineLocationGranted || coarseLocationGranted) {
-            navigateToWeather()
+            (requireActivity() as MainActivity).apply {
+                navigateToFragment(newInstance(hasLoggedIn, token, name))
+            }
         } else {
             askPermission()
         }
