@@ -108,7 +108,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/disease_success"
-            android:visibility="visible"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -198,6 +198,87 @@
                 android:textSize="14sp"
                 android:textAlignment="center"
                 app:layout_constraintTop_toBottomOf="@id/btn_disease_detail"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/disease_healthy_success"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_disease_healthy_success"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                app:srcCompat="@drawable/ic_success"
+                app:tint="@color/agronify_main"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_disease_healthy_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/nunito_sans_bold"
+                android:textColor="@color/agronify_black"
+                android:textSize="24sp"
+                android:textAlignment="center"
+                app:layout_constraintTop_toBottomOf="@id/iv_disease_healthy_success"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="Bacterial Blight" />
+
+            <TextView
+                android:id="@+id/tv_disease_healthy_accuracy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="4dp"
+                android:background="@drawable/shape_tag"
+                android:backgroundTint="@color/agronify_accent"
+                android:fontFamily="@font/nunito_sans_bold"
+                android:text="@string/add_accuracy"
+                android:textColor="@color/agronify_white"
+                android:textSize="12sp"
+                android:textAlignment="center"
+                app:layout_constraintTop_toBottomOf="@id/tv_disease_healthy_result"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="50.23% Akurasi" />
+
+            <TextView
+                android:id="@+id/tv_disease_healthy_success_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/nunito_sans"
+                android:text="@string/add_disease_success_healthy"
+                android:textColor="#80000000"
+                android:textSize="14sp"
+                android:textAlignment="center"
+                app:layout_constraintTop_toBottomOf="@id/tv_disease_healthy_accuracy"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_disease_healthy_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:paddingVertical="8dp"
+                android:paddingHorizontal="20dp"
+                android:fontFamily="@font/nunito_sans_bold"
+                android:text="@string/add_back"
+                android:textColor="@color/agronify_main"
+                android:textSize="14sp"
+                android:textAlignment="center"
+                app:layout_constraintTop_toBottomOf="@id/tv_disease_healthy_success_desc"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 

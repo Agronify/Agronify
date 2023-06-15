@@ -39,23 +39,37 @@ class ModalBottomSheet : BottomSheetDialogFragment() {
             if (isSuccess == true && imagePrediction?.result != "NOT DETECTED") {
                 when (cropType) {
                     "disease" -> {
-                        diseaseSuccess.visibility = View.VISIBLE
-                        ripenessSuccess.visibility = View.GONE
-                        failure.visibility = View.GONE
-                        tvDiseaseResult.text = if (imagePrediction?.disease != null) imagePrediction.disease.name else imagePrediction?.result
-                        tvDiseaseAccuracy.text = getString(R.string.add_accuracy, imagePrediction?.accuracy)
-                        btnDiseaseDetail.setOnClickListener {
-                            Intent(requireActivity(), ScanResultActivity::class.java).also {
-                                it.putExtra(EXTRA_SCAN_RESULT, imagePrediction)
-                                startActivity(it)
+                        if (imagePrediction?.result == "Healthy" || imagePrediction?.disease?.name == "Healthy") {
+                            diseaseHealthySuccess.visibility = View.VISIBLE
+                            diseaseSuccess.visibility = View.GONE
+                            ripenessSuccess.visibility = View.GONE
+                            failure.visibility = View.GONE
+                            tvDiseaseHealthyResult.text = if (imagePrediction?.result == "Healthy") imagePrediction.result else imagePrediction?.disease?.name
+                            tvDiseaseHealthyAccuracy.text = getString(R.string.add_accuracy, imagePrediction.accuracy)
+                            tvDiseaseHealthyBack.setOnClickListener {
+                                dismiss()
+                            }
+                        } else {
+                            diseaseHealthySuccess.visibility = View.GONE
+                            diseaseSuccess.visibility = View.VISIBLE
+                            ripenessSuccess.visibility = View.GONE
+                            failure.visibility = View.GONE
+                            tvDiseaseResult.text = if (imagePrediction?.disease != null) imagePrediction.disease.name else imagePrediction?.result
+                            tvDiseaseAccuracy.text = getString(R.string.add_accuracy, imagePrediction?.accuracy)
+                            btnDiseaseDetail.setOnClickListener {
+                                Intent(requireActivity(), ScanResultActivity::class.java).also {
+                                    it.putExtra(EXTRA_SCAN_RESULT, imagePrediction)
+                                    startActivity(it)
+                                    dismiss()
+                                }
+                            }
+                            tvDiseaseBack.setOnClickListener {
                                 dismiss()
                             }
                         }
-                        tvDiseaseBack.setOnClickListener {
-                            dismiss()
-                        }
                     }
                     "ripeness" -> {
+                        diseaseHealthySuccess.visibility = View.GONE
                         diseaseSuccess.visibility = View.GONE
                         ripenessSuccess.visibility = View.VISIBLE
                         failure.visibility = View.GONE
@@ -67,6 +81,7 @@ class ModalBottomSheet : BottomSheetDialogFragment() {
                     }
                 }
             } else {
+                diseaseHealthySuccess.visibility = View.GONE
                 diseaseSuccess.visibility = View.GONE
                 ripenessSuccess.visibility = View.GONE
                 failure.visibility = View.VISIBLE

@@ -96,6 +96,7 @@
     <string name="add_success_title">Berhasil</string>
     <string name="add_success_ripeness">AgroScan berhasil mendeteksi tingkat kematangan buah Anda</string>
     <string name="add_success_disease">AgroScan berhasil mendeteksi adanya penyakit pada tanaman Anda</string>
+    <string name="add_disease_success_healthy">AgroScan tidak mendeteksi adanya penyakit pada tanaman Anda</string>
     <string name="add_accuracy">%.2f%% Akurasi</string>
     <string name="add_failure_title">Gagal</string>
     <string name="add_failure">AgroScan tidak dapat mendeteksi gambar Anda</string>
