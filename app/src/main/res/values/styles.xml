@@ -1,20 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Base.Theme.Agronify" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/agronify_main</item>
-        <item name="colorSurface">@color/agronify_main</item>
-
-        <item name="bottomAppBarStyle">@style/Widget.App.BottomAppBar</item>
-        <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
-        <item name="floatingActionButtonStyle">@style/Widget.App.FloatingActionButton</item>
-        <item name="materialButtonStyle">@style/Widget.App.Button</item>
-        <item name="materialButtonOutlinedStyle">@style/Widget.App.Button.Outlined</item>
-        <item name="borderlessButtonStyle">@style/Widget.App.Button.Borderless</item>
-        <item name="textInputOutlinedStyle">@style/Widget.App.TextInputOutlinedLayout</item>
-        <item name="materialCardViewFilledStyle">@style/Widget.App.CardView</item>
-        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.App.BottomSheetDialog</item>
-    </style>
-
     <style name="TextAppearance.App.TitleSmall" parent="TextAppearance.Material3.TitleSmall">
         <item name="fontFamily">@font/nunito_sans_bold</item>
         <item name="android:textSize">12sp</item>

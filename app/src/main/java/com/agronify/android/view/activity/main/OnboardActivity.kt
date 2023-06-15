@@ -36,6 +36,7 @@ class OnboardActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        installSplashScreen()
         installSplash()
         setContentView(binding.root)
         setupView()
