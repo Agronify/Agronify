@@ -29,6 +29,7 @@
         android:name=".Agronify"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
+        android:enableOnBackInvokedCallback="true"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_agronify"
         android:label="@string/app_name"
@@ -37,7 +38,7 @@
         android:theme="@style/Theme.Agronify"
         android:usesCleartextTraffic="false"
         tools:ignore="LockedOrientationActivity"
-        tools:targetApi="31">
+        tools:targetApi="33">
         <activity
             android:name=".view.activity.agro.scan.ScanResultActivity"
             android:exported="false"
