@@ -58,17 +58,28 @@ Agronify is a mobile application based on Android that aims to help the agricult
 
 ***
 
-## Contribute
+## Installation
 
-#### Contributions are always welcome!
+### Prerequisites
+- Android Studio
+- Android SDK with a minimum API level of 24
+
+### Build
 1. Fork or clone the repository.
 ```bash
 git clone https://github.com/Agronify/Agronify.git
 ```
 2. Navigate to the project directory in Android Studio.
+3. Configure the `local.properties` to set `BuildConfig` variables.
+```properties
+BASE_URL="" // Agronify API
+BUCKET_URL="" // Agronify Storage
+```
 3. Build the application. This may take a few minutes.
 4. Run the application on an emulator or physical device.
 5. Wait for the application to be installed and launched. You should now be able to test the Agronify application.
+
+### Contribute
 
 #### If you happen to encounter any issues or want to request new feature, please [open an issue](https://github.com/Agronify/Agronify/issues/new) or contact the [maintainer](https://github.com/fathoor) for help.
 
