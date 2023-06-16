@@ -36,24 +36,18 @@ class ModalBottomSheet : BottomSheetDialogFragment() {
         val imagePrediction = arguments?.getParcelable<PredictResponse>(EXTRA_SCAN_RESULT)
 
         binding.apply {
-            if (isSuccess == true && imagePrediction?.result != "NOT DETECTED") {
+            if (isSuccess == true && imagePrediction?.result != "Not Detected") {
                 when (cropType) {
                     "disease" -> {
                         if (imagePrediction?.result == "Healthy" || imagePrediction?.disease?.name == "Healthy") {
-                            diseaseHealthySuccess.visibility = View.VISIBLE
-                            diseaseSuccess.visibility = View.GONE
-                            ripenessSuccess.visibility = View.GONE
-                            failure.visibility = View.GONE
+                            showResult("diseaseHealthySuccess")
                             tvDiseaseHealthyResult.text = if (imagePrediction?.result == "Healthy") imagePrediction.result else imagePrediction?.disease?.name
                             tvDiseaseHealthyAccuracy.text = getString(R.string.add_accuracy, imagePrediction.accuracy)
                             tvDiseaseHealthyBack.setOnClickListener {
                                 dismiss()
                             }
                         } else {
-                            diseaseHealthySuccess.visibility = View.GONE
-                            diseaseSuccess.visibility = View.VISIBLE
-                            ripenessSuccess.visibility = View.GONE
-                            failure.visibility = View.GONE
+                            showResult("diseaseSuccess")
                             tvDiseaseResult.text = if (imagePrediction?.disease != null) imagePrediction.disease.name else imagePrediction?.result
                             tvDiseaseAccuracy.text = getString(R.string.add_accuracy, imagePrediction?.accuracy)
                             btnDiseaseDetail.setOnClickListener {
@@ -69,10 +63,7 @@ class ModalBottomSheet : BottomSheetDialogFragment() {
                         }
                     }
                     "ripeness" -> {
-                        diseaseHealthySuccess.visibility = View.GONE
-                        diseaseSuccess.visibility = View.GONE
-                        ripenessSuccess.visibility = View.VISIBLE
-                        failure.visibility = View.GONE
+                        showResult("ripenessSuccess")
                         tvRipenessResult.text = imagePrediction?.result
                         tvRipenessAccuracy.text = getString(R.string.add_accuracy, imagePrediction?.accuracy)
                         tvRipenessBack.setOnClickListener {
@@ -81,10 +72,7 @@ class ModalBottomSheet : BottomSheetDialogFragment() {
                     }
                 }
             } else {
-                diseaseHealthySuccess.visibility = View.GONE
-                diseaseSuccess.visibility = View.GONE
-                ripenessSuccess.visibility = View.GONE
-                failure.visibility = View.VISIBLE
+                showResult("failure")
                 btnFailureRetake.setOnClickListener {
                     dismiss()
                 }
@@ -95,6 +83,30 @@ class ModalBottomSheet : BottomSheetDialogFragment() {
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
         activity?.finish()
+    }
+
+    private fun showResult(result: String) {
+        binding.apply {
+            diseaseHealthySuccess.visibility = View.GONE
+            diseaseSuccess.visibility = View.GONE
+            ripenessSuccess.visibility = View.GONE
+            failure.visibility = View.GONE
+
+            when (result) {
+                "diseaseHealthySuccess" -> {
+                    diseaseHealthySuccess.visibility = View.VISIBLE
+                }
+                "diseaseSuccess" -> {
+                    diseaseSuccess.visibility = View.VISIBLE
+                }
+                "ripenessSuccess" -> {
+                    ripenessSuccess.visibility = View.VISIBLE
+                }
+                "failure" -> {
+                    failure.visibility = View.VISIBLE
+                }
+            }
+        }
     }
 
     companion object {
