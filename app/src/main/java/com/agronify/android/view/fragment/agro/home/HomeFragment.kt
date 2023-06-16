@@ -13,11 +13,14 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import com.agronify.android.BuildConfig.BUCKET_URL
+import com.agronify.android.BuildConfig.DAY_URL
+import com.agronify.android.BuildConfig.NIGHT_URL
 import com.agronify.android.R
 import com.agronify.android.databinding.FragmentHomeBinding
 import com.agronify.android.model.remote.response.CurrentWeather
 import com.agronify.android.model.remote.response.Edu
 import com.agronify.android.util.Constants.DEFAULT_LAT
+import com.agronify.android.util.Constants.DEFAULT_LOCATION
 import com.agronify.android.util.Constants.DEFAULT_LON
 import com.agronify.android.util.Constants.EXTRA_EDU
 import com.agronify.android.util.Constants.EXTRA_LAT
@@ -118,7 +121,7 @@ class HomeFragment : Fragment() {
         } else {
             userLat = DEFAULT_LAT
             userLon = DEFAULT_LON
-            userLocation = geocoder.getFromLocation(DEFAULT_LAT, DEFAULT_LON, 1)?.get(0)?.countryName
+            userLocation = DEFAULT_LOCATION
             getCurrentWeather()
 
             binding.cvWeather.setOnClickListener {
@@ -183,12 +186,12 @@ class HomeFragment : Fragment() {
                 when (current) {
                     "day" -> {
                         Glide.with(requireActivity())
-                            .load(R.drawable.weather_day)
+                            .load(BUCKET_URL + DAY_URL)
                             .into(ivWeatherBackground)
                     }
                     "night" -> {
                         Glide.with(requireActivity())
-                            .load(R.drawable.weather_night)
+                            .load(BUCKET_URL + NIGHT_URL)
                             .into(ivWeatherBackground)
                     }
                     else -> {

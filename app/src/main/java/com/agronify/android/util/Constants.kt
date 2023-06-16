@@ -3,6 +3,7 @@ package com.agronify.android.util
 object Constants {
     const val DEFAULT_LAT = -7.250445
     const val DEFAULT_LON = 112.768845
+    const val DEFAULT_LOCATION = "Indonesia"
 
     const val EXTRA_LAT = "extra_lat"
     const val EXTRA_LON = "extra_lon"

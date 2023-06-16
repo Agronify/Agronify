@@ -6,12 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.agronify.android.BuildConfig.BUCKET_URL
+import com.agronify.android.BuildConfig.DISEASE_URL
+import com.agronify.android.BuildConfig.RIPENESS_URL
 import com.agronify.android.databinding.FragmentScanBinding
 import com.agronify.android.util.Constants.EXTRA_LOGIN
 import com.agronify.android.util.Constants.EXTRA_TOKEN
 import com.agronify.android.view.activity.agro.scan.ScanDiseaseActivity
 import com.agronify.android.view.activity.agro.scan.ScanRipeActivity
 import com.agronify.android.view.activity.main.MainActivity
+import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -44,6 +48,14 @@ class ScanFragment : Fragment() {
 
     private fun setupView() {
         binding.apply {
+            Glide.with(requireContext())
+                .load(BUCKET_URL + DISEASE_URL)
+                .into(ivDisease)
+
+            Glide.with(requireContext())
+                .load(BUCKET_URL + RIPENESS_URL)
+                .into(ivRipeness)
+
             cvRipeness.setOnClickListener {
                 if (hasLoggedIn) {
                     Intent(requireContext(), ScanRipeActivity::class.java).also {
