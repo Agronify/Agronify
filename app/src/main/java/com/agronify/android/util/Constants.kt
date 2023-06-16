@@ -23,4 +23,9 @@ object Constants {
 
     const val CAMERA_X_SUCCESS = 201
     const val CAMERA_X_ROTATION = "image_rotation_degree"
+
+    const val DISEASE_PATH = "agronify_bucket/images/1686844601126-scan_disease.jpg"
+    const val RIPENESS_PATH = "agronify_bucket/images/1686844659246-scan_ripeness.jpg"
+    const val DAY_PATH = "agronify_bucket/images/1686843070944-weather_day.jpg"
+    const val NIGHT_PATH = "agronify_bucket/images/1686843085471-weather_night.jpg"
 }

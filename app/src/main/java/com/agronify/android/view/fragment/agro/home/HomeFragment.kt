@@ -13,12 +13,11 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import com.agronify.android.BuildConfig.BUCKET_URL
-import com.agronify.android.BuildConfig.DAY_URL
-import com.agronify.android.BuildConfig.NIGHT_URL
 import com.agronify.android.R
 import com.agronify.android.databinding.FragmentHomeBinding
 import com.agronify.android.model.remote.response.CurrentWeather
 import com.agronify.android.model.remote.response.Edu
+import com.agronify.android.util.Constants.DAY_PATH
 import com.agronify.android.util.Constants.DEFAULT_LAT
 import com.agronify.android.util.Constants.DEFAULT_LOCATION
 import com.agronify.android.util.Constants.DEFAULT_LON
@@ -29,6 +28,7 @@ import com.agronify.android.util.Constants.EXTRA_LOGIN
 import com.agronify.android.util.Constants.EXTRA_LON
 import com.agronify.android.util.Constants.EXTRA_NAME
 import com.agronify.android.util.Constants.EXTRA_TOKEN
+import com.agronify.android.util.Constants.NIGHT_PATH
 import com.agronify.android.util.DateUtil.getDayOrNight
 import com.agronify.android.util.WeatherUtil.setCurrentWeather
 import com.agronify.android.view.activity.agro.edu.EduDetailActivity
@@ -186,12 +186,12 @@ class HomeFragment : Fragment() {
                 when (current) {
                     "day" -> {
                         Glide.with(requireActivity())
-                            .load(BUCKET_URL + DAY_URL)
+                            .load(BUCKET_URL + DAY_PATH)
                             .into(ivWeatherBackground)
                     }
                     "night" -> {
                         Glide.with(requireActivity())
-                            .load(BUCKET_URL + NIGHT_URL)
+                            .load(BUCKET_URL + NIGHT_PATH)
                             .into(ivWeatherBackground)
                     }
                     else -> {

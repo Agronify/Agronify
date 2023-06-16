@@ -7,11 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.agronify.android.BuildConfig.BUCKET_URL
-import com.agronify.android.BuildConfig.DISEASE_URL
-import com.agronify.android.BuildConfig.RIPENESS_URL
 import com.agronify.android.databinding.FragmentScanBinding
+import com.agronify.android.util.Constants.DISEASE_PATH
 import com.agronify.android.util.Constants.EXTRA_LOGIN
 import com.agronify.android.util.Constants.EXTRA_TOKEN
+import com.agronify.android.util.Constants.RIPENESS_PATH
 import com.agronify.android.view.activity.agro.scan.ScanDiseaseActivity
 import com.agronify.android.view.activity.agro.scan.ScanRipeActivity
 import com.agronify.android.view.activity.main.MainActivity
@@ -49,11 +49,11 @@ class ScanFragment : Fragment() {
     private fun setupView() {
         binding.apply {
             Glide.with(requireContext())
-                .load(BUCKET_URL + DISEASE_URL)
+                .load(BUCKET_URL + DISEASE_PATH)
                 .into(ivDisease)
 
             Glide.with(requireContext())
-                .load(BUCKET_URL + RIPENESS_URL)
+                .load(BUCKET_URL + RIPENESS_PATH)
                 .into(ivRipeness)
 
             cvRipeness.setOnClickListener {

@@ -8,6 +8,9 @@ import com.agronify.android.databinding.ActivityWeatherBinding
 import com.agronify.android.model.remote.response.ForecastWeather
 import com.agronify.android.util.Constants.DEFAULT_LAT
 import com.agronify.android.util.Constants.DEFAULT_LON
+import com.agronify.android.util.Constants.EXTRA_LAT
+import com.agronify.android.util.Constants.EXTRA_LOCATION
+import com.agronify.android.util.Constants.EXTRA_LON
 import com.agronify.android.util.DateUtil.getCurrentDate
 import com.agronify.android.util.WeatherUtil.setForecastWeather
 import com.agronify.android.viewmodel.WeatherViewModel
@@ -69,7 +72,13 @@ class WeatherActivity : AppCompatActivity() {
 
                     isLoading.observe(this@WeatherActivity) {
                         binding.apply {
-                            cpiWeather.visibility = if (it) View.VISIBLE else View.GONE
+                            if (it) {
+                                cpiWeather.visibility = View.VISIBLE
+                                clMain.visibility = View.GONE
+                            } else {
+                                cpiWeather.visibility = View.GONE
+                                clMain.visibility = View.VISIBLE
+                            }
                         }
                     }
 
@@ -116,11 +125,5 @@ class WeatherActivity : AppCompatActivity() {
                 }
             }
         }
-    }
-
-    companion object {
-        const val EXTRA_LAT = "extra_lat"
-        const val EXTRA_LON = "extra_lon"
-        const val EXTRA_LOCATION = "extra_location"
     }
 }
