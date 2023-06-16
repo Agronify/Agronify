@@ -101,7 +101,7 @@ class ProfileFragment : Fragment() {
             cvLogout.apply {
                 visibility = View.VISIBLE
                 setOnClickListener {
-                    userLogout()
+                    (requireActivity() as MainActivity).showLogoutDialog()
                 }
             }
         }
@@ -117,11 +117,6 @@ class ProfileFragment : Fragment() {
                 }
             }
         }
-    }
-
-    private fun userLogout() {
-        profileViewModel.userLogout()
-        navigateToMain()
     }
 
     private fun navigateToMain() {

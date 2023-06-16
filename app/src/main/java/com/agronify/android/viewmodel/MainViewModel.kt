@@ -49,4 +49,10 @@ class MainViewModel @Inject constructor(
         }
         _isLoading.value = false
     }
+
+    fun userLogout() {
+        viewModelScope.launch {
+            authRepository.clearUser()
+        }
+    }
 }

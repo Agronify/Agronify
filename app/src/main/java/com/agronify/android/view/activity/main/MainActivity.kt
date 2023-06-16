@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import com.agronify.android.R
@@ -91,6 +92,25 @@ class MainActivity : AppCompatActivity(), NavigationCallback {
                 Intent(this@MainActivity, LoginActivity::class.java).apply {
                     startActivity(this)
                 }
+                dismiss()
+            }
+            show()
+        }
+    }
+
+    fun showLogoutDialog() {
+        Dialog(this).apply {
+            setContentView(R.layout.dialog_logout)
+            window?.setBackgroundDrawableResource(android.R.color.transparent)
+            findViewById<MaterialButton>(R.id.btn_dialog_logout).setOnClickListener {
+                mainViewModel.userLogout()
+                Intent(this@MainActivity, MainActivity::class.java).also {
+                    it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(it)
+                }
+                dismiss()
+            }
+            findViewById<TextView>(R.id.tv_dialog_back).setOnClickListener {
                 dismiss()
             }
             show()

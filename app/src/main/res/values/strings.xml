@@ -116,6 +116,8 @@
 
     <string name="dialog_login_title">Fitur Terbatas!</string>
     <string name="dialog_login_desc">Masuk untuk mengakses fitur ini</string>
+    <string name="dialog_logout_title">Anda yakin ingin keluar?</string>
+    <string name="dialog_logout_desc">Beberapa akses fitur akan hilang</string>
     <string name="dialog_soon_title">Segera Hadir!</string>
     <string name="dialog_soon_desc">Fitur ini akan segera hadir</string>
 
